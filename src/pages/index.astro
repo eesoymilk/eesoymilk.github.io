@@ -1,8 +1,19 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.svelte';
+import Edu from '../components/Edu.svelte';
+import Exp from '../components/Exp.svelte';
 ---
 
 <Layout title="Home">
   <Header client:visible />
+  <Edu client:visible />
+  <Exp client:visible />
 </Layout>
+
+<style is:global>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;200;300;400;500;600;700;800;900&family=Noto+Serif+TC:wght@200;300;400;500;600;700;900&display=swap');
+  * {
+    font-family: 'Noto Sans TC', sans-serif;
+  }
+</style>
