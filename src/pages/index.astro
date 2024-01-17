@@ -1,15 +1,19 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.svelte';
-import Edu from '../components/Edu.svelte';
-import Exp from '../components/Exp.svelte';
+import Education from '../components/Education.svelte';
+import Research from '../components/Research.svelte';
+import Experience from '../components/Experience.svelte';
+import Projects from '../components/Projects.svelte';
 ---
 
 <Layout title="Soymilk">
   <Header client:visible />
   <main>
-    <Edu client:visible />
-    <Exp client:visible />
+    <Education client:visible />
+    <Research client:visible />
+    <Experience client:visible />
+    <Projects client:visible />
   </main>
 </Layout>
 

@@ -24,7 +24,7 @@
   const handleMenuClick = () => (menuOpen = !menuOpen);
 </script>
 
-<header class="flex flex-col h-screen font-display">
+<header class="flex flex-col mx-auto w-2/3 h-screen font-display">
   <nav class="flex flex-row-reverse w-full h-10">
     <button
       class="text-blue-500 cursor-pointer hover:text-blue-700"
@@ -57,20 +57,22 @@
   <div
     class="flex flex-col flex-1 gap-4 justify-center items-center min-h-0 basis-auto"
   >
-    <div class="flex flex-col flex-wrap gap-1 w-2/3">
+    <div class="flex flex-col flex-wrap gap-1">
       <div class="flex gap-x-1 items-end">
-        <span class="text-lg font-medium">Hi, I am</span>
-        <h1 class="text-3xl font-extrabold">Soymilk.</h1>
+        <span class="text-lg font-medium md:text-xl xl:text-2xl">Hi, I am</span>
+        <h1 class="text-3xl font-extrabold md:text-4xl xl:text-5xl">
+          Soymilk.
+        </h1>
       </div>
       <ul class="flex flex-wrap gap-x-2">
         {#each titles as title, idx}
-          <li class="text-base font-medium capitalize">
+          <li class="text-base font-medium capitalize md:text-lg lg:text-xl">
             {title}{idx === titles.length - 1 ? '.' : ','}
           </li>
         {/each}
       </ul>
     </div>
-    <div class="w-2/3">
+    <div>
       <img
         src={avatar.src}
         alt="avatar"
