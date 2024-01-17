@@ -34,7 +34,9 @@
     </div>
     <Divider />
     <div class="flex justify-between items-center font-bold font-display">
-      <span class="text-xs text-cyan-200">© Yu-Wei Chang 2024</span>
+      <span class="text-xs text-cyan-200 text-balance"
+        >© Yu-Wei Chang 2024</span
+      >
       <ul
         class="flex justify-center items-center h-full transition-all origin-top-right"
       >
