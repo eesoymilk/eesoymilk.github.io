@@ -23,10 +23,7 @@
           value:
             'You do not need to install any drivers since all operating systems come with HID driver',
         },
-        {
-          key: '2023 Spring Undergraduate Project Competition Award',
-          value: 'Best Poster Exhibition Voting',
-        },
+        '2023 Spring Undergraduate Project Competition Award: Best Poster Exhibition Voting',
       ],
     },
   ];

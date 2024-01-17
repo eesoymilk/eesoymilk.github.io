@@ -12,8 +12,9 @@
       <div class="flex gap-x-1 items-end">
         <span class="text-lg font-medium md:text-xl xl:text-2xl">Hi, I am</span>
         <h1 class="text-2xl font-extrabold md:text-3xl xl:text-4xl">
-          Yu-Wei Chang;
+          Yu-Wei Chang
         </h1>
+        <span class="text-lg font-medium md:text-xl xl:text-2xl">;</span>
       </div>
       <p class="md:text-lg lg:text-xl">
         You can also call me <strong class="text-xl md:text-2xl xl:text-3xl"
@@ -32,7 +33,7 @@
       <img
         src={avatar.src}
         alt="avatar"
-        class="mx-auto w-full rounded-full ring-8 max-w-[40vh] ring-sky-500 drop-shadow-lg sm:w-[427px]"
+        class="mx-auto w-full rounded-full ring-8 max-w-[40vh] ring-sky-700 drop-shadow-lg sm:w-[427px]"
       />
     </div>
   </div>
