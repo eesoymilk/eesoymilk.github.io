@@ -8,7 +8,7 @@
 </script>
 
 <div
-  class="flex flex-col gap-2 items-start p-4 rounded-md shadow-lg bg-neutral-300"
+  class="flex flex-col gap-2 items-start p-4 bg-gray-100 rounded-md shadow-lg drop-shadow-lg"
 >
   <div class="flex justify-between">
     <div class="flex flex-col gap-1">
