@@ -31,10 +31,14 @@
   <div
     class="flex flex-col flex-1 gap-1 p-2 min-h-0 sm:gap-2 lg:gap-3 basis-auto"
   >
-    <h3 class="text-base font-semibold font-display text-balance">
+    <h3
+      class="text-base font-semibold md:text-lg lg:text-xl font-display text-balance"
+    >
       {project.title}
     </h3>
-    <p class="flex flex-col font-serif">{project.brief}</p>
+    <p class="flex flex-col font-serif text-sm md:text-base lg:text-lg">
+      {project.brief}
+    </p>
     {#if project.details.githubUrl || project.details.otherUrl}
       <ul class="flex justify-end mt-auto tems-center">
         {#if project.details.githubUrl}
