@@ -6,7 +6,7 @@
 
 <header class="flex flex-col mx-auto w-2/3 h-screen font-display">
   <div
-    class="flex flex-col flex-1 gap-4 justify-center items-center min-h-0 basis-auto"
+    class="flex flex-col flex-1 gap-4 justify-center items-center min-h-0 md:gap-6 lg:gap-8 basis-auto"
   >
     <div class="flex flex-col flex-wrap gap-1">
       <div class="flex gap-x-1 items-end">
