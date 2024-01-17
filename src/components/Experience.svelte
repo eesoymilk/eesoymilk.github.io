@@ -1,6 +1,7 @@
 <script lang="ts">
   import Title from './Title.svelte';
   import Entry from './Entry.svelte';
+  import Divider from './Divider.svelte';
 
   const experiences = [
     {
@@ -88,9 +89,7 @@
   {#each experiences as experience, idx}
     <Entry {...experience} />
     {#if idx !== experiences.length - 1}
-      <div class="flex justify-center">
-        <div class="w-1/2 h-px bg-blue-300"></div>
-      </div>
+      <Divider />
     {/if}
   {/each}
 </div>

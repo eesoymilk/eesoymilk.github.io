@@ -1,59 +1,25 @@
 <script lang="ts">
-  import Icon from '@iconify/svelte';
   import avatar from '../assets/avatar.png';
 
   const titles = ['software developer', 'programming tutor', 'IoT enthusiast'];
 
-  const navItems = [
-    {
-      icon: 'mdi:github',
-      link: 'https://github.com/eesoymilk',
-    },
-    {
-      icon: 'mdi:linkedin',
-      link: 'https://www.linkedin.com/in/eesoymilk',
-    },
-    {
-      icon: 'fa-brands:line',
-      link: 'https://line.me/ti/p/nHyADUP7Mf',
-    },
-  ];
-
-  let menuOpen = false;
-
-  const handleMenuClick = () => (menuOpen = !menuOpen);
+  // let menuOpen = false;
+  //
+  // const handleMenuClick = () => (menuOpen = !menuOpen);
 </script>
 
 <header class="flex flex-col mx-auto w-2/3 h-screen font-display">
-  <nav class="flex flex-row-reverse w-full h-10">
-    <button
-      class="text-blue-500 cursor-pointer hover:text-blue-700"
-      on:click={handleMenuClick}
-    >
-      <Icon
-        icon={menuOpen ? 'mdi:close' : 'mdi:menu'}
-        class="w-10 h-10 transition-all"
-      />
-    </button>
-    <ul
-      class="flex h-full origin-top-right items-center justify-center transition-all {menuOpen
-        ? 'scale-100'
-        : 'scale-0'}"
-    >
-      {#each navItems as navItem}
-        <li class="flex items-center px-4 h-10">
-          <a
-            href={navItem.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="flex items-center px-2 h-full text-xl text-gray-500 transition-colors hover:text-gray-700"
-          >
-            <Icon icon={navItem.icon} class="w-8 h-8 cursor-pointer" />
-          </a>
-        </li>
-      {/each}
-    </ul>
-  </nav>
+  <!-- <nav class="flex flex-row-reverse w-full h-10"> -->
+  <!--   <button -->
+  <!--     class="text-blue-500 cursor-pointer hover:text-blue-700" -->
+  <!--     on:click={handleMenuClick} -->
+  <!--   > -->
+  <!--     <Icon -->
+  <!--       icon={menuOpen ? 'mdi:close' : 'mdi:menu'} -->
+  <!--       class="w-10 h-10 transition-all" -->
+  <!--     /> -->
+  <!--   </button> -->
+  <!-- </nav> -->
   <div
     class="flex flex-col flex-1 gap-4 justify-center items-center min-h-0 basis-auto"
   >
