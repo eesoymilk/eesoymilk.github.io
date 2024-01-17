@@ -12,17 +12,17 @@
       date: 'Sep 2022 - Jun 2023',
       items: [
         'Developed a multi‑platform 8051 programmer using C and a frontend application.',
-        { key: 'Cross‑platform', value: 'Our program runs everywhere' },
-        {
-          key: 'Simple Workflow',
-          value:
-            'All it takes is a few mouse clicks to burn your hex to the microprocessor',
-        },
-        {
-          key: 'Plug‑and‑play',
-          value:
-            'You do not need to install any drivers since all operating systems come with HID driver',
-        },
+        // { key: 'Cross‑platform', value: 'Our program runs everywhere' },
+        // {
+        //   key: 'Simple Workflow',
+        //   value:
+        //     'All it takes is a few mouse clicks to burn your hex to the microprocessor',
+        // },
+        // {
+        //   key: 'Plug‑and‑play',
+        //   value:
+        //     'You do not need to install any drivers since all operating systems come with HID driver',
+        // },
         '2023 Spring Undergraduate Project Competition Award: Best Poster Exhibition Voting',
       ],
     },

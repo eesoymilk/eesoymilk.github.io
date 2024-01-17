@@ -13,16 +13,16 @@
       date: 'July 2023 - Dec 2023',
       items: [
         'Contributed to the development of various projects, working as a software developer and research assistant.',
-        {
-          key: 'Technical Skills',
-          value:
-            'Human‑robot Interaction, AI Integration, Front‑end/back‑end Development.',
-        },
-        {
-          key: 'Soft Skills',
-          value:
-            'Teamwork, Problem Solving, Innovative Thinking, Client Interaction.',
-        },
+        // {
+        //   key: 'Technical Skills',
+        //   value:
+        //     'Human‑robot Interaction, AI Integration, Front‑end/back‑end Development.',
+        // },
+        // {
+        //   key: 'Soft Skills',
+        //   value:
+        //     'Teamwork, Problem Solving, Innovative Thinking, Client Interaction.',
+        // },
       ],
     },
     {
@@ -33,26 +33,26 @@
       date: 'Sep 2022 - Current',
       items: [
         'Co‑founded the club, devoting into development of the platform responsible for literary submissions and teaching web development skills.',
-        {
-          key: 'Monthly Guided Book Reading',
-          value:
-            'Every month, we host a guided reading of a book of our choice to lower the boundary of literature',
-        },
-        {
-          key: 'Bi‑weekly Web Class',
-          value:
-            'I teach web development skills to those who are interested and have them contribute to our online platform',
-        },
-        {
-          key: 'Book test',
-          value:
-            'I built a simple responsive web app that recommend you books after you answer some questions',
-        },
-        {
-          key: 'Technical Skills',
-          value: 'Web Development, Chinese literature',
-        },
-        { key: 'Soft Skills', value: 'Leadership, Teaching' },
+        // {
+        //   key: 'Monthly Guided Book Reading',
+        //   value:
+        //     'Every month, we host a guided reading of a book of our choice to lower the boundary of literature',
+        // },
+        // {
+        //   key: 'Bi‑weekly Web Class',
+        //   value:
+        //     'I teach web development skills to those who are interested and have them contribute to our online platform',
+        // },
+        // {
+        //   key: 'Book test',
+        //   value:
+        //     'I built a simple responsive web app that recommend you books after you answer some questions',
+        // },
+        // {
+        //   key: 'Technical Skills',
+        //   value: 'Web Development, Chinese literature',
+        // },
+        // { key: 'Soft Skills', value: 'Leadership, Teaching' },
       ],
     },
     {
@@ -67,16 +67,16 @@
           value:
             'I taught newcomers with little to no experience the essential in web development',
         },
-        {
-          key: 'Peer‑led Projects',
-          value:
-            'I initiated some projects to let the members not only learned but be able to demonstrate web development skills',
-        },
-        { key: 'Technical Skills', value: 'Software Development' },
-        {
-          key: 'Soft Skills',
-          value: 'Leadership, Mentorship, Teaching, Communication',
-        },
+        // {
+        //   key: 'Peer‑led Projects',
+        //   value:
+        //     'I initiated some projects to let the members not only learned but be able to demonstrate web development skills',
+        // },
+        // { key: 'Technical Skills', value: 'Software Development' },
+        // {
+        //   key: 'Soft Skills',
+        //   value: 'Leadership, Mentorship, Teaching, Communication',
+        // },
       ],
     },
   ];
