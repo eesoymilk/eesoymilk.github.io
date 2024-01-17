@@ -46,6 +46,7 @@
             <a
               href={project.details.githubUrl}
               class="text-neutral-500 hover:text-neutral-700"
+              target="_blank"
             >
               <Icon
                 icon="mdi:github"
@@ -59,6 +60,7 @@
             <a
               href={project.details.otherUrl}
               class="text-neutral-500 hover:text-neutral-700"
+              target="_blank"
             >
               <Icon
                 icon="mdi:link"

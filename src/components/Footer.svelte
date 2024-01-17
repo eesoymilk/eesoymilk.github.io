@@ -30,7 +30,7 @@
       </p>
       <a
         href={`mailto:${email}`}
-        class="flex gap-2 items-center text-cyan-200 md:text-lg lg:text-xl hover:text-cyan-400 font-display"
+        class="flex gap-2 items-center text-cyan-200 md:text-lg lg:text-xl hover:text-cyan-400 font-display w-fit"
       >
         <Icon icon="mdi:email" class="w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10" />
         {email}
