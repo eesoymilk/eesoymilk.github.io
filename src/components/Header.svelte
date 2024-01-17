@@ -17,9 +17,8 @@
         <span class="text-lg font-medium md:text-xl xl:text-2xl">;</span>
       </div>
       <p class="md:text-lg lg:text-xl">
-        You can also call me <strong class="text-xl md:text-2xl xl:text-3xl"
-          >Wilson</strong
-        >.
+        You can also call me
+        <strong class="text-xl md:text-2xl xl:text-3xl">Wilson</strong>.
       </p>
       <ul class="flex flex-wrap gap-x-2">
         {#each titles as title, idx}
