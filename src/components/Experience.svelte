@@ -28,8 +28,7 @@
     {
       organizationName: 'Liturature and New Media Club',
       location: 'National Tsing Hua University',
-      imageUrl:
-        'https://media.cakeresume.com/image/upload/jojjlj5dmbxoyd8gcxh5.png',
+      imageUrl: 'https://www.nthu.edu.tw//public/images/about10/cis-1-1.jpg',
       title: 'Software Developer / Web Lecturer',
       date: 'Sep 2022 - Current',
       items: [
@@ -59,8 +58,7 @@
     {
       organizationName: 'Colde Garage',
       location: 'National Tsing Hua University',
-      imageUrl:
-        'https://media.cakeresume.com/image/upload/jojjlj5dmbxoyd8gcxh5.png',
+      imageUrl: 'https://www.nthu.edu.tw//public/images/about10/cis-1-1.jpg',
       title: 'Mentor / Lecturer',
       date: 'Sep 2021 - Current',
       items: [
