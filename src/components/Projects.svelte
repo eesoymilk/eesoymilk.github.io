@@ -13,57 +13,62 @@
       title: 'AI‑Powered Workshop Platform',
       brief:
         'Developed an online platform with DALL‑E 3 and ChatGPT, automating tedious tasks in a traditional workshops.',
-      details: {
-        imageUrl: '',
-        githubUrl: 'https://github.com/eesoymilk/future-xplorer',
-      },
+      imageUrl: '',
+      details: [
+        {
+          icon: 'mdi-github',
+          url: 'https://github.com/eesoymilk/future-xplorer',
+        },
+      ],
     },
     {
       title: 'Back‑end Database API for Web3.0 Blockchain',
       brief: 'Build a robust backend database API using Golang.',
-      details: {
-        githubUrl: 'https://github.com/eesoymilk/health-statistic',
-      },
+      details: [
+        {
+          icon: 'mdi-github',
+          url: 'https://github.com/eesoymilk/health-statistic',
+        },
+      ],
     },
     {
       title: 'AI Robot: DeeCye',
       brief: 'A chat robot that can aid the senior citizens.',
-      details: {
-        imageUrl:
-          'https://s.yimg.com/os/creatr-uploaded-images/2023-12/35b1a8c0-9f11-11ee-bdff-ca0f8df0cda1',
-        otherUrl: 'https://ynews.page.link/AhmxF',
-      },
+      imageUrl:
+        'https://s.yimg.com/os/creatr-uploaded-images/2023-12/35b1a8c0-9f11-11ee-bdff-ca0f8df0cda1',
+      details: [{ icon: 'mdi-link', url: 'https://ynews.page.link/AhmxF' }],
     },
     {
       title: 'Discord Soybot',
       brief: 'A Discord bot with various commands I made in my free time.',
-      details: {
-        githubUrl: 'https://github.com/eesoymilk/soybot',
-      },
+      details: [
+        { icon: 'mdi-github', url: 'https://github.com/eesoymilk/soybot' },
+      ],
     },
     {
       title: 'Top‑down Shooter Game',
       brief:
         'This game is a clone of the trending game “Hotline Miami” made with C++ using the Allegro library.',
-      details: {
-        imageUrl: topDownShooter.src,
-        githubUrl: 'https://github.com/eesoymilk/I2P2final',
-      },
+      imageUrl: topDownShooter.src,
+      details: [
+        { icon: 'mdi-github', url: 'https://github.com/eesoymilk/I2P2final' },
+      ],
     },
     {
       title: 'Game of Balance',
       brief:
         'A mimic version of real‑life balance board game using an 8052 microprocessor.',
-      details: {
-        imageUrl: gameOfBalance.src,
-        githubUrl: 'https://github.com/eesoymilk/8051final',
-      },
+      imageUrl: gameOfBalance.src,
+      details: [
+        { icon: 'mdi-github', url: 'https://github.com/eesoymilk/8051final' },
+      ],
     },
     {
       title: 'Flappy Bird in FPGA',
       brief:
         'A Flappy Bird clone made with FPGA using Verilog connecting to a VGA screen and speaker.',
-      details: { imageUrl: flappyBird.src },
+      imageUrl: flappyBird.src,
+      details: [],
     },
   ];
 </script>
