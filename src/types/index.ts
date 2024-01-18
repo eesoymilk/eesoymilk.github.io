@@ -1,10 +1,10 @@
 export interface Project {
   title: string;
   brief: string;
+  imageUrl?: string;
   details: {
-    imageUrl?: string;
-    githubUrl?: string;
-    otherUrl?: string;
-  };
+    icon: string;
+    url: string;
+  }[];
   date?: string;
 }

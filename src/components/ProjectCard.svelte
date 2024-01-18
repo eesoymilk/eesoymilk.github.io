@@ -2,21 +2,16 @@
   import Icon from '@iconify/svelte';
   import type { Project } from '../types';
 
-  const icons = {
-    githubUrl: 'mdi:github',
-    otherUrl: 'mdi:link',
-  };
-
   export let project: Project;
 </script>
 
 <div
-  class="flex overflow-hidden flex-col gap-2 bg-gray-100 rounded-md shadow-lg group drop-shadow-lg"
+  class="flex overflow-hidden flex-col gap-2 bg-gray-100 rounded-md shadow-lg transition-shadow hover:shadow-xl group drop-shadow-lg hover:drop-shadow-xl"
 >
   <div class="w-full aspect-video overflow-clip">
-    {#if project.details.imageUrl}
+    {#if project.imageUrl}
       <img
-        src={project.details.imageUrl}
+        src={project.imageUrl}
         alt={project.title}
         class="object-cover w-full transition-all duration-100 group-hover:scale-125 group-hover:rotate-6"
       />
@@ -32,43 +27,29 @@
     class="flex flex-col flex-1 gap-1 p-2 min-h-0 sm:gap-2 lg:gap-3 basis-auto"
   >
     <h3
-      class="text-base font-semibold md:text-lg lg:text-xl font-display text-balance"
+      class="text-base font-semibold md:text-lg lg:text-xl text-balance font-display"
     >
       {project.title}
     </h3>
     <p class="flex flex-col font-serif text-sm md:text-base lg:text-lg">
       {project.brief}
     </p>
-    {#if project.details.githubUrl || project.details.otherUrl}
+    {#if project.details.length > 0}
       <ul class="flex justify-end mt-auto tems-center">
-        {#if project.details.githubUrl}
+        {#each project.details as detail}
           <li>
             <a
-              href={project.details.githubUrl}
+              href={detail.url}
               class="text-neutral-500 hover:text-neutral-700"
               target="_blank"
             >
               <Icon
-                icon="mdi:github"
+                icon={detail.icon}
                 class="w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10"
               />
             </a>
           </li>
-        {/if}
-        {#if project.details.otherUrl}
-          <li>
-            <a
-              href={project.details.otherUrl}
-              class="text-neutral-500 hover:text-neutral-700"
-              target="_blank"
-            >
-              <Icon
-                icon="mdi:link"
-                class="w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10"
-              />
-            </a>
-          </li>
-        {/if}
+        {/each}
       </ul>
     {/if}
   </div>
