@@ -1,6 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Preferences from '../components/Preferences.svelte';
 import Header from '../components/Header.svelte';
+import About from '../components/About.svelte';
 import Education from '../components/Education.svelte';
 import Research from '../components/Research.svelte';
 import Experience from '../components/Experience.svelte';
@@ -9,8 +11,10 @@ import Footer from '../components/Footer.svelte';
 ---
 
 <Layout title="Soymilk">
+  <!-- <Preferences /> -->
   <Header client:visible />
   <main>
+    <About client:visible />
     <Education client:visible />
     <Research client:visible />
     <Experience client:visible />
