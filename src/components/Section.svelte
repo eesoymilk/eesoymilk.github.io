@@ -1,3 +1,3 @@
-<section class="overflow-visible mx-auto max-w-5xl">
+<section class="mx-auto max-w-5xl overflow-visible">
   <slot />
 </section>
