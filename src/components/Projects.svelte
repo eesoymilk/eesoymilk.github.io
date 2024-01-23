@@ -1,4 +1,5 @@
 <script lang="ts">
+  import Section from './Section.svelte';
   import type { Project } from '../types';
 
   import Title from './Title.svelte';
@@ -73,9 +74,11 @@
   ];
 </script>
 
-<Title>Projects</Title>
-<div class="grid gap-4 p-4 mx-auto max-w-5xl sm:grid-cols-2 lg:grid-cols-3">
-  {#each projects as project}
-    <ProjectCard {project} />
-  {/each}
-</div>
+<Section>
+  <Title>Projects</Title>
+  <div class="grid gap-4 p-4 mx-auto max-w-5xl sm:grid-cols-2 lg:grid-cols-3">
+    {#each projects as project}
+      <ProjectCard {project} />
+    {/each}
+  </div>
+</Section>
