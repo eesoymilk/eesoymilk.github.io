@@ -1,4 +1,5 @@
 <script lang="ts">
+  import Section from './Section.svelte';
   import Title from './Title.svelte';
   import Entry from './Entry.svelte';
   import Divider from './Divider.svelte';
@@ -82,12 +83,14 @@
   ];
 </script>
 
-<Title>Experience</Title>
-<div class="flex flex-col gap-2 p-2 mx-auto max-w-5xl">
-  {#each experiences as experience, idx}
-    <Entry {...experience} />
-    {#if idx !== experiences.length - 1}
-      <Divider />
-    {/if}
-  {/each}
-</div>
+<Section>
+  <Title>Experience</Title>
+  <div class="flex flex-col gap-2 p-2 mx-auto max-w-5xl">
+    {#each experiences as experience, idx}
+      <Entry {...experience} />
+      {#if idx !== experiences.length - 1}
+        <Divider />
+      {/if}
+    {/each}
+  </div>
+</Section>

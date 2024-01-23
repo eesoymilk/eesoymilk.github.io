@@ -1,4 +1,5 @@
 <script lang="ts">
+  import Section from './Section.svelte';
   import Title from './Title.svelte';
 
   const paragraphs = [
@@ -6,7 +7,9 @@
   ];
 </script>
 
-<Title>About Me</Title>
-{#each paragraphs as paragraph}
-  <p class="px-4 mx-auto max-w-5xl font-sans md:text-lg">{paragraph}</p>
-{/each}
+<Section>
+  <Title>About Me</Title>
+  {#each paragraphs as paragraph}
+    <p class="px-4 font-sans md:text-lg">{paragraph}</p>
+  {/each}
+</Section>

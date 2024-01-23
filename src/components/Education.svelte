@@ -1,4 +1,5 @@
 <script lang="ts">
+  import Section from './Section.svelte';
   import Title from './Title.svelte';
   import Entry from './Entry.svelte';
 
@@ -18,9 +19,11 @@
   ];
 </script>
 
-<Title>Education</Title>
-<div class="flex flex-col gap-2 p-2 mx-auto max-w-5xl">
-  {#each educations as education}
-    <Entry {...education} />
-  {/each}
-</div>
+<Section>
+  <Title>Education</Title>
+  <div class="flex flex-col gap-2 p-2">
+    {#each educations as education}
+      <Entry {...education} />
+    {/each}
+  </div>
+</Section>
