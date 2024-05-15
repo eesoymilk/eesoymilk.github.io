@@ -20,11 +20,11 @@
   ];
 </script>
 
-<div class="mt-4 w-full bg-sky-700 text-white">
+<div class="mt-4 w-full bg-sky-700 text-white dark:bg-sky-950">
   <footer class="mx-auto flex max-w-5xl flex-col gap-4 p-4">
     <div class="flex flex-col gap-2">
       <p
-        class="font-serif text-lg font-bold text-cyan-500 md:text-xl lg:text-2xl"
+        class="font-serif text-lg font-bold md:text-xl lg:text-2xl dark:text-cyan-300"
       >
         Say Hello
       </p>

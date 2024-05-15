@@ -6,7 +6,6 @@ interface Props {
 const { title } = Astro.props;
 ---
 
-<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -21,8 +20,6 @@ const { title } = Astro.props;
     <title>{title}</title>
   </head>
   <body>
-    <div class="relative mx-auto overflow-x-hidden bg-sky-100">
-      <slot />
-    </div>
+    <slot />
   </body>
 </html>
