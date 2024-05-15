@@ -2,7 +2,7 @@
   import Icon from '@iconify/svelte';
   import Divider from './Divider.svelte';
 
-  const email = 'qiyoudaoyi@gmail.com';
+  const email = 'ywchang@ucla.edu';
 
   const socials = [
     {
@@ -20,41 +20,41 @@
   ];
 </script>
 
-<div class="mt-4 w-full text-white bg-sky-700">
-  <footer class="flex flex-col gap-4 p-4 mx-auto max-w-5xl">
+<div class="mt-4 w-full bg-sky-700 text-white dark:bg-sky-950">
+  <footer class="mx-auto flex max-w-5xl flex-col gap-4 p-4">
     <div class="flex flex-col gap-2">
       <p
-        class="font-serif text-lg font-bold text-cyan-500 md:text-xl lg:text-2xl"
+        class="font-serif text-lg font-bold md:text-xl lg:text-2xl dark:text-cyan-300"
       >
         Say Hello
       </p>
       <a
         href={`mailto:${email}`}
-        class="flex gap-2 items-center text-cyan-200 md:text-lg lg:text-xl hover:text-cyan-400 font-display w-fit"
+        class="flex w-fit items-center gap-2 font-display text-cyan-200 hover:text-cyan-400 md:text-lg lg:text-xl"
       >
-        <Icon icon="mdi:email" class="w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10" />
+        <Icon icon="mdi:email" class="h-6 w-6 md:h-8 md:w-8 lg:h-10 lg:w-10" />
         {email}
       </a>
     </div>
     <Divider />
-    <div class="flex justify-between items-center font-bold font-display">
-      <span class="text-xs text-cyan-200 md:text-sm lg:text-base text-balance"
+    <div class="font flex items-center justify-between font-display">
+      <span class="text-balance text-xs text-cyan-200 md:text-sm lg:text-base"
         >© Yu-Wei Chang 2024</span
       >
       <ul
-        class="flex justify-center items-center h-full transition-all origin-top-right"
+        class="flex h-full origin-top-right items-center justify-center transition-all"
       >
         {#each socials as social}
-          <li class="flex items-center px-4 h-10">
+          <li class="flex h-10 items-center px-4">
             <a
               href={social.link}
               target="_blank"
               rel="noopener noreferrer"
-              class="flex items-center px-2 h-full text-xl text-cyan-200 transition-colors hover:text-cyan-400"
+              class="flex h-full items-center px-2 text-xl text-cyan-200 transition-colors hover:text-cyan-400"
             >
               <Icon
                 icon={social.icon}
-                class="w-6 h-6 cursor-pointer md:w-8 md:h-8 lg:w-10 lg:h-10"
+                class="h-6 w-6 cursor-pointer md:h-8 md:w-8 lg:h-10 lg:w-10"
               />
             </a>
           </li>

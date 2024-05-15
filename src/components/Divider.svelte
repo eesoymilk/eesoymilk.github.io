@@ -1,3 +1,3 @@
 <div class="flex justify-center">
-  <div class="w-1/2 h-px bg-blue-300"></div>
+  <div class="h-px w-1/2 bg-blue-300"></div>
 </div>

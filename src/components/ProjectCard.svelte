@@ -6,28 +6,28 @@
 </script>
 
 <div
-  class="flex overflow-hidden flex-col gap-2 bg-gray-100 rounded-md shadow-lg transition-shadow hover:shadow-xl group drop-shadow-lg hover:drop-shadow-xl"
+  class="group flex flex-col gap-2 overflow-hidden rounded-md bg-gray-100 shadow-lg drop-shadow-lg transition-shadow hover:shadow-xl hover:drop-shadow-xl dark:bg-gray-500 dark:text-gray-300"
 >
-  <div class="w-full aspect-video overflow-clip">
+  <div class="aspect-video w-full overflow-clip">
     {#if project.imageUrl}
       <img
         src={project.imageUrl}
         alt={project.title}
-        class="object-cover w-full transition-all duration-100 group-hover:scale-125 group-hover:rotate-6"
+        class="w-full object-cover transition-all duration-100 group-hover:rotate-6 group-hover:scale-125"
       />
     {:else}
       <div
-        class="grid place-items-center w-full h-full text-gray-500 bg-gray-200"
+        class="grid h-full w-full place-items-center bg-gray-200 text-gray-500 dark:bg-gray-700"
       >
-        <Icon icon="mdi:image-off-outline" class="m-auto w-16 h-16" />
+        <Icon icon="mdi:image-off-outline" class="m-auto h-16 w-16" />
       </div>
     {/if}
   </div>
   <div
-    class="flex flex-col flex-1 gap-1 p-2 min-h-0 sm:gap-2 lg:gap-3 basis-auto"
+    class="flex min-h-0 flex-1 basis-auto flex-col gap-1 p-2 sm:gap-2 lg:gap-3"
   >
     <h3
-      class="text-base font-semibold md:text-lg lg:text-xl text-balance font-display"
+      class="text-balance font-display text-base font-semibold md:text-lg lg:text-xl"
     >
       {project.title}
     </h3>
@@ -35,7 +35,7 @@
       {project.brief}
     </p>
     {#if project.details.length > 0}
-      <ul class="flex justify-end mt-auto tems-center">
+      <ul class="tems-center mt-auto flex justify-end">
         {#each project.details as detail}
           <li>
             <a
@@ -45,7 +45,7 @@
             >
               <Icon
                 icon={detail.icon}
-                class="w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10"
+                class="h-6 w-6 md:h-8 md:w-8 lg:h-10 lg:w-10"
               />
             </a>
           </li>
