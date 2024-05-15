@@ -3,7 +3,7 @@
   import Title from './Title.svelte';
 
   const paragraphs = [
-    'I am currently a senior student at National Tsing Hua University majoring Eletrical Engineering with a keen interest in the field of machine learning and computer vision. Feel free to contact me for any software development or tutoring opportunities.',
+    'I am currently a master student at UCLA majoring Eletrical Engineering with a keen interest in the field of machine learning and computer vision. Feel free to contact me for any software development or tutoring opportunities.',
   ];
 </script>
 
