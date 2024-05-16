@@ -12,18 +12,6 @@ import Projects from '../components/Projects.svelte';
 import Research from '../components/Research.svelte';
 ---
 
-<script>
-  if (
-    localStorage.theme === 'dark' ||
-    (!('theme' in localStorage) &&
-      window.matchMedia('(prefers-color-scheme: dark)').matches)
-  ) {
-    document.documentElement.classList.add('dark');
-  } else {
-    document.documentElement.classList.remove('dark');
-  }
-</script>
-
 <Layout title="Soymilk">
   <div class="mx-auto overflow-x-hidden bg-sky-100 dark:bg-sky-800">
     <NavBar client:only="svelte" />

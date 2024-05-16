@@ -12,17 +12,27 @@ const themeStore = () => {
     } else {
       document.documentElement.classList.remove('dark');
     }
-    localStorage.setItem('theme', mode);
+    !import.meta.env.SSR && localStorage.setItem('theme', mode);
     return mode;
   };
 
   return {
     subscribe,
     init: () => {
-      const saved = localStorage.getItem('theme');
-      if (saved === 'dark' || saved === 'light') {
-        changeClass(saved);
-        set(saved);
+      try {
+        const saved =
+          localStorage.getItem('theme') ||
+          window.matchMedia('(prefers-color-scheme: dark)').matches
+            ? 'dark'
+            : 'light';
+        if (saved === 'dark' || saved === 'light') {
+          changeClass(saved);
+          set(saved);
+        }
+      } catch (e) {
+        if (e instanceof ReferenceError) {
+          console.error('localStorage is not available in SSR');
+        }
       }
     },
     toggle: () => {
