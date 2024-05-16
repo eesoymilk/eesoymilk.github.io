@@ -2,6 +2,7 @@
   import Section from './Section.svelte';
   import Title from './Title.svelte';
   import Entry from './Entry.svelte';
+  import Divider from './Divider.svelte';
 
   const educations = [
     {
@@ -35,8 +36,11 @@
 <Section>
   <Title>Education</Title>
   <div class="flex flex-col gap-2 p-2">
-    {#each educations as education}
+    {#each educations as education, idx}
       <Entry {...education} />
+      {#if idx !== educations.length - 1}
+        <Divider />
+      {/if}
     {/each}
   </div>
 </Section>

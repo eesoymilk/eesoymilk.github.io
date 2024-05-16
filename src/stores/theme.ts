@@ -12,15 +12,12 @@ const themeStore = () => {
     } else {
       document.documentElement.classList.remove('dark');
     }
+    localStorage.setItem('theme', mode);
     return mode;
   };
 
   return {
     subscribe,
-    set: (mode: LightOrDark) => {
-      localStorage.setItem('theme', mode);
-      set(mode);
-    },
     init: () => {
       const saved = localStorage.getItem('theme');
       if (saved === 'dark' || saved === 'light') {
