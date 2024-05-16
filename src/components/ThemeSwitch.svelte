@@ -8,7 +8,7 @@
 <button
   on:click={theme.toggle}
   type="button"
-  class=" relative block h-8 w-16 rounded-2xl outline outline-1 outline-black transition-colors duration-200 dark:outline-white"
+  class=" relative block h-8 w-16 rounded-2xl outline outline-1 outline-black transition-all duration-200 dark:outline-white"
 >
   <span
     class="absolute text-black transition-all duration-200 dark:text-white {$theme ===

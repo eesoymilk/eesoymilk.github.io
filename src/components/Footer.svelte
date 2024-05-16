@@ -24,13 +24,13 @@
   <footer class="mx-auto flex max-w-5xl flex-col gap-4 p-4">
     <div class="flex flex-col gap-2">
       <p
-        class="font-serif text-lg font-bold md:text-xl lg:text-2xl dark:text-cyan-300"
+        class="font-serif text-lg font-bold md:text-xl lg:text-2xl dark:text-cyan-600"
       >
         Say Hello
       </p>
       <a
         href={`mailto:${email}`}
-        class="flex w-fit items-center gap-2 font-display text-cyan-200 hover:text-cyan-400 md:text-lg lg:text-xl"
+        class="flex w-fit items-center gap-2 font-display text-cyan-200 hover:text-cyan-500 md:text-lg lg:text-xl"
       >
         <Icon icon="mdi:email" class="h-6 w-6 md:h-8 md:w-8 lg:h-10 lg:w-10" />
         {email}
@@ -38,7 +38,8 @@
     </div>
     <Divider />
     <div class="font flex items-center justify-between font-display">
-      <span class="text-balance text-xs text-cyan-200 md:text-sm lg:text-base"
+      <span
+        class="text-balance text-xs text-cyan-200 md:text-sm lg:text-base dark:text-cyan-500"
         >© Yu-Wei Chang 2024</span
       >
       <ul
@@ -50,7 +51,7 @@
               href={social.link}
               target="_blank"
               rel="noopener noreferrer"
-              class="flex h-full items-center px-2 text-xl text-cyan-200 transition-colors hover:text-cyan-400"
+              class="flex h-full items-center px-2 text-xl text-cyan-200 transition-colors hover:text-cyan-400 dark:text-cyan-400 dark:hover:text-cyan-600"
             >
               <Icon
                 icon={social.icon}

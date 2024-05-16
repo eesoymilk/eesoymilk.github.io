@@ -1,14 +1,15 @@
 <script lang="ts">
+  import { t } from '../stores/locale';
   import Section from './Section.svelte';
   import Title from './Title.svelte';
 
-  const paragraphs = [
-    'I am currently a master student at UCLA majoring Eletrical Engineering with a keen interest in the field of machine learning and computer vision. Feel free to contact me for any software development or tutoring opportunities.',
-  ];
+  $: paragraphs = Array.from({ length: 1 }, (_, idx) =>
+    $t(`about.paragraph${idx + 1}`)
+  );
 </script>
 
 <Section>
-  <Title>About Me</Title>
+  <Title>{$t('about.title')}</Title>
   {#each paragraphs as paragraph}
     <p class="px-4 font-sans md:text-lg">{paragraph}</p>
   {/each}

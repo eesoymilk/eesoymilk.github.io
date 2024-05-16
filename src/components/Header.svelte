@@ -2,8 +2,12 @@
   import avatarDark from '../assets/avatar-dark.png';
   import avatarLight from '../assets/avatar-light.png';
   import { theme } from '../stores/theme';
+  import { t } from '../stores/locale';
 
-  const titles = ['engineer', 'tutor', 'freelancer', 'developer', 'researcher'];
+  // const titles = ['engineer', 'tutor', 'freelancer', 'developer', 'researcher'];
+  $: titles = Array.from({ length: 5 }, (_, idx) =>
+    $t(`header.title${idx + 1}`)
+  );
 </script>
 
 <header
@@ -15,20 +19,23 @@
   >
     <div class="flex flex-col flex-wrap gap-1">
       <div class="flex items-end gap-x-1">
-        <span class="text-lg font-medium md:text-xl xl:text-2xl">Hi, I am</span>
-        <h1 class="text-2xl font-extrabold md:text-3xl xl:text-4xl">
-          Yu-Wei Chang
-        </h1>
-        <span class="text-lg font-medium md:text-xl xl:text-2xl">;</span>
+        {$t('header.line1')}
+        <span class="text-2xl font-extrabold md:text-3xl xl:text-4xl">
+          {$t('common.fullname')}
+        </span>
+        ;
       </div>
       <p class="md:text-lg lg:text-xl">
-        You can also call me
-        <strong class="text-xl md:text-2xl xl:text-3xl">Wilson</strong>.
+        {$t('header.line2')}
+        <strong class="text-xl md:text-2xl xl:text-3xl">Wilson</strong>
+        {$t('common.period')}
       </p>
       <ul class="flex flex-wrap gap-x-2">
         {#each titles as title, idx}
           <li class="text-base font-medium capitalize md:text-lg lg:text-xl">
-            {title}{idx === titles.length - 1 ? '.' : ','}
+            {title}{idx === titles.length - 1
+              ? $t('common.period')
+              : $t('common.separatingComma')}
           </li>
         {/each}
       </ul>
