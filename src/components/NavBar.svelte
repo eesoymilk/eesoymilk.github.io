@@ -5,7 +5,9 @@
 
   let showSettings = false;
 
-  const toggleSettings = () => (showSettings = !showSettings);
+  const toggleSettings = () => {
+    showSettings = !showSettings;
+  };
 </script>
 
 <nav

@@ -1,7 +1,10 @@
 <script lang="ts">
   import { locale } from '@/stores/locale';
+  import { onMount } from 'svelte';
 
-  locale.init();
+  onMount(() => {
+    locale.init();
+  });
 
   const toggleLocale = () =>
     locale.changeLocale($locale === 'en' ? 'zh_tw' : 'en');
