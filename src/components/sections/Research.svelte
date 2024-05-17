@@ -22,8 +22,6 @@
 <Section>
   <Title>{$t('research.title')}</Title>
   <div class="mx-auto flex max-w-5xl flex-col gap-2 p-2">
-    {#each researches as research}
-      <Entry {...research} />
-    {/each}
+    {#each researches as research}<Entry {...research} />{/each}
   </div>
 </Section>

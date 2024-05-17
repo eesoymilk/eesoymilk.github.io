@@ -74,8 +74,6 @@
 <Section>
   <Title>{$t('project.title')}</Title>
   <div class="mx-auto grid max-w-5xl gap-4 p-4 sm:grid-cols-2 lg:grid-cols-3">
-    {#each projects as project}
-      <ProjectCard {project} />
-    {/each}
+    {#each projects as project}<ProjectCard {project} />{/each}
   </div>
 </Section>

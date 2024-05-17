@@ -83,9 +83,7 @@
   <div class="mx-auto flex max-w-5xl flex-col gap-2 p-2">
     {#each experiences as experience, idx}
       <Entry {...experience} />
-      {#if idx !== experiences.length - 1}
-        <Divider />
-      {/if}
+      {#if idx !== experiences.length - 1}<Divider />{/if}
     {/each}
   </div>
 </Section>

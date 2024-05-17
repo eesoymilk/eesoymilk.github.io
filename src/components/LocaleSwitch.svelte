@@ -21,10 +21,6 @@
       ? 'translate-x-[100%]'
       : 'translate-x-2'} top-0 flex h-full items-center"
   >
-    {#if $locale === 'en'}
-      EN
-    {:else}
-      繁中
-    {/if}
+    {$locale === 'en' ? 'EN' : '繁中'}
   </span>
 </button>

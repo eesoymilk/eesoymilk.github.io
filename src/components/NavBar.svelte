@@ -5,9 +5,7 @@
 
   let showSettings = false;
 
-  const toggleSettings = () => {
-    showSettings = !showSettings;
-  };
+  const toggleSettings = () => (showSettings = !showSettings);
 </script>
 
 <nav
@@ -27,11 +25,7 @@
       ? 'scale-100'
       : 'scale-0'}"
   >
-    <li>
-      <ThemeSwitch />
-    </li>
-    <li>
-      <LocaleSwitch />
-    </li>
+    <li><ThemeSwitch /></li>
+    <li><LocaleSwitch /></li>
   </ul>
 </nav>

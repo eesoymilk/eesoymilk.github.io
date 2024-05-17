@@ -3,7 +3,7 @@ import { derived, writable } from 'svelte/store';
 type LightOrDark = 'light' | 'dark';
 
 const themeStore = () => {
-  const store = writable<LightOrDark>('light');
+  const store = writable<LightOrDark>(defaultTheme);
   const { subscribe, set, update } = store;
 
   const changeClass = (mode: LightOrDark) => {
@@ -42,6 +42,8 @@ const themeStore = () => {
     },
   };
 };
+
+export const defaultTheme = 'dark' as const;
 
 export const theme = themeStore();
 
