@@ -3,11 +3,12 @@
   import avatarLight from '../assets/avatar-light.png';
   import { theme } from '../stores/theme';
   import { t } from '../stores/locale';
+  import { translationKeys } from '../utils/i18n';
 
-  // const titles = ['engineer', 'tutor', 'freelancer', 'developer', 'researcher'];
-  $: titles = Array.from({ length: 5 }, (_, idx) =>
-    $t(`header.title${idx + 1}`)
-  );
+  $: titles = translationKeys
+    .filter((key) => key.startsWith('header.title'))
+    .sort()
+    .map((key) => $t(key));
 </script>
 
 <header
