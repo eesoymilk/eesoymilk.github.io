@@ -1,6 +1,7 @@
 <script lang="ts">
   import Icon from '@iconify/svelte';
   import Divider from './Divider.svelte';
+  import { t } from '../stores/locale';
 
   const email = 'ywchang@ucla.edu';
 
@@ -26,7 +27,7 @@
       <p
         class="font-serif text-lg font-bold md:text-xl lg:text-2xl dark:text-cyan-600"
       >
-        Say Hello
+        {$t('footer.sayHello')}
       </p>
       <a
         href={`mailto:${email}`}

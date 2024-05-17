@@ -40,7 +40,7 @@
           <li>
             <a
               href={detail.url}
-              class="text-neutral-500 hover:text-neutral-700"
+              class="text-neutral-500 hover:text-neutral-700 dark:text-neutral-200 dark:hover:text-neutral-400"
               target="_blank"
             >
               <Icon
