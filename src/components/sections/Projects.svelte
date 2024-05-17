@@ -1,14 +1,14 @@
 <script lang="ts">
-  import Section from './Section.svelte';
-  import type { Project } from '../types';
+  import type { Project } from '../../types';
+  import { t } from '../../stores/locale';
 
-  import Title from './Title.svelte';
-  import ProjectCard from './ProjectCard.svelte';
+  import Section from '../Section.svelte';
+  import Title from '../Title.svelte';
+  import ProjectCard from '../ProjectCard.svelte';
 
-  import flappyBird from '../assets/images/projects/flappy-bird.png';
-  import gameOfBalance from '../assets/images/projects/game-of-balance.png';
-  import topDownShooter from '../assets/images/projects/cyber-punk-2069.jpg';
-  import { t } from '../stores/locale';
+  import flappyBird from '../../assets/images/projects/flappy-bird.png';
+  import gameOfBalance from '../../assets/images/projects/game-of-balance.png';
+  import topDownShooter from '../../assets/images/projects/cyber-punk-2069.jpg';
 
   $: projects = [
     {
