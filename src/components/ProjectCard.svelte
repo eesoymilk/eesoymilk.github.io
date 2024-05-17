@@ -1,6 +1,6 @@
 <script lang="ts">
   import Icon from '@iconify/svelte';
-  import type { Project } from '../types';
+  import type { Project } from '@/types/project';
 
   export let project: Project;
 </script>

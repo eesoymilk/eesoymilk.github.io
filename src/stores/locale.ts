@@ -1,6 +1,6 @@
 import { derived, writable } from 'svelte/store';
-import type { Locale } from '../types/locale';
-import { translate } from '../utils/i18n';
+import type { Locale } from '@/types/locale';
+import { translate } from '@/utils/i18n';
 
 const localeStore = () => {
   const store = writable<Locale>('zh_tw');

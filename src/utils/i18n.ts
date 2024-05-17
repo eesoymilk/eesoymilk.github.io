@@ -1,4 +1,4 @@
-import type { Translations, Locale } from '../types/locale';
+import type { Translations, Locale } from '@/types/locale';
 
 export const translations: Translations = {
   en: {

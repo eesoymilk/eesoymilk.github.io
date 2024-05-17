@@ -1,9 +1,10 @@
 <script lang="ts">
-  import avatarDark from '../assets/avatar-dark.png';
-  import avatarLight from '../assets/avatar-light.png';
-  import { theme } from '../stores/theme';
-  import { t } from '../stores/locale';
-  import { translationKeys } from '../utils/i18n';
+  import { theme } from '@/stores/theme';
+  import { t } from '@/stores/locale';
+  import { translationKeys } from '@/utils/i18n';
+
+  import avatarDark from '@/assets/avatar-dark.png';
+  import avatarLight from '@/assets/avatar-light.png';
 
   $: titles = translationKeys
     .filter((key) => key.startsWith('header.title'))
