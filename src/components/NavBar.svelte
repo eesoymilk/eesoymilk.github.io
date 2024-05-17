@@ -1,7 +1,7 @@
 <script lang="ts">
   import Icon from '@iconify/svelte';
-  import ThemeSwitch from './ThemeSwitch.svelte';
-  import LocaleSwitch from './LocaleSwitch.svelte';
+  import ThemeSwitch from '@/components/ThemeSwitch.svelte';
+  import LocaleSwitch from '@/components/LocaleSwitch.svelte';
 
   let showSettings = false;
 

@@ -1,7 +1,7 @@
 <script lang="ts">
   import Icon from '@iconify/svelte';
-  import Divider from './Divider.svelte';
-  import { t } from '../stores/locale';
+  import Divider from '@/components/Divider.svelte';
+  import { t } from '@/stores/locale';
 
   const email = 'ywchang@ucla.edu';
 

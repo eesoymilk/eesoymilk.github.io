@@ -1,7 +1,7 @@
 <script lang="ts">
-  import { t } from '../../stores/locale';
-  import Section from '../Section.svelte';
-  import Title from '../Title.svelte';
+  import { t } from '@/stores/locale';
+  import Section from '@/components/Section.svelte';
+  import Title from '@/components/Title.svelte';
 
   $: paragraphs = Array.from({ length: 1 }, (_, idx) =>
     $t(`about.paragraph${idx + 1}`)

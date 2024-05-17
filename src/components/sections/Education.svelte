@@ -1,9 +1,9 @@
 <script lang="ts">
-  import Section from '../Section.svelte';
-  import Title from '../Title.svelte';
-  import Entry from '../Entry.svelte';
-  import Divider from '../Divider.svelte';
-  import { t } from '../../stores/locale';
+  import Section from '@/components/Section.svelte';
+  import Title from '@/components/Title.svelte';
+  import Entry from '@/components/Entry.svelte';
+  import Divider from '@/components/Divider.svelte';
+  import { t } from '@/stores/locale';
 
   // const educations = [
   //   {

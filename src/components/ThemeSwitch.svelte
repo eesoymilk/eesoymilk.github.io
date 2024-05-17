@@ -1,6 +1,6 @@
 <script lang="ts">
   import Icon from '@iconify/svelte';
-  import { theme, themeIcon } from '../stores/theme';
+  import { theme, themeIcon } from '@/stores/theme';
 
   theme.init();
 </script>

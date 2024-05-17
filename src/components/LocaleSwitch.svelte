@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { locale } from '../stores/locale';
+  import { locale } from '@/stores/locale';
 
   locale.init();
 
