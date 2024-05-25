@@ -6,9 +6,9 @@
   import Title from '@/components/Title.svelte';
   import ProjectCard from '@/components/ProjectCard.svelte';
 
-  import flappyBird from '@/assets/images/projects/flappy-bird.png';
-  import gameOfBalance from '@/assets/images/projects/game-of-balance.png';
-  import topDownShooter from '@/assets/images/projects/cyber-punk-2069.jpg';
+  import flappyBird from '@/assets/images/projects/flappy-bird.webp';
+  import gameOfBalance from '@/assets/images/projects/game-of-balance.webp';
+  import topDownShooter from '@/assets/images/projects/cyber-punk-2069.webp';
 
   $: projects = [
     {
