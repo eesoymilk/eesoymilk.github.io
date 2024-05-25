@@ -139,6 +139,6 @@ export const translate = (
     return text;
   } catch (e) {
     console.error(e);
-    throw e;
+    return key;
   }
 };

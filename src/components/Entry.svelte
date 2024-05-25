@@ -32,7 +32,7 @@
         </div>
       </div>
     </div>
-    <div class="">
+    <div>
       <img
         class="aspect-square max-h-[48px] max-w-[48px] rounded-full sm:max-h-[60px] sm:max-w-[60px] md:max-h-[64px] md:max-w-[64px]"
         src={imageUrl}

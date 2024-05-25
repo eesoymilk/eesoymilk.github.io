@@ -1,11 +1,12 @@
 <script lang="ts">
-  import { t } from '@/stores/locale';
   import Section from '@/components/Section.svelte';
   import Title from '@/components/Title.svelte';
+  import { translationKeys } from '@/utils/i18n';
+  import { t } from '@/stores/locale';
 
-  $: paragraphs = Array.from({ length: 1 }, (_, idx) =>
-    $t(`about.paragraph${idx + 1}`)
-  );
+  $: paragraphs = translationKeys
+    .filter((key) => key.startsWith('about.paragraph'))
+    .map((key) => $t(key));
 </script>
 
 <Section>
