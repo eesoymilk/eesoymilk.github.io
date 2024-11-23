@@ -1,11 +1,13 @@
 <script lang="ts">
-  import Icon from '@iconify/svelte';
-  import ThemeSwitch from '@/components/ThemeSwitch.svelte';
   import LocaleSwitch from '@/components/LocaleSwitch.svelte';
+  import ThemeSwitch from '@/components/ThemeSwitch.svelte';
+  import Icon from '@iconify/svelte';
 
   let showSettings = false;
 
-  const toggleSettings = () => (showSettings = !showSettings);
+  const toggleSettings = () => {
+    showSettings = !showSettings;
+  };
 </script>
 
 <nav

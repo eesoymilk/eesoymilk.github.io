@@ -1,33 +1,10 @@
 <script lang="ts">
+  import Divider from '@/components/Divider.svelte';
+  import Entry from '@/components/Entry.svelte';
   import Section from '@/components/Section.svelte';
   import Title from '@/components/Title.svelte';
-  import Entry from '@/components/Entry.svelte';
-  import Divider from '@/components/Divider.svelte';
   import { t } from '@/stores/locale';
 
-  // const educations = [
-  //   {
-  //     organizationName: 'University of California, Los Angeles',
-  //     location: 'California, USA',
-  //     imageUrl:
-  //       'https://upload.wikimedia.org/wikipedia/commons/0/0d/The_University_of_California_UCLA.svg',
-  //     title: 'Electrical and Computer Engineering, M.S.',
-  //     date: 'Sep 2024 - Current',
-  //     // items: [],
-  //   },
-  //   {
-  //     organizationName: 'National Tsing Hua University',
-  //     location: 'Hsinchu, Taiwan',
-  //     imageUrl: 'https://www.nthu.edu.tw//public/images/about10/cis-1-1.jpg',
-  //     title: 'Electrical and Engineering, B.S.',
-  //     date: 'Sep 2020 - Jun 2024',
-  //     // items: [
-  //     //   { key: 'GPA', value: '4.04 / 4.3' },
-  //     //   { key: 'Class Rank', value: '18 / 71' },
-  //     //   { key: 'Department Rank', value: '24 / 115' },
-  //     // ],
-  //   },
-  // ];
   $: educations = [
     {
       organizationName: $t('education.ucla'),
@@ -36,7 +13,6 @@
         'https://upload.wikimedia.org/wikipedia/commons/0/0d/The_University_of_California_UCLA.svg',
       title: $t('education.ucla.degree'),
       date: 'Sep 2024 - Current',
-      // items: [],
     },
     {
       organizationName: $t('education.nthu'),
