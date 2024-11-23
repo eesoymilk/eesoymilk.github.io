@@ -1,8 +1,11 @@
 <script lang="ts">
   import Icon from '@iconify/svelte';
   import { theme, themeIcon } from '@/stores/theme';
+  import { onMount } from 'svelte';
 
-  theme.init();
+  onMount(() => {
+    theme.init();
+  });
 </script>
 
 <button

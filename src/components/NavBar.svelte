@@ -27,11 +27,7 @@
       ? 'scale-100'
       : 'scale-0'}"
   >
-    <li>
-      <ThemeSwitch />
-    </li>
-    <li>
-      <LocaleSwitch />
-    </li>
+    <li><ThemeSwitch /></li>
+    <li><LocaleSwitch /></li>
   </ul>
 </nav>

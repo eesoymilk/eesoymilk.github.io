@@ -3,8 +3,8 @@
   import { t } from '@/stores/locale';
   import { translationKeys } from '@/utils/i18n';
 
-  import avatarDark from '@/assets/avatar-dark.png';
-  import avatarLight from '@/assets/avatar-light.png';
+  import avatarDark from '@/assets/avatar-dark.webp';
+  import avatarLight from '@/assets/avatar-light.webp';
 
   $: titles = translationKeys
     .filter((key) => key.startsWith('header.title'))

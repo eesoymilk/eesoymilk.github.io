@@ -15,13 +15,19 @@ const localeStore = () => {
     init: () => {
       try {
         const saved =
-          localStorage.getItem('locale') || navigator.language.includes('zh')
-            ? 'zh_tw'
-            : 'en';
-        set(saved);
+          localStorage.getItem('locale') ||
+          (navigator.language.includes('zh') ? 'zh_tw' : 'en');
+
+        if (saved === 'zh_tw' || saved === 'en') {
+          set(saved);
+        } else {
+          throw new Error(`Unknown locale: ${saved}`);
+        }
       } catch (e) {
         if (e instanceof ReferenceError) {
           console.error(`localStorage is not available in SSR: ${e}`);
+        } else {
+          console.error(e);
         }
       }
     },

@@ -119,7 +119,7 @@ export const translations: Translations = {
 
 export const translationKeys = Object.keys(translations.en);
 
-export const defaultLocale: Locale = "en";
+export const defaultLocale: Locale = "en" as const;
 
 export const locales = Object.keys(translations) as Locale[];
 
@@ -139,6 +139,6 @@ export const translate = (
 		return text;
 	} catch (e) {
 		console.error(e);
-		throw e;
+		return key;
 	}
 };

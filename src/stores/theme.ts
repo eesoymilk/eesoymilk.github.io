@@ -3,7 +3,7 @@ import { derived, writable } from "svelte/store";
 type LightOrDark = "light" | "dark";
 
 const themeStore = () => {
-	const store = writable<LightOrDark>("dark");
+	const store = writable<LightOrDark>(defaultTheme);
 	const { subscribe, set, update } = store;
 
 	const changeClass = (mode: LightOrDark) => {
@@ -22,12 +22,14 @@ const themeStore = () => {
 			try {
 				const saved =
 					localStorage.getItem("theme") ||
-					window.matchMedia("(prefers-color-scheme: dark)").matches
+					(window.matchMedia("(prefers-color-scheme: dark)").matches
 						? "dark"
-						: "light";
+						: "light");
 				if (saved === "dark" || saved === "light") {
 					changeClass(saved);
 					set(saved);
+				} else {
+					throw new Error(`Unknown theme: ${saved}`);
 				}
 			} catch (e) {
 				if (e instanceof ReferenceError) {
@@ -41,7 +43,10 @@ const themeStore = () => {
 	};
 };
 
+export const defaultTheme = "dark" as const;
+
 export const theme = themeStore();
+
 export const themeIcon = derived(theme, ($theme) =>
 	$theme === "light"
 		? "material-symbols:light-mode-outline"
