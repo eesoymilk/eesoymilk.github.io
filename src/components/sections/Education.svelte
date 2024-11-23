@@ -1,8 +1,8 @@
 <script lang="ts">
+  import Divider from '@/components/Divider.svelte';
+  import Entry from '@/components/Entry.svelte';
   import Section from '@/components/Section.svelte';
   import Title from '@/components/Title.svelte';
-  import Entry from '@/components/Entry.svelte';
-  import Divider from '@/components/Divider.svelte';
   import { t } from '@/stores/locale';
 
   $: educations = [

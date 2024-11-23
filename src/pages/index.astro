@@ -1,10 +1,10 @@
 ---
 import Layout from '@/layouts/Layout.astro';
 
+import Footer from '@/components/Footer.svelte';
 import About from '@/components/sections/About.svelte';
 import Education from '@/components/sections/Education.svelte';
 import Experience from '@/components/sections/Experience.svelte';
-import Footer from '@/components/Footer.svelte';
 
 import Header from '@/components/Header.svelte';
 import NavBar from '@/components/NavBar.svelte';
@@ -21,7 +21,7 @@ import Research from '@/components/sections/Research.svelte';
       <Education client:visible />
       <Research client:visible />
       <Experience client:visible />
-      <Projects client:visible />
+      <!-- <Projects client:visible /> -->
     </main>
     <Footer client:visible />
   </div>
