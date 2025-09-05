@@ -1,13 +1,10 @@
 "use client";
 
 import { FadeIn } from "@/components/animations/FadeIn";
-import { Stagger } from "@/components/animations/Stagger";
 import { personalInfo } from "@/lib/data/personal";
-import { education } from "@/lib/data/education";
 import { stats } from "@/lib/data/stats";
 import { Philosophy } from "./Philosophy";
 import { StatsCards } from "./StatsCards";
-import { Timeline } from "./Timeline";
 
 export function About() {
   return (
@@ -97,24 +94,6 @@ export function About() {
         <FadeIn delay={0.6}>
           <StatsCards />
         </FadeIn>
-
-        {/* Education Timeline */}
-        <div className="mt-24">
-          <FadeIn delay={0.8}>
-            <div className="text-center mb-16">
-              <h3 className="text-3xl font-bold mb-4">
-                Education <span className="text-gradient-secondary">Journey</span>
-              </h3>
-              <p className="text-lg text-muted-foreground">
-                My academic background and learning path
-              </p>
-            </div>
-          </FadeIn>
-
-          <Stagger staggerDelay={0.2}>
-            <Timeline items={education} />
-          </Stagger>
-        </div>
 
         {/* Philosophy */}
         <div className="mt-24">

@@ -1,6 +1,9 @@
 import { Navigation } from "@/components/layout/Navigation";
 import { Hero } from "@/components/sections/Hero";
 import { About } from "@/components/sections/About";
+import { Education } from "@/components/sections/Education";
+import { Research } from "@/components/sections/Research";
+import { Experience } from "@/components/sections/Experience";
 
 export default function Home() {
   return (
@@ -20,20 +23,19 @@ export default function Home() {
           <About />
         </section>
 
-        {/* Research section placeholder */}
-        <section id="research" className="py-24">
-          <div className="container mx-auto px-6 text-center">
-            <h2 className="text-4xl font-bold mb-8">Research & Projects</h2>
-            <p className="text-muted-foreground">Coming soon...</p>
-          </div>
+        {/* Education section */}
+        <section id="education">
+          <Education />
         </section>
 
-        {/* Experience section placeholder */}
-        <section id="experience" className="py-24">
-          <div className="container mx-auto px-6 text-center">
-            <h2 className="text-4xl font-bold mb-8">Experience</h2>
-            <p className="text-muted-foreground">Coming soon...</p>
-          </div>
+        {/* Research section */}
+        <section id="research">
+          <Research />
+        </section>
+
+        {/* Experience section */}
+        <section id="experience">
+          <Experience />
         </section>
 
         {/* Skills section placeholder */}

@@ -10,6 +10,7 @@ import { ThemeToggle } from "../ThemeToggle";
 
 const navigationItems = [
   { href: "#about", label: "About" },
+  { href: "#education", label: "Education" },
   { href: "#research", label: "Research" },
   { href: "#experience", label: "Experience" },
   { href: "#skills", label: "Skills" },
