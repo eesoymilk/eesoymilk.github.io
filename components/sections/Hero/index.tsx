@@ -10,27 +10,32 @@ import { ScrollIndicator } from "./ScrollIndicator";
 import { TypewriterText } from "./TypewriterText";
 
 const roles = [
-  "Researcher & Developer",
+  "Graduate Student at UCLA",
   "Software Engineer",
-  "Innovation Enthusiast",
-  "Tech Explorer",
-  "Problem Solver",
+  "AI/ML Researcher", 
+  "Full-Stack Developer",
+  "Human-Centered AI Engineer",
 ];
 
 const techStack = [
   "React",
-  "Next.js",
-  "TypeScript",
+  "Nuxt.js",
+  "TypeScript", 
   "Python",
+  "Go",
+  "Unity",
+  "C/C++",
+  "PostgreSQL",
   "Node.js",
   "TailwindCSS",
-  "Framer Motion",
-  "PostgreSQL",
-  "Docker",
-  "AWS",
-  "GraphQL",
+  "ChatGPT API",
+  "DALL-E 3",
   "Machine Learning",
   "Computer Vision",
+  "VR Development",
+  "Motion Tracking",
+  "Vector Databases",
+  "Blockchain Analytics",
 ];
 
 const socialLinks = [
@@ -46,22 +51,12 @@ const socialLinks = [
 export function Hero() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Animated background gradient */}
-      <motion.div
-        className="absolute inset-0 opacity-50"
-        animate={{
-          background: [
-            "radial-gradient(circle at 20% 50%, oklch(0.647 0.151 162.5 / 0.1) 0%, transparent 50%)",
-            "radial-gradient(circle at 80% 50%, oklch(0.611 0.174 248.3 / 0.1) 0%, transparent 50%)",
-            "radial-gradient(circle at 40% 50%, oklch(0.672 0.232 293.2 / 0.1) 0%, transparent 50%)",
-          ],
-        }}
-        transition={{
-          duration: 8,
-          repeat: Infinity,
-          repeatType: "reverse",
-        }}
-      />
+      {/* Subtle background gradient */}
+      <div className="absolute inset-0 opacity-20">
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-secondary/5 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/2 right-1/3 w-64 h-64 bg-accent/5 rounded-full blur-3xl"></div>
+      </div>
 
       {/* Floating tech stack bubbles */}
       <FloatingBubbles skills={techStack} />
@@ -105,13 +100,19 @@ export function Hero() {
           {/* Description */}
           <FadeIn delay={1.0}>
             <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-              Passionate about creating innovative solutions through{" "}
+              Designing{" "}
               <span className="text-primary font-medium">
-                cutting-edge technology
+                human-centered AI systems
               </span>{" "}
-              and <span className="text-secondary font-medium">research</span>.
-              I transform ideas into reality with clean code and thoughtful
-              design.
+              at UCLA while building{" "}
+              <span className="text-secondary font-medium">
+                full-stack applications
+              </span>{" "}
+              that solve real-world problems. From{" "}
+              <span className="text-accent font-medium">
+                robotic assistance for wheelchair users
+              </span>{" "}
+              to business process optimization.
             </p>
           </FadeIn>
 

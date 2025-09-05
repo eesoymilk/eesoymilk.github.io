@@ -1,10 +1,10 @@
 import type { Stats } from "@/types";
 
 export const stats: Stats = {
-  projectsCompleted: 25,
-  yearsOfExperience: 5,
-  technologiesUsed: 20,
-  publicationsCount: 3,
-  githubStars: 156,
-  githubContributions: 1200,
+  projectsCompleted: 8,
+  yearsOfExperience: 3,
+  technologiesUsed: 18,
+  publicationsCount: 2,
+  githubStars: 45,
+  githubContributions: 420,
 };

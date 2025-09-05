@@ -11,7 +11,7 @@ export const experiences: Experience[] = [
     description:
       "Built client-facing portal for company registration and business modifications using modern web frameworks, and developed internal audit tools for CPA staff.",
     achievements: [
-      "Built a client‑facing portal for company registration and business modifications using modern web frameworks (Nuxt.js)",
+      "Built a client-facing portal for company registration and business modifications using Nuxt.js",
       "Developed internal audit tools for CPA staff to review financial documents and log findings",
       "Improved client service efficiency through automated business process workflows",
       "Enhanced audit workflow with digital document management system",

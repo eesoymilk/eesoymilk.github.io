@@ -173,7 +173,7 @@
   /* Portfolio Brand Gradients */
   .gradient-primary {
     background: linear-gradient(
-      135deg,
+      180deg,
       oklch(0.647 0.151 162.5),
       oklch(0.611 0.174 248.3)
     );
@@ -181,7 +181,7 @@
 
   .gradient-secondary {
     background: linear-gradient(
-      135deg,
+      180deg,
       oklch(0.611 0.174 248.3),
       oklch(0.672 0.232 293.2)
     );
@@ -189,7 +189,7 @@
 
   .gradient-accent {
     background: linear-gradient(
-      135deg,
+      180deg,
       oklch(0.672 0.232 293.2),
       oklch(0.647 0.151 162.5)
     );
@@ -197,7 +197,7 @@
 
   .gradient-milk {
     background: linear-gradient(
-      135deg,
+      180deg,
       oklch(0.965 0.008 86.7),
       oklch(0.824 0.032 86.7),
       oklch(0.566 0.078 62.4)
@@ -207,7 +207,7 @@
   /* Text gradients */
   .text-gradient-primary {
     background: linear-gradient(
-      135deg,
+      90deg,
       oklch(0.647 0.151 162.5),
       oklch(0.611 0.174 248.3)
     );
@@ -218,7 +218,7 @@
 
   .text-gradient-accent {
     background: linear-gradient(
-      135deg,
+      90deg,
       oklch(0.672 0.232 293.2),
       oklch(0.647 0.151 162.5)
     );
@@ -229,7 +229,7 @@
 
   .text-gradient-milk {
     background: linear-gradient(
-      135deg,
+      90deg,
       oklch(0.824 0.032 86.7),
       oklch(0.566 0.078 62.4)
     );
