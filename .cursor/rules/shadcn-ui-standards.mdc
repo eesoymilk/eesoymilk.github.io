@@ -1,0 +1,105 @@
+---
+globs: *.tsx,*.ts
+description: Shadcn/ui component usage and customization standards
+---
+
+# Shadcn/ui Component Standards
+
+This project uses [shadcn/ui](https://ui.shadcn.com) with the "new-york" style as configured in [components.json](mdc:components.json). Follow these standards for consistent UI development:
+
+## Component Usage Rules
+
+- **ALWAYS use shadcn/ui components** from `@/components/ui` instead of creating custom alternatives
+- **Extend shadcn components** rather than modifying them directly
+- **Use the `cn()` utility** from [utils.ts](mdc:lib/utils.ts) for className merging
+- **Follow the established variant patterns** using `class-variance-authority`
+
+## Styling Guidelines
+
+- **Use Tailwind CSS classes** exclusively - no custom CSS files except for complex animations
+- **Leverage CSS variables** defined in [globals.css](mdc:app/globals.css) for theming
+- **Apply responsive design** using Tailwind's responsive prefixes (sm:, md:, lg:, xl:, 2xl:)
+- **Use semantic color names** from the design system (primary, secondary, accent)
+
+## Component Customization Pattern
+
+When extending shadcn components, follow this pattern:
+
+```typescript
+import { type VariantProps, cva } from "class-variance-authority";
+import { forwardRef } from "react";
+
+import { Button, type ButtonProps } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
+
+const magneticButtonVariants = cva(
+  "transition-transform duration-200 ease-out hover:scale-105",
+  {
+    variants: {
+      magnetism: {
+        none: "",
+        subtle: "hover:translate-y-[-2px]",
+        strong: "hover:translate-y-[-4px] hover:shadow-lg",
+      },
+    },
+    defaultVariants: {
+      magnetism: "subtle",
+    },
+  }
+);
+
+interface MagneticButtonProps
+  extends ButtonProps,
+    VariantProps<typeof magneticButtonVariants> {}
+
+const MagneticButton = forwardRef<HTMLButtonElement, MagneticButtonProps>(
+  ({ className, magnetism, ...props }, ref) => {
+    return (
+      <Button
+        ref={ref}
+        className={cn(magneticButtonVariants({ magnetism }), className)}
+        {...props}
+      />
+    );
+  }
+);
+MagneticButton.displayName = "MagneticButton";
+
+export { MagneticButton, type MagneticButtonProps };
+```
+
+## Form Components
+
+- **Use `react-hook-form`** with Zod validation as shown in the dependencies
+- **Leverage the Form components** from `@/components/ui/form`
+- **Implement proper error handling** and validation feedback
+- **Use controlled components** for form inputs
+
+## Component File Organization
+
+- **Place UI primitives** in `@/components/ui/`
+- **Create composed components** in appropriate section directories (`@/components/sections/`)
+- **Build reusable animations** in `@/components/animations/`
+- **Organize layout components** in `@/components/layout/`
+
+## Accessibility Standards
+
+- **Include proper ARIA labels** on all interactive elements
+- **Use semantic HTML elements** where appropriate
+- **Implement keyboard navigation** for all interactive components
+- **Ensure color contrast** meets WCAG 2.1 AA standards
+- **Support reduced motion** preferences
+
+## Theme Integration
+
+- **Use CSS variables** for dynamic theming with next-themes
+- **Support both light and dark modes** as required in [PLAN.md](mdc:PLAN.md)
+- **Test theme switching** to ensure no flash of incorrect theme
+- **Use theme-aware animations** that adapt to user preferences
+
+## Icon Usage
+
+- **Use Lucide React icons** as specified in the configuration
+- **Maintain consistent icon sizing** (16px, 20px, 24px standard sizes)
+- **Apply proper aria-hidden** attributes for decorative icons
+- **Use semantic icon choices** that enhance user understanding

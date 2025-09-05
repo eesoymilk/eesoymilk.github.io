@@ -1,0 +1,239 @@
+---
+globs: *.tsx
+description: Framer Motion animation standards and patterns for the portfolio
+---
+
+# Framer Motion Animation Standards
+
+This project uses Framer Motion for all animations as specified in [PLAN.md](mdc:PLAN.md). Follow these animation patterns and standards:
+
+## Animation Performance Rules
+
+- **ONLY animate transform and opacity** for optimal performance
+- **Use GPU-accelerated properties**: `x`, `y`, `scale`, `rotate`, `opacity`
+- **Avoid animating**: `width`, `height`, `left`, `top`, `margin`, `padding`
+- **Add will-change hints** using `layout` prop when needed
+- **Implement reduced motion support** with `useReducedMotion` hook
+
+## Scroll-Triggered Animation Patterns
+
+Based on the plan requirements, implement these scroll animations:
+
+### Fade In Animation
+
+```typescript
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+
+const fadeInVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: "easeOut" },
+  },
+};
+
+export function FadeIn({ children, ...props }) {
+  const [ref, inView] = useInView({ threshold: 0.2, triggerOnce: true });
+
+  return (
+    <motion.div
+      ref={ref}
+      initial="hidden"
+      animate={inView ? "visible" : "hidden"}
+      variants={fadeInVariants}
+      {...props}
+    >
+      {children}
+    </motion.div>
+  );
+}
+```
+
+### Stagger Animation Pattern
+
+```typescript
+const staggerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.2,
+    },
+  },
+};
+
+const childVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0 },
+};
+
+export function Stagger({ children }) {
+  return (
+    <motion.div variants={staggerVariants} initial="hidden" animate="visible">
+      {children.map((child, i) => (
+        <motion.div key={i} variants={childVariants}>
+          {child}
+        </motion.div>
+      ))}
+    </motion.div>
+  );
+}
+```
+
+## Interactive Animation Standards
+
+### Magnetic Button Effect
+
+```typescript
+const magneticVariants = {
+  rest: { scale: 1, y: 0 },
+  hover: {
+    scale: 1.05,
+    y: -2,
+    transition: { type: "spring", stiffness: 300, damping: 20 },
+  },
+  tap: { scale: 0.95 },
+};
+
+export function MagneticButton({ children, ...props }) {
+  return (
+    <motion.button
+      variants={magneticVariants}
+      initial="rest"
+      whileHover="hover"
+      whileTap="tap"
+      {...props}
+    >
+      {children}
+    </motion.button>
+  );
+}
+```
+
+### Card Tilt Effect
+
+```typescript
+export function TiltCard({ children }) {
+  const [rotateX, setRotateX] = useState(0);
+  const [rotateY, setRotateY] = useState(0);
+
+  const handleMouseMove = (e) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+    const rotateX = (e.clientY - centerY) / 10;
+    const rotateY = (centerX - e.clientX) / 10;
+
+    setRotateX(rotateX);
+    setRotateY(rotateY);
+  };
+
+  return (
+    <motion.div
+      onMouseMove={handleMouseMove}
+      onMouseLeave={() => {
+        setRotateX(0);
+        setRotateY(0);
+      }}
+      animate={{ rotateX, rotateY }}
+      transition={{ type: "spring", stiffness: 300, damping: 30 }}
+      style={{ transformStyle: "preserve-3d" }}
+    >
+      {children}
+    </motion.div>
+  );
+}
+```
+
+## Text Animation Patterns
+
+### Typewriter Effect
+
+```typescript
+export function TypewriterText({ text, delay = 0 }) {
+  return (
+    <motion.span
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ delay }}
+    >
+      {text.split("").map((char, i) => (
+        <motion.span
+          key={i}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: delay + i * 0.05 }}
+        >
+          {char}
+        </motion.span>
+      ))}
+    </motion.span>
+  );
+}
+```
+
+## Background Animation Standards
+
+### Floating Blobs
+
+```typescript
+export function FloatingBlob({ size = 100, ...props }) {
+  return (
+    <motion.div
+      className="absolute rounded-full bg-gradient-to-r from-primary/20 to-secondary/20"
+      style={{ width: size, height: size }}
+      animate={{
+        x: [0, 30, 0, -30, 0],
+        y: [0, -30, 0, 30, 0],
+        scale: [1, 1.1, 1, 0.9, 1],
+      }}
+      transition={{
+        duration: 20,
+        repeat: Infinity,
+        ease: "easeInOut",
+      }}
+      {...props}
+    />
+  );
+}
+```
+
+## Animation Accessibility
+
+- **Always check for reduced motion preference**:
+
+```typescript
+import { useReducedMotion } from "framer-motion";
+
+export function ResponsiveAnimation({ children }) {
+  const shouldReduceMotion = useReducedMotion();
+
+  const variants = shouldReduceMotion
+    ? { visible: { opacity: 1 }, hidden: { opacity: 0 } }
+    : {
+        visible: { opacity: 1, y: 0 },
+        hidden: { opacity: 0, y: 30 },
+      };
+
+  return <motion.div variants={variants}>{children}</motion.div>;
+}
+```
+
+## Performance Optimization
+
+- **Use layout prop sparingly** - only when animating layout properties
+- **Implement animation controls** for complex sequences
+- **Use useAnimation hook** for programmatic control
+- **Optimize for 60fps** by keeping animations under 16ms per frame
+- **Use transform3d** to trigger hardware acceleration when needed
+
+## Animation Timing Standards
+
+- **Micro-interactions**: 0.15-0.3s duration
+- **Page transitions**: 0.4-0.6s duration
+- **Scroll animations**: 0.6-0.8s duration
+- **Background animations**: 10-20s duration for ambient effects
+- **Use easing functions**: "easeOut" for entrances, "easeIn" for exits

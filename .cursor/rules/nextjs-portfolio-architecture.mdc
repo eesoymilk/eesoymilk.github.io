@@ -1,0 +1,149 @@
+---
+alwaysApply: true
+description: Next.js portfolio architecture and development standards based on project plan
+---
+
+# Next.js Portfolio Architecture
+
+This portfolio project follows the architecture defined in [PLAN.md](mdc:PLAN.md). All development must adhere to these architectural standards:
+
+## Project Structure Standards
+
+Follow the exact folder structure outlined in the implementation plan:
+
+```
+├── app/                        # Next.js App Router
+│   ├── layout.tsx             # Root layout with providers
+│   ├── page.tsx               # Single-page portfolio
+│   └── globals.css            # Global styles and Tailwind
+├── components/
+│   ├── ui/                    # Shadcn components
+│   ├── sections/              # Portfolio sections
+│   ├── layout/                # Layout components
+│   ├── animations/            # Reusable animations
+│   └── common/                # Shared components
+├── lib/                       # Utilities and constants
+├── hooks/                     # Custom React hooks
+├── types/                     # TypeScript definitions
+└── public/                    # Static assets
+```
+
+## Single Page Application Rules
+
+- **Build as a single-page application** with smooth scrolling navigation
+- **Use section-based routing** with scroll-to-section functionality
+- **Implement scroll spy** for active navigation highlighting
+- **Create smooth transitions** between sections using Framer Motion
+
+## Static Export Configuration
+
+This project **MUST support static export** for GitHub Pages deployment:
+
+- **Configure static export** in [next.config.ts](mdc:next.config.ts)
+- **Use `output: 'export'`** in Next.js configuration
+- **Avoid server-side features** that don't work with static export
+- **Use client-side routing** for any dynamic behavior
+- **Optimize for static hosting** with proper asset paths
+
+## Performance Requirements
+
+Based on the plan requirements, maintain these performance standards:
+
+- **Lighthouse score > 95** across all metrics
+- **First Contentful Paint < 1.5s**
+- **Time to Interactive < 3.5s**
+- **Bundle size < 200KB** (excluding images)
+- **Implement lazy loading** for all images and heavy components
+
+## Section Implementation Standards
+
+### Hero Section Requirements
+
+```typescript
+// Must include these features from PLAN.md:
+- Typewriter effect cycling through roles
+- Floating tech stack bubbles (boba pearl theme)
+- Animated gradient background blobs
+- Parallax scrolling effects
+- Social media links with hover animations
+- Scroll indicator with bounce animation
+```
+
+### About Section Requirements
+
+```typescript
+// Must include these features:
+- Split layout with image and bio
+- Animated timeline showing education journey
+- Statistics cards with count-up animation
+- Philosophy quote with typewriter reveal
+- Skills preview with floating animation
+```
+
+### Research/Projects Section Requirements
+
+```typescript
+// Must include these features:
+- Bento grid layout with varying card sizes
+- Project cards with glassmorphism effect
+- Tech stack pills with stagger animation
+- Filter bar for categories
+- Modal for detailed project view
+- GitHub stats integration
+```
+
+## Animation Performance Standards
+
+- **Use GPU-accelerated transforms** only (transform, opacity)
+- **Implement will-change hints** for animating elements
+- **Use requestAnimationFrame** for smooth updates
+- **Support reduced motion** preferences with `prefers-reduced-motion`
+- **Debounce scroll handlers** to prevent performance issues
+
+## Theme Implementation
+
+- **Use next-themes** for theme management as specified in dependencies
+- **Support system preference detection**
+- **Implement smooth color transitions**
+- **Prevent theme flash** on page load
+- **Use CSS variables** for theme-aware colors
+
+## Data Management
+
+- **Store content in typed data files** in `lib/data/`
+- **Use TypeScript interfaces** for all data structures
+- **Implement proper error boundaries** for data loading
+- **Create constants file** for reusable values
+
+## SEO and Metadata
+
+- **Generate proper meta tags** for social sharing
+- **Create Open Graph images** for each section
+- **Implement JSON-LD structured data**
+- **Use semantic HTML elements** throughout
+- **Ensure proper heading hierarchy** (h1 > h2 > h3)
+
+## Mobile-First Development
+
+- **Design mobile-first** with progressive enhancement
+- **Test on multiple device sizes** regularly
+- **Implement touch-friendly interactions**
+- **Optimize animations for mobile performance**
+- **Ensure text readability** at all screen sizes
+
+## Component Naming Conventions
+
+- **Use PascalCase** for component names
+- **Use descriptive file names** that match component names
+- **Group related components** in section directories
+- **Export components and types** consistently
+
+Example:
+
+```typescript
+// components/sections/Hero/TypewriterText.tsx
+export { TypewriterText, type TypewriterTextProps };
+
+// components/animations/FadeIn.tsx
+export { FadeIn, type FadeInProps };
+```

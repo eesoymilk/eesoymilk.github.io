@@ -1,0 +1,314 @@
+---
+description: Content structure and data management standards for portfolio sections
+globs: lib/data/*.ts,types/*.ts
+---
+
+# Portfolio Content Standards
+
+Based on the requirements in [PLAN.md](mdc:PLAN.md), maintain these content standards for portfolio data:
+
+## Data Structure Organization
+
+### Personal Information (`lib/data/personal.ts`)
+
+```typescript
+export interface PersonalInfo {
+  name: string;
+  title: string;
+  roles: string[]; // For typewriter effect
+  bio: string;
+  location: string;
+  email: string;
+  phone?: string;
+  profileImage: string;
+  resumeUrl: string;
+  philosophy: {
+    quote: string;
+    author: string;
+  };
+}
+
+export const personalInfo: PersonalInfo = {
+  name: "Yu-Wei Chang",
+  title: "Researcher & Developer",
+  roles: [
+    "Full-Stack Developer",
+    "Machine Learning Researcher",
+    "Open Source Contributor",
+    "Problem Solver",
+  ],
+  // ... rest of data
+};
+```
+
+### Project Data (`lib/data/projects.ts`)
+
+```typescript
+export interface Project {
+  id: string;
+  title: string;
+  description: string;
+  longDescription: string;
+  category: "research" | "web" | "mobile" | "ai" | "open-source";
+  technologies: string[];
+  githubUrl?: string;
+  liveUrl?: string;
+  paperUrl?: string;
+  images: string[];
+  featured: boolean;
+  status: "completed" | "in-progress" | "planned";
+  startDate: string;
+  endDate?: string;
+  achievements: string[];
+  challenges: string[];
+  learnings: string[];
+}
+
+export const projects: Project[] = [
+  // Project data here
+];
+
+export const featuredProjects = projects.filter((p) => p.featured);
+export const projectsByCategory = (category: Project["category"]) =>
+  projects.filter((p) => p.category === category);
+```
+
+### Experience Data (`lib/data/experience.ts`)
+
+```typescript
+export interface Experience {
+  id: string;
+  company: string;
+  position: string;
+  location: string;
+  type: "full-time" | "part-time" | "internship" | "contract" | "research";
+  startDate: string;
+  endDate?: string;
+  description: string;
+  achievements: string[];
+  technologies: string[];
+  companyLogo: string;
+  companyUrl?: string;
+}
+
+export const experiences: Experience[] = [
+  // Experience data here
+];
+```
+
+### Skills Data (`lib/data/skills.ts`)
+
+```typescript
+export interface Skill {
+  name: string;
+  category: "language" | "framework" | "tool" | "database" | "cloud" | "other";
+  proficiency: 1 | 2 | 3 | 4 | 5; // 1-5 scale
+  yearsOfExperience: number;
+  projectsUsed: string[]; // Project IDs where this skill was used
+  icon?: string; // Lucide icon name or custom icon path
+  color?: string; // For visualization
+}
+
+export interface SkillCategory {
+  name: string;
+  skills: Skill[];
+  description: string;
+}
+
+export const skillCategories: SkillCategory[] = [
+  {
+    name: "Programming Languages",
+    description: "Core programming languages I work with",
+    skills: [
+      // Skills data here
+    ],
+  },
+  // More categories...
+];
+```
+
+## Content Validation
+
+### Type Guards and Validation
+
+```typescript
+import { z } from "zod";
+
+const ProjectSchema = z.object({
+  id: z.string().min(1),
+  title: z.string().min(1),
+  description: z.string().min(10),
+  category: z.enum(["research", "web", "mobile", "ai", "open-source"]),
+  technologies: z.array(z.string()).min(1),
+  featured: z.boolean(),
+  status: z.enum(["completed", "in-progress", "planned"]),
+  startDate: z.string().regex(/^\d{4}-\d{2}$/), // YYYY-MM format
+  endDate: z
+    .string()
+    .regex(/^\d{4}-\d{2}$/)
+    .optional(),
+});
+
+export type Project = z.infer<typeof ProjectSchema>;
+
+// Validate data at build time
+export const validateProjects = (projects: unknown[]): Project[] => {
+  return projects.map((project, index) => {
+    try {
+      return ProjectSchema.parse(project);
+    } catch (error) {
+      throw new Error(`Invalid project at index ${index}: ${error.message}`);
+    }
+  });
+};
+```
+
+## Content Guidelines
+
+### Writing Standards
+
+- **Use consistent tone**: Professional but approachable
+- **Keep descriptions concise**: 1-2 sentences for short descriptions
+- **Use action verbs**: "Built", "Developed", "Researched", "Implemented"
+- **Include metrics**: Numbers, percentages, time savings where applicable
+- **Be specific**: Mention exact technologies and methodologies used
+
+### Image Standards
+
+- **Use consistent aspect ratios**: 16:9 for project screenshots, 1:1 for profiles
+- **Optimize for web**: WebP format with fallbacks
+- **Include alt text**: Descriptive text for accessibility
+- **Provide multiple sizes**: For responsive loading
+
+### URL Standards
+
+```typescript
+// URL validation and formatting
+export const formatUrl = (url: string): string => {
+  if (!url.startsWith("http://") && !url.startsWith("https://")) {
+    return `https://${url}`;
+  }
+  return url;
+};
+
+export const isValidGithubUrl = (url: string): boolean => {
+  return url.includes("github.com/");
+};
+
+export const extractGithubRepo = (url: string): string | null => {
+  const match = url.match(/github\.com\/([^\/]+\/[^\/]+)/);
+  return match ? match[1] : null;
+};
+```
+
+## SEO and Metadata Standards
+
+### Page Metadata
+
+```typescript
+export const siteMetadata = {
+  title: "Yu-Wei Chang - Researcher & Developer Portfolio",
+  description:
+    "Portfolio showcasing research, development projects, and technical expertise in machine learning, web development, and open source contributions.",
+  keywords: [
+    "Yu-Wei Chang",
+    "eesoymilk",
+    "researcher",
+    "developer",
+    "machine learning",
+    "web development",
+    "portfolio",
+  ],
+  author: "Yu-Wei Chang",
+  siteUrl: "https://eesoymilk.github.io",
+  ogImage: "/images/og-image.png",
+  twitterHandle: "@eesoymilk",
+};
+```
+
+### Structured Data
+
+```typescript
+export const generateProjectStructuredData = (project: Project) => ({
+  "@context": "https://schema.org",
+  "@type": "CreativeWork",
+  name: project.title,
+  description: project.description,
+  author: {
+    "@type": "Person",
+    name: "Yu-Wei Chang",
+  },
+  dateCreated: project.startDate,
+  programmingLanguage: project.technologies,
+  url: project.liveUrl || project.githubUrl,
+});
+```
+
+## Performance Standards
+
+### Data Loading
+
+- **Implement lazy loading** for large datasets
+- **Use pagination** for project lists if needed
+- **Cache static data** using React Query or SWR
+- **Optimize bundle size** by code splitting data files
+
+### Search and Filtering
+
+```typescript
+export const searchProjects = (
+  projects: Project[],
+  query: string
+): Project[] => {
+  const lowercaseQuery = query.toLowerCase();
+  return projects.filter(
+    (project) =>
+      project.title.toLowerCase().includes(lowercaseQuery) ||
+      project.description.toLowerCase().includes(lowercaseQuery) ||
+      project.technologies.some((tech) =>
+        tech.toLowerCase().includes(lowercaseQuery)
+      )
+  );
+};
+
+export const filterProjectsByCategory = (
+  projects: Project[],
+  category: Project["category"] | "all"
+): Project[] => {
+  if (category === "all") return projects;
+  return projects.filter((project) => project.category === category);
+};
+```
+
+## Accessibility Standards
+
+### Content Accessibility
+
+- **Use semantic HTML** in data presentation
+- **Include descriptive link text**: Avoid "click here" or "read more"
+- **Provide image alt text**: Descriptive alternative text for all images
+- **Use proper heading hierarchy**: H1 > H2 > H3 logical structure
+- **Include skip links**: For keyboard navigation
+
+### Screen Reader Support
+
+```typescript
+export const formatDateForScreenReader = (date: string): string => {
+  const [year, month] = date.split("-");
+  const monthNames = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+  return `${monthNames[parseInt(month) - 1]} ${year}`;
+};
+```
