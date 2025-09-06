@@ -1,8 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
-import { useInView } from "react-intersection-observer";
+import { motion, useInView } from "framer-motion";
+import { useEffect, useState, useRef } from "react";
 
 import { Card, CardContent } from "@/components/ui/card";
 import { stats } from "@/lib/data/stats";
@@ -56,10 +55,15 @@ function AnimatedNumber({
   duration?: number;
 }) {
   const [displayValue, setDisplayValue] = useState(0);
-  const [ref, inView] = useInView({ threshold: 0.3, triggerOnce: true });
+  const ref = useRef(null);
+  const isInView = useInView(ref, { 
+    once: true, 
+    margin: "-50px",
+    amount: 0.3 
+  });
 
   useEffect(() => {
-    if (!inView) return;
+    if (!isInView) return;
 
     const startTime = Date.now();
     const animate = () => {
@@ -79,7 +83,7 @@ function AnimatedNumber({
     };
 
     animate();
-  }, [inView, value, duration]);
+  }, [isInView, value, duration]);
 
   return (
     <span ref={ref}>

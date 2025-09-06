@@ -1,7 +1,7 @@
 "use client";
 
-import { motion, type Variants } from "framer-motion";
-import { useInView } from "react-intersection-observer";
+import { motion, type Variants, useInView } from "framer-motion";
+import { useRef } from "react";
 
 import { useIsMounted } from "@/hooks/useIsMounted";
 
@@ -19,9 +19,11 @@ export function Stagger({
   threshold = 0.1,
 }: StaggerProps) {
   const isMounted = useIsMounted();
-  const [ref, inView] = useInView({
-    threshold,
-    triggerOnce: true,
+  const ref = useRef(null);
+  const isInView = useInView(ref, {
+    once: true,
+    margin: "-100px",
+    amount: threshold,
   });
 
   const containerVariants: Variants = {
@@ -44,18 +46,33 @@ export function Stagger({
     },
   };
 
+  // For static export, show content immediately if not mounted
+  if (!isMounted) {
+    return (
+      <div className={className}>
+        {Array.isArray(children)
+          ? children.map((child, index) => (
+              <div key={`stagger-static-${index}`}>
+                {child}
+              </div>
+            ))
+          : children}
+      </div>
+    );
+  }
+
   return (
     <motion.div
       ref={ref}
       variants={containerVariants}
-      initial={isMounted ? "hidden" : "visible"}
-      animate={inView ? "visible" : "hidden"}
+      initial="hidden"
+      animate={isInView ? "visible" : "hidden"}
       className={className}
     >
       {Array.isArray(children)
         ? children.map((child, index) => (
             <motion.div 
-              key={`stagger-item-${index}`} 
+              key={`stagger-motion-${index}`} 
               variants={itemVariants}
               transition={{
                 duration: 0.6,

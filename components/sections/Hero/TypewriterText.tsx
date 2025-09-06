@@ -58,15 +58,19 @@ export function TypewriterText({
   return (
     <span className={className}>
       {isMounted ? displayText : texts[0]}
-      <motion.span
-        animate={{ opacity: [1, 0] }}
-        transition={{
-          duration: 0.8,
-          repeat: Infinity,
-          repeatType: "reverse",
-        }}
-        className="inline-block w-0.5 h-[1em] bg-current ml-1"
-      />
+      {isMounted ? (
+        <motion.span
+          animate={{ opacity: [1, 0] }}
+          transition={{
+            duration: 0.8,
+            repeat: Infinity,
+            repeatType: "reverse",
+          }}
+          className="inline-block w-0.5 h-[1em] bg-current ml-1"
+        />
+      ) : (
+        <span className="inline-block w-0.5 h-[1em] bg-current ml-1 opacity-100" />
+      )}
     </span>
   );
 }

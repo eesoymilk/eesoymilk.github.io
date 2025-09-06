@@ -6,22 +6,11 @@ const nextConfig: NextConfig = {
 
   // Set base path for GitHub Pages (using repository name)
   // Only apply basePath when building for GitHub Pages deployment
-  basePath: process.env.GITHUB_ACTIONS ? "/eesoymilk.github.io" : "",
+  basePath: "/eesoymilk.github.io",
 
   // Disable image optimization for static export
   images: {
     unoptimized: true,
-  },
-
-  // Ensure trailing slashes for proper routing
-  trailingSlash: true,
-
-  // Disable server-side features for static export
-  reactStrictMode: true,
-
-  // Skip build id for consistent builds
-  generateBuildId: async () => {
-    return "build-id";
   },
 };
 

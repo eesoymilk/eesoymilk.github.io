@@ -1,7 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { useInView } from "react-intersection-observer";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 
 import { useIsMounted } from "@/hooks/useIsMounted";
 
@@ -23,9 +23,11 @@ export function FadeIn({
   threshold = 0.1,
 }: FadeInProps) {
   const isMounted = useIsMounted();
-  const [ref, inView] = useInView({
-    threshold,
-    triggerOnce: true,
+  const ref = useRef(null);
+  const isInView = useInView(ref, { 
+    once: true, 
+    margin: "-100px",
+    amount: threshold 
   });
 
   const directionOffset = {
@@ -38,12 +40,17 @@ export function FadeIn({
   const { x, y } = directionOffset[direction];
 
   // For threshold 0, always animate immediately
-  const shouldAnimate = threshold === 0 ? true : inView;
+  const shouldAnimate = threshold === 0 ? true : isInView;
+
+  // For static export, show content immediately if not mounted
+  if (!isMounted) {
+    return <div className={className}>{children}</div>;
+  }
 
   return (
     <motion.div
       ref={ref}
-      initial={isMounted ? { opacity: 0, x, y } : { opacity: 1, x: 0, y: 0 }}
+      initial={{ opacity: 0, x, y }}
       animate={
         shouldAnimate
           ? {
