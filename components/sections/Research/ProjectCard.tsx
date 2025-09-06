@@ -1,11 +1,10 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ExternalLink, Github, Calendar, Users } from "lucide-react";
-
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Calendar, ExternalLink, Github, Users } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import type { Project } from "@/types";
 
@@ -125,27 +124,28 @@ export function ProjectCard({ project, variant }: ProjectCardProps) {
               }}
               viewport={{ once: true }}
             >
-              {project.technologies
-                .slice(0, isLarge ? 6 : 4)
-                .map((tech) => (
-                  <motion.div
-                    key={tech}
-                    variants={{
-                      hidden: { opacity: 0, scale: 0.8 },
-                      visible: { opacity: 1, scale: 1 },
-                    }}
+              {project.technologies.slice(0, isLarge ? 6 : 4).map((tech) => (
+                <motion.div
+                  key={tech}
+                  variants={{
+                    hidden: { opacity: 0, scale: 0.8 },
+                    visible: { opacity: 1, scale: 1 },
+                  }}
+                >
+                  <Badge
+                    variant="outline"
+                    className="text-xs px-2 py-0.5 bg-background/50 hover:bg-primary/10 transition-colors max-w-full"
                   >
-                    <Badge
-                      variant="outline"
-                      className="text-xs px-2 py-0.5 bg-background/50 hover:bg-primary/10 transition-colors max-w-full"
-                    >
-                      <span className="truncate">{tech}</span>
-                    </Badge>
-                  </motion.div>
-                ))}
+                    <span className="truncate">{tech}</span>
+                  </Badge>
+                </motion.div>
+              ))}
 
               {project.technologies.length > (isLarge ? 6 : 4) && (
-                <Badge variant="outline" className="text-xs px-2 py-0.5 bg-muted flex-shrink-0">
+                <Badge
+                  variant="outline"
+                  className="text-xs px-2 py-0.5 bg-muted flex-shrink-0"
+                >
                   +{project.technologies.length - (isLarge ? 6 : 4)}
                 </Badge>
               )}
@@ -183,7 +183,6 @@ export function ProjectCard({ project, variant }: ProjectCardProps) {
                 Demo
               </Button>
             )}
-
           </div>
         </CardContent>
 

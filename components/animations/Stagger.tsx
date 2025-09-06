@@ -1,9 +1,7 @@
 "use client";
 
-import { motion, type Variants, useInView } from "framer-motion";
+import { motion, useInView, type Variants } from "framer-motion";
 import { useRef } from "react";
-
-import { useIsMounted } from "@/hooks/useIsMounted";
 
 interface StaggerProps {
   children: React.ReactNode;
@@ -18,7 +16,6 @@ export function Stagger({
   staggerDelay = 0.1,
   threshold = 0.1,
 }: StaggerProps) {
-  const isMounted = useIsMounted();
   const ref = useRef(null);
   const isInView = useInView(ref, {
     once: true,
@@ -46,21 +43,6 @@ export function Stagger({
     },
   };
 
-  // For static export, show content immediately if not mounted
-  if (!isMounted) {
-    return (
-      <div className={className}>
-        {Array.isArray(children)
-          ? children.map((child, index) => (
-              <div key={`stagger-static-${index}`}>
-                {child}
-              </div>
-            ))
-          : children}
-      </div>
-    );
-  }
-
   return (
     <motion.div
       ref={ref}
@@ -71,8 +53,8 @@ export function Stagger({
     >
       {Array.isArray(children)
         ? children.map((child, index) => (
-            <motion.div 
-              key={`stagger-motion-${index}`} 
+            <motion.div
+              key={`stagger-motion-${index}-${Math.random()}`}
               variants={itemVariants}
               transition={{
                 duration: 0.6,

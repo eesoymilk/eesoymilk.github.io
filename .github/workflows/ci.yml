@@ -1,0 +1,72 @@
+name: CI
+
+on:
+  push:
+    branches: ["main", "dev"]
+  pull_request:
+    branches: ["main", "dev"]
+
+jobs:
+  ci:
+    name: ${{ matrix.job }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    strategy:
+      matrix:
+        include:
+          - job: "Code Quality"
+            run_biome: true
+            run_build: false
+          - job: "Build Check"
+            run_biome: false
+            run_build: true
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+        with:
+          persist-credentials: false
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "lts/*"
+
+      - name: Install pnpm
+        run: npm install -g pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Setup Biome
+        if: matrix.run_biome
+        uses: biomejs/setup-biome@v2
+        with:
+          version: latest
+
+      - name: Run Biome CI
+        if: matrix.run_biome
+        run: biome ci .
+
+      - name: Build with Next.js
+        if: matrix.run_build
+        run: pnpm build
+        env:
+          GITHUB_ACTIONS: true
+
+      - name: Check build output
+        if: matrix.run_build
+        run: |
+          if [ ! -d "out" ]; then
+            echo "Build output directory 'out' not found"
+            exit 1
+          fi
+          echo "Build completed successfully"
+
+      - name: Upload build artifact
+        if: matrix.run_build && github.ref == 'refs/heads/main'
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-output
+          path: ./out
+          retention-days: 1

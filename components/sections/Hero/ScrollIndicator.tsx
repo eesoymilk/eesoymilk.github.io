@@ -4,19 +4,14 @@ import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import { useEffect, useState } from "react";
 
-import { useIsMounted } from "@/hooks/useIsMounted";
-
 interface ScrollIndicatorProps {
   className?: string;
 }
 
 export function ScrollIndicator({ className = "" }: ScrollIndicatorProps) {
-  const isMounted = useIsMounted();
   const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
-    if (!isMounted) return;
-    
     const handleScroll = () => {
       // Hide the indicator when user scrolls down more than 100px
       const scrolled = window.scrollY;
@@ -25,7 +20,7 @@ export function ScrollIndicator({ className = "" }: ScrollIndicatorProps) {
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [isMounted]);
+  }, []);
 
   const handleScrollDown = () => {
     const nextSection = document.querySelector("#about");
@@ -33,29 +28,6 @@ export function ScrollIndicator({ className = "" }: ScrollIndicatorProps) {
       nextSection.scrollIntoView({ behavior: "smooth" });
     }
   };
-
-  // For static export, show static version if not mounted
-  if (!isMounted) {
-    return (
-      <button
-        type="button"
-        onClick={handleScrollDown}
-        className={`group flex flex-col items-center justify-center cursor-pointer ${className}`}
-      >
-        <div className="w-6 h-10 border-2 border-muted-foreground/30 rounded-full flex justify-center relative overflow-hidden group-hover:border-primary transition-colors">
-          <div className="w-1 h-3 bg-muted-foreground/50 rounded-full mt-2 group-hover:bg-primary transition-colors" />
-        </div>
-
-        <div className="mt-2">
-          <ChevronDown className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
-        </div>
-
-        <p className="text-xs text-muted-foreground mt-1 group-hover:text-primary transition-colors">
-          Scroll down
-        </p>
-      </button>
-    );
-  }
 
   return (
     <motion.button

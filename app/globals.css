@@ -274,48 +274,6 @@
     transform: translateY(-4px);
     box-shadow: 0 20px 40px oklch(0 0 0 / 0.1);
   }
-
-  /* Static export animation fixes */
-  /* Override Framer Motion initial styles during static export */
-  [data-framer-motion] {
-    opacity: 1 !important;
-    transform: none !important;
-  }
-
-  /* More aggressive override for static export */
-  div[style*="opacity: 0"] {
-    opacity: 1 !important;
-  }
-
-  div[style*="transform: translateY(20px)"] {
-    transform: none !important;
-  }
-
-  div[style*="transform: translateY(-20px)"] {
-    transform: none !important;
-  }
-
-  div[style*="transform: translateX(20px)"] {
-    transform: none !important;
-  }
-
-  div[style*="transform: translateX(-20px)"] {
-    transform: none !important;
-  }
-
-  div[style*="transform: scale(0.8)"] {
-    transform: none !important;
-  }
-
-  /* Reduced motion support */
-  @media (prefers-reduced-motion: reduce) {
-    * {
-      animation-duration: 0.01ms !important;
-      animation-iteration-count: 1 !important;
-      transition-duration: 0.01ms !important;
-      scroll-behavior: auto !important;
-    }
-  }
 }
 
 @keyframes fadeIn {

@@ -1,12 +1,16 @@
 export interface PersonalInfo {
+  firstName: string;
+  lastName: string;
   name: string;
+  nickname: string;
   title: string;
-  roles: string[]; // For typewriter effect
+  roles: string[];
   bio: string;
   location: string;
   email: string;
   phone?: string;
   profileImage: string;
+  profileImageDark: string;
   resumeUrl: string;
   philosophy: {
     quote: string;
@@ -15,7 +19,10 @@ export interface PersonalInfo {
 }
 
 export const personalInfo: PersonalInfo = {
+  firstName: "Yu-Wei",
+  lastName: "Chang",
   name: "Yu-Wei Chang",
+  nickname: "eesoymilk",
   title: "Researcher & Developer",
   roles: [
     "Graduate Student at UCLA",
@@ -29,6 +36,7 @@ export const personalInfo: PersonalInfo = {
   email: "eesoymilk@gmail.com",
   phone: "+1 (310) 280-6463",
   profileImage: "/eesoymilk.webp",
+  profileImageDark: "/eesoymilk-dark.webp",
   resumeUrl: "/documents/resume.pdf",
   philosophy: {
     quote:

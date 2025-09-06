@@ -3,8 +3,8 @@
 import { FadeIn } from "@/components/animations/FadeIn";
 import { Stagger } from "@/components/animations/Stagger";
 import { education } from "@/lib/data/education";
-import { EducationTimeline } from "./EducationTimeline";
 import { AcademicAchievements } from "./AcademicAchievements";
+import { EducationTimeline } from "./EducationTimeline";
 
 export function Education() {
   return (

@@ -1,20 +1,12 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { CheckCircle, Copy, Mail, MapPin, Phone } from "lucide-react";
 import { useState } from "react";
-import {
-  Mail,
-  MapPin,
-  Phone,
-  CheckCircle,
-  Copy,
-} from "lucide-react";
-
+import { toast } from "sonner";
 import { FadeIn } from "@/components/animations/FadeIn";
 import { Button } from "@/components/ui/button";
 import { personalInfo } from "@/lib/data/personal";
-import { toast } from "sonner";
-
 
 export function Contact() {
   const [copiedEmail, setCopiedEmail] = useState(false);

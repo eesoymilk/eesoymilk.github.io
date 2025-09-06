@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { GraduationCap, Award, Users, School } from "lucide-react";
+import { GraduationCap, School, Users } from "lucide-react";
 
 import { Card, CardContent } from "@/components/ui/card";
 

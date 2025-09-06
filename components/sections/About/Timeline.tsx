@@ -1,10 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Calendar, GraduationCap, MapPin } from "lucide-react";
-
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { GraduationCap, MapPin } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import type { Education } from "@/types";
 
 interface TimelineProps {
@@ -84,7 +83,7 @@ export function Timeline({ items }: TimelineProps) {
                       <ul className="space-y-2">
                         {item.achievements.map((achievement, i) => (
                           <motion.li
-                            key={i}
+                            key={achievement}
                             className="flex items-start gap-2 text-sm text-muted-foreground"
                             initial={{ opacity: 0, x: -10 }}
                             whileInView={{ opacity: 1, x: 0 }}

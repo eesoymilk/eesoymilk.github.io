@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
@@ -16,38 +16,32 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Yu-Wei Chang (eesoymilk) | Researcher & Developer",
+  title: "eesoymilk | Researcher & Developer",
   description:
-    "Portfolio of Yu-Wei Chang - researcher, developer, and engineer passionate about innovation and technology",
-  keywords: [
-    "portfolio",
-    "developer",
-    "researcher",
-    "engineer",
-    "Yu-Wei Chang",
-    "eesoymilk",
-  ],
+    "Portfolio of eesoymilk - researcher, developer, and engineer passionate about innovation and technology",
+  keywords: ["portfolio", "developer", "researcher", "engineer", "eesoymilk"],
   authors: [{ name: "Yu-Wei Chang", url: "https://eesoymilk.github.io" }],
-  creator: "Yu-Wei Chang (eesoymilk)",
+  creator: "eesoymilk",
   openGraph: {
     type: "website",
     locale: "en_US",
     url: "https://eesoymilk.github.io",
-    title: "Yu-Wei Chang (eesoymilk) | Researcher & Developer",
+    title: "eesoymilk | Researcher & Developer",
     description:
-      "Portfolio of Yu-Wei Chang - researcher, developer, and engineer passionate about innovation and technology",
-    siteName: "Yu-Wei Chang Portfolio",
+      "Portfolio of eesoymilk - researcher, developer, and engineer passionate about innovation and technology",
+    siteName: "eesoymilk Portfolio",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Yu-Wei Chang (eesoymilk) | Researcher & Developer",
+    title: "eesoymilk | Researcher & Developer",
     description:
-      "Portfolio of Yu-Wei Chang - researcher, developer, and engineer passionate about innovation and technology",
+      "Portfolio of eesoymilk - researcher, developer, and engineer passionate about innovation and technology",
   },
-  viewport: {
-    width: "device-width",
-    initialScale: 1,
-  },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
 };
 
 export default function RootLayout({
