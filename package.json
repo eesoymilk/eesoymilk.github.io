@@ -6,7 +6,10 @@
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",
     "start": "next start",
-    "lint": "biome check",
+    "lint": "biome lint",
+    "lint:fix": "biome lint --fix",
+    "lint:check": "biome check",
+    "lint:check:fix": "biome check --fix",
     "format": "biome format --write"
   },
   "dependencies": {

@@ -3,8 +3,6 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
-import { useIsMounted } from "@/hooks/useIsMounted";
-
 interface TypewriterTextProps {
   texts: string[];
   className?: string;
@@ -18,14 +16,11 @@ export function TypewriterText({
   speed = 100,
   pauseDuration = 2000,
 }: TypewriterTextProps) {
-  const isMounted = useIsMounted();
   const [currentTextIndex, setCurrentTextIndex] = useState(0);
   const [displayText, setDisplayText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
 
   useEffect(() => {
-    if (!isMounted) return;
-    
     const currentText = texts[currentTextIndex];
     let timeout: NodeJS.Timeout;
 
@@ -53,24 +48,20 @@ export function TypewriterText({
     }
 
     return () => clearTimeout(timeout);
-  }, [displayText, isDeleting, currentTextIndex, texts, speed, pauseDuration, isMounted]);
+  }, [displayText, isDeleting, currentTextIndex, texts, speed, pauseDuration]);
 
   return (
     <span className={className}>
-      {isMounted ? displayText : texts[0]}
-      {isMounted ? (
-        <motion.span
-          animate={{ opacity: [1, 0] }}
-          transition={{
-            duration: 0.8,
-            repeat: Infinity,
-            repeatType: "reverse",
-          }}
-          className="inline-block w-0.5 h-[1em] bg-current ml-1"
-        />
-      ) : (
-        <span className="inline-block w-0.5 h-[1em] bg-current ml-1 opacity-100" />
-      )}
+      {displayText}
+      <motion.span
+        animate={{ opacity: [1, 0] }}
+        transition={{
+          duration: 0.8,
+          repeat: Infinity,
+          repeatType: "reverse",
+        }}
+        className="inline-block w-0.5 h-[1em] bg-current ml-1"
+      />
     </span>
   );
 }

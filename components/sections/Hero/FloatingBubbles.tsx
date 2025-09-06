@@ -3,7 +3,6 @@
 import { motion } from "framer-motion";
 
 import { Badge } from "@/components/ui/badge";
-import { useIsMounted } from "@/hooks/useIsMounted";
 
 interface FloatingBubblesProps {
   skills: string[];
@@ -126,42 +125,6 @@ export function FloatingBubbles({
   skills,
   className = "",
 }: FloatingBubblesProps) {
-  const isMounted = useIsMounted();
-
-  if (!isMounted) {
-    // Return static version for SSR to prevent hydration mismatch
-    return (
-      <div
-        className={`absolute inset-0 overflow-hidden pointer-events-none ${className}`}
-      >
-        {skills.slice(0, 12).map((skill, index) => {
-          const position =
-            predefinedPositions[index % predefinedPositions.length];
-
-          return (
-            <div
-              key={skill}
-              className="absolute pointer-events-auto"
-              style={{
-                left: `${position.startX}%`,
-                top: `${position.startY}%`,
-                transform: `translateX(${position.initialX}%) translateY(${position.initialY}%) scale(0.8)`,
-                opacity: 0.6,
-              }}
-            >
-              <Badge
-                variant="secondary"
-                className="bg-primary/10 text-primary border-primary/20 backdrop-blur-sm hover:bg-primary/20 transition-colors cursor-pointer text-xs"
-              >
-                {skill}
-              </Badge>
-            </div>
-          );
-        })}
-      </div>
-    );
-  }
-
   return (
     <div
       className={`absolute inset-0 overflow-hidden pointer-events-none ${className}`}
