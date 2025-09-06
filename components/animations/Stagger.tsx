@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, type Variants, useInView } from "framer-motion";
+import { motion, useInView, type Variants } from "framer-motion";
 import { useRef } from "react";
 
 interface StaggerProps {
@@ -53,8 +53,8 @@ export function Stagger({
     >
       {Array.isArray(children)
         ? children.map((child, index) => (
-            <motion.div 
-              key={`stagger-motion-${index}-${Math.random()}`} 
+            <motion.div
+              key={`stagger-motion-${index}-${Math.random()}`}
               variants={itemVariants}
               transition={{
                 duration: 0.6,

@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -44,7 +44,7 @@ export function Navigation() {
 
     window.addEventListener("resize", handleResize);
     window.addEventListener("keydown", handleKeyDown);
-    
+
     return () => {
       window.removeEventListener("resize", handleResize);
       window.removeEventListener("keydown", handleKeyDown);

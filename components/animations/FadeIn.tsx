@@ -21,10 +21,10 @@ export function FadeIn({
   threshold = 0.1,
 }: FadeInProps) {
   const ref = useRef(null);
-  const isInView = useInView(ref, { 
-    once: true, 
+  const isInView = useInView(ref, {
+    once: true,
     margin: "-100px",
-    amount: threshold 
+    amount: threshold,
   });
 
   const directionOffset = {

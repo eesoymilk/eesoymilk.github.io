@@ -10,10 +10,7 @@ interface ProjectGridProps {
   variant: "featured" | "standard";
 }
 
-export function ProjectGrid({
-  projects,
-  variant,
-}: ProjectGridProps) {
+export function ProjectGrid({ projects, variant }: ProjectGridProps) {
   if (variant === "featured") {
     return (
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-fr min-h-0">
@@ -72,10 +69,7 @@ export function ProjectGrid({
           }}
           viewport={{ once: true, margin: "-50px" }}
         >
-          <ProjectCard
-            project={project}
-            variant="standard"
-          />
+          <ProjectCard project={project} variant="standard" />
         </motion.div>
       ))}
     </div>

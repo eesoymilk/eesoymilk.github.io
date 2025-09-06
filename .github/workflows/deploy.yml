@@ -1,8 +1,10 @@
 name: Deploy Next.js site to Pages
 
 on:
-  push:
+  workflow_run:
+    workflows: ["CI"]
     branches: ["main"]
+    types: [completed]
 
   workflow_dispatch:
 
@@ -18,6 +20,7 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' || github.event_name == 'workflow_dispatch' }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -26,10 +29,32 @@ jobs:
         uses: actions/configure-pages@v4
 
       - name: Download build artifact from CI
+        if: github.event_name == 'workflow_run'
         uses: actions/download-artifact@v4
         with:
           name: build-output
           path: ./out
+
+      - name: Setup Node.js (Manual Deploy)
+        if: github.event_name == 'workflow_dispatch'
+        uses: actions/setup-node@v4
+        with:
+          node-version: "lts/*"
+          cache: pnpm
+
+      - name: Install pnpm (Manual Deploy)
+        if: github.event_name == 'workflow_dispatch'
+        run: npm install -g pnpm
+
+      - name: Install dependencies (Manual Deploy)
+        if: github.event_name == 'workflow_dispatch'
+        run: pnpm install --frozen-lockfile
+
+      - name: Build with Next.js (Manual Deploy)
+        if: github.event_name == 'workflow_dispatch'
+        run: pnpm build
+        env:
+          GITHUB_ACTIONS: true
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

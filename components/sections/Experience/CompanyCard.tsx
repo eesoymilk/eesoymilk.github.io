@@ -1,11 +1,10 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
-import { MapPin, ChevronDown, Building2, Calendar } from "lucide-react";
-
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { AnimatePresence, motion } from "framer-motion";
+import { Building2, Calendar, ChevronDown, MapPin } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import type { Experience } from "@/types";
 import { AchievementBadge } from "./AchievementBadge";
@@ -130,7 +129,9 @@ export function CompanyCard({
                       <AchievementBadge
                         key={achievement}
                         text={achievement}
-                        delay={experience.achievements.indexOf(achievement) * 0.1}
+                        delay={
+                          experience.achievements.indexOf(achievement) * 0.1
+                        }
                       />
                     ))}
                   </motion.div>

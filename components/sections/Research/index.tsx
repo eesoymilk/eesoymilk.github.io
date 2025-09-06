@@ -4,7 +4,7 @@ import { useState } from "react";
 
 import { FadeIn } from "@/components/animations/FadeIn";
 import { Stagger } from "@/components/animations/Stagger";
-import { projects, projectCategories } from "@/lib/data/projects";
+import { projectCategories, projects } from "@/lib/data/projects";
 import { FilterBar } from "./FilterBar";
 import { ProjectGrid } from "./ProjectGrid";
 
@@ -57,10 +57,7 @@ export function Research() {
             </FadeIn>
 
             <Stagger staggerDelay={0.1}>
-              <ProjectGrid
-                projects={featuredProjects}
-                variant="featured"
-              />
+              <ProjectGrid projects={featuredProjects} variant="featured" />
             </Stagger>
           </div>
         )}
@@ -75,10 +72,7 @@ export function Research() {
             </FadeIn>
 
             <Stagger staggerDelay={0.1}>
-              <ProjectGrid
-                projects={otherProjects}
-                variant="standard"
-              />
+              <ProjectGrid projects={otherProjects} variant="standard" />
             </Stagger>
           </div>
         )}
@@ -98,7 +92,6 @@ export function Research() {
             </div>
           </FadeIn>
         )}
-
       </div>
     </section>
   );

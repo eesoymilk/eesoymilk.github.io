@@ -1,15 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
-import {
-  GraduationCap,
-  MapPin,
-  Trophy,
-  BookOpen,
-} from "lucide-react";
-
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { BookOpen, GraduationCap, MapPin, Trophy } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import type { Education } from "@/types";
 
 interface EducationTimelineProps {
@@ -62,7 +56,7 @@ export function EducationTimeline({ items }: EducationTimelineProps) {
                 index % 2 === 0 ? "md:mr-16" : "md:ml-16"
               }`}
             >
-                <Card className="group hover:shadow-xl transition-all duration-300 border-l-4 border-l-primary bg-gradient-to-br from-background to-muted/20 relative">
+              <Card className="group hover:shadow-xl transition-all duration-300 border-l-4 border-l-primary bg-gradient-to-br from-background to-muted/20 relative">
                 {/* Glass effect overlay */}
                 <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent pointer-events-none" />
 
@@ -150,7 +144,6 @@ export function EducationTimeline({ items }: EducationTimelineProps) {
                 />
               </Card>
             </div>
-
           </motion.div>
         ))}
       </div>

@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useInView } from "framer-motion";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { Card, CardContent } from "@/components/ui/card";
 import { stats } from "@/lib/data/stats";
@@ -56,10 +56,10 @@ function AnimatedNumber({
 }) {
   const [displayValue, setDisplayValue] = useState(0);
   const ref = useRef(null);
-  const isInView = useInView(ref, { 
-    once: true, 
+  const isInView = useInView(ref, {
+    once: true,
     margin: "-50px",
-    amount: 0.3 
+    amount: 0.3,
   });
 
   useEffect(() => {
@@ -71,7 +71,7 @@ function AnimatedNumber({
       const progress = Math.min(elapsed / duration, 1);
 
       // Easing function for smooth animation
-      const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+      const easeOutQuart = 1 - (1 - progress) ** 4;
 
       setDisplayValue(Math.floor(value * easeOutQuart));
 

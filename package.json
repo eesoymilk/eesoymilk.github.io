@@ -7,9 +7,10 @@
     "build": "next build --turbopack",
     "start": "next start",
     "lint": "biome lint",
-    "lint:fix": "biome lint --fix",
-    "lint:check": "biome check",
-    "lint:check:fix": "biome check --fix",
+    "lint:write": "biome lint --write",
+    "check": "biome check",
+    "check:write": "biome check --write",
+
     "format": "biome format --write"
   },
   "dependencies": {

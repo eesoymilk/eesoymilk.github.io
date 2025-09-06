@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Download, Github, Linkedin, Mail } from "lucide-react";
+import { Github, Linkedin, Mail } from "lucide-react";
 import { FadeIn } from "@/components/animations/FadeIn";
 import { Stagger } from "@/components/animations/Stagger";
 import { Button } from "@/components/ui/button";
