@@ -1,0 +1,89 @@
+---
+alwaysApply: true
+description: Strict TypeScript configuration and best practices for the portfolio project
+---
+
+# Strict TypeScript Rules
+
+This project uses **strict TypeScript mode** as configured in [tsconfig.json](mdc:tsconfig.json). Always follow these TypeScript best practices:
+
+## Type Safety Requirements
+
+- **NEVER use `any` type** - Use proper types, `unknown`, or union types instead
+- **Always define explicit return types** for functions and methods
+- **Use const assertions** (`as const`) for immutable data structures
+- **Prefer type over interface** for simple object shapes, use interface for extensible contracts
+- **Use generics** for reusable components and utility functions
+
+## Import/Export Standards
+
+- **Use named imports** whenever possible instead of default imports
+- **Always use absolute imports** with the `@/` alias as configured in [tsconfig.json](mdc:tsconfig.json)
+- **Group imports** in this order:
+  1. React/Next.js imports
+  2. Third-party libraries
+  3. Internal components (`@/components`)
+  4. Internal utilities (`@/lib`, `@/hooks`, `@/types`)
+  5. Relative imports (avoid when possible)
+
+## React Component Types
+
+- **Always use React.FC or explicit typing** for component props
+- **Define interfaces for all props** with JSDoc comments
+- **Use discriminated unions** for variant props
+- **Implement proper ref forwarding** with `React.forwardRef<HTMLElement, Props>`
+
+## Example Component Structure
+
+```typescript
+import { type VariantProps } from "class-variance-authority";
+import { type ButtonHTMLAttributes, forwardRef } from "react";
+
+import { cn } from "@/lib/utils";
+import { buttonVariants } from "@/components/ui/button";
+
+interface ButtonProps
+  extends ButtonHTMLAttributes<HTMLButtonElement>,
+    VariantProps<typeof buttonVariants> {
+  /**
+   * Whether the button should display a loading state
+   */
+  isLoading?: boolean;
+}
+
+const Button = forwardRef<HTMLButtonElement, ButtonProps>(
+  ({ className, variant, size, isLoading, children, ...props }, ref) => {
+    return (
+      <button
+        className={cn(buttonVariants({ variant, size, className }))}
+        ref={ref}
+        disabled={isLoading || props.disabled}
+        {...props}
+      >
+        {children}
+      </button>
+    );
+  }
+);
+Button.displayName = "Button";
+
+export { Button, type ButtonProps };
+```
+
+## Data Type Definitions
+
+- **Create type definitions** in the `types/` directory as outlined in [PLAN.md](mdc:PLAN.md)
+- **Use proper TypeScript utility types**: `Partial<T>`, `Required<T>`, `Pick<T, K>`, `Omit<T, K>`
+- **Define discriminated unions** for data with multiple states
+
+## Animation Type Safety
+
+- **Type Framer Motion variants** properly
+- **Use proper event handler types** for mouse and touch events
+- **Define motion component props** with proper generic constraints
+
+## Next.js Specific Types
+
+- **Use Next.js provided types** for pages, layouts, and API routes
+- **Type metadata exports** properly for SEO optimization
+- **Use proper types for dynamic imports** and lazy loading

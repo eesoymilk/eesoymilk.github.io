@@ -1,0 +1,240 @@
+---
+alwaysApply: true
+description: Biome code formatting and linting standards for consistent code style
+---
+
+# Biome Code Style Standards
+
+This project uses Biome for linting and formatting as configured in [biome.json](mdc:biome.json). Follow these code style standards:
+
+## Formatting Rules
+
+### Indentation and Spacing
+
+- **Use 2 spaces for indentation** (configured in Biome)
+- **No trailing whitespace** allowed
+- **Single trailing newline** at end of files
+- **Consistent spacing** around operators and keywords
+
+### Import Organization
+
+Biome automatically organizes imports with `organizeImports: "on"`. Follow this import order:
+
+1. **React and Next.js imports**
+2. **Third-party library imports** (alphabetically sorted)
+3. **Internal absolute imports** using `@/` alias
+4. **Relative imports** (avoid when possible)
+
+Example:
+
+```typescript
+import { type Metadata } from "next";
+import { type ReactNode } from "react";
+
+import { motion, type Variants } from "framer-motion";
+import { ChevronDown, Github, Linkedin } from "lucide-react";
+
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import { FadeIn } from "@/components/animations/FadeIn";
+import { cn } from "@/lib/utils";
+
+import { type ProjectData } from "../types/project";
+```
+
+## Linting Standards
+
+### Code Quality Rules
+
+- **No unused variables or imports** - Biome will flag these
+- **Prefer const over let** when variables don't change
+- **Use template literals** instead of string concatenation
+- **Destructure props and objects** when accessing multiple properties
+- **Use optional chaining** (`?.`) and nullish coalescing (`??`) appropriately
+
+### React-Specific Rules
+
+Based on Biome's React domain configuration:
+
+- **Use React.FC or explicit typing** for component props
+- **Prefer function declarations** over arrow functions for components
+- **Use JSX shorthand** for boolean props
+- **Avoid array index as key** in React lists
+- **Use proper dependency arrays** in useEffect
+
+### Next.js Specific Rules
+
+Based on Biome's Next.js domain configuration:
+
+- **Use Next.js Image component** for all images
+- **Implement proper metadata exports** for SEO
+- **Use proper Link component** for internal navigation
+- **Follow Next.js naming conventions** for special files
+
+## Code Organization Standards
+
+### File Structure
+
+```typescript
+// 1. Type imports at top
+import type { ComponentProps } from "react";
+
+// 2. Runtime imports
+import { forwardRef } from "react";
+
+// 3. Interface definitions
+interface ButtonProps extends ComponentProps<"button"> {
+  variant?: "primary" | "secondary";
+}
+
+// 4. Component implementation
+const Button = forwardRef<HTMLButtonElement, ButtonProps>(
+  ({ variant = "primary", className, ...props }, ref) => {
+    return (
+      <button
+        ref={ref}
+        className={cn(buttonVariants({ variant }), className)}
+        {...props}
+      />
+    );
+  }
+);
+
+// 5. Display name for debugging
+Button.displayName = "Button";
+
+// 6. Exports at bottom
+export { Button, type ButtonProps };
+```
+
+### Variable Naming
+
+- **Use camelCase** for variables and functions
+- **Use PascalCase** for components and types
+- **Use SCREAMING_SNAKE_CASE** for constants
+- **Use descriptive names** that clearly indicate purpose
+
+### Function Organization
+
+```typescript
+// Pure utility functions
+export function calculateDuration(start: Date, end: Date): number {
+  return end.getTime() - start.getTime();
+}
+
+// React hooks
+export function useScrollProgress() {
+  const [progress, setProgress] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrolled = window.scrollY;
+      const maxHeight = document.body.scrollHeight - window.innerHeight;
+      setProgress(scrolled / maxHeight);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  return progress;
+}
+
+// React components
+export function ScrollProgress() {
+  const progress = useScrollProgress();
+
+  return (
+    <motion.div
+      className="fixed top-0 left-0 h-1 bg-primary z-50"
+      style={{ scaleX: progress, transformOrigin: "left" }}
+    />
+  );
+}
+```
+
+## Error Handling Standards
+
+### Type Safety
+
+```typescript
+// Use discriminated unions for error states
+type AsyncState<T> =
+  | { status: "idle" }
+  | { status: "loading" }
+  | { status: "success"; data: T }
+  | { status: "error"; error: string };
+
+// Implement proper error boundaries
+export function ErrorBoundary({ children }: { children: ReactNode }) {
+  return (
+    <ErrorBoundaryComponent
+      fallback={({ error }) => (
+        <Card className="p-6 border-destructive">
+          <h2 className="text-lg font-semibold text-destructive">
+            Something went wrong
+          </h2>
+          <p className="text-sm text-muted-foreground mt-2">{error.message}</p>
+        </Card>
+      )}
+    >
+      {children}
+    </ErrorBoundaryComponent>
+  );
+}
+```
+
+## Performance Standards
+
+### Optimization Rules
+
+- **Use React.memo** for expensive components
+- **Implement proper useMemo/useCallback** dependencies
+- **Avoid creating objects in render** (move to useMemo)
+- **Use dynamic imports** for heavy components
+- **Implement proper loading states**
+
+### Bundle Optimization
+
+- **Tree shake unused exports** by using named imports
+- **Avoid importing entire libraries** when only using specific functions
+- **Use Next.js dynamic imports** for code splitting
+- **Implement proper lazy loading** for images and components
+
+## Documentation Standards
+
+### JSDoc Comments
+
+````typescript
+/**
+ * Animated card component with hover effects and glassmorphism styling
+ *
+ * @param children - Content to render inside the card
+ * @param variant - Visual style variant of the card
+ * @param className - Additional CSS classes to apply
+ * @param onClick - Optional click handler for interactive cards
+ *
+ * @example
+ * ```tsx
+ * <AnimatedCard variant="glassmorphism" onClick={handleClick}>
+ *   <h3>Project Title</h3>
+ *   <p>Project description...</p>
+ * </AnimatedCard>
+ * ```
+ */
+interface AnimatedCardProps {
+  children: ReactNode;
+  variant?: "default" | "glassmorphism" | "elevated";
+  className?: string;
+  onClick?: () => void;
+}
+````
+
+## Git Commit Standards
+
+When using Biome for formatting:
+
+- **Run `pnpm format`** before committing
+- **Fix all linting errors** before pushing
+- **Use meaningful commit messages** that describe the change
+- **Include type prefixes**: feat:, fix:, style:, refactor:, docs:
