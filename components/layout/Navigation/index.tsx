@@ -28,6 +28,29 @@ export function Navigation() {
     setIsMounted(true);
   }, []);
 
+  // Close mobile menu when screen size changes to desktop or ESC key is pressed
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 768) {
+        setIsMobileMenuOpen(false);
+      }
+    };
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape" && isMobileMenuOpen) {
+        setIsMobileMenuOpen(false);
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+    window.addEventListener("keydown", handleKeyDown);
+    
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isMobileMenuOpen]);
+
   // Handle scroll effects
   useEffect(() => {
     const handleScroll = () => {
@@ -173,61 +196,61 @@ export function Navigation() {
       </motion.header>
 
       {/* Mobile Menu Overlay */}
-      <motion.div
-        className={cn(
-          "fixed inset-0 z-40 md:hidden",
-          isMobileMenuOpen ? "pointer-events-auto" : "pointer-events-none",
-        )}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: isMobileMenuOpen ? 1 : 0 }}
-        transition={{ duration: 0.2 }}
-      >
-        {/* Backdrop */}
+      {isMobileMenuOpen && (
         <motion.div
-          className="absolute inset-0 bg-black/50 backdrop-blur-sm"
-          onClick={() => setIsMobileMenuOpen(false)}
+          className="fixed inset-0 z-40 md:hidden"
           initial={{ opacity: 0 }}
-          animate={{ opacity: isMobileMenuOpen ? 1 : 0 }}
-        />
-
-        {/* Menu Content */}
-        <motion.div
-          className="absolute top-20 right-4 left-4 bg-background border rounded-lg shadow-lg p-6"
-          initial={{ opacity: 0, scale: 0.95, y: -20 }}
-          animate={{
-            opacity: isMobileMenuOpen ? 1 : 0,
-            scale: isMobileMenuOpen ? 1 : 0.95,
-            y: isMobileMenuOpen ? 0 : -20,
-          }}
-          transition={{ type: "spring", stiffness: 300, damping: 30 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.2 }}
         >
-          <nav className="space-y-4">
-            {navigationItems.map((item, index) => (
-              <motion.button
-                key={item.href}
-                onClick={() => scrollToSection(item.href)}
-                className={cn(
-                  "block w-full text-left text-lg font-medium transition-colors hover:text-primary",
-                  activeSection === item.href.slice(1)
-                    ? "text-primary"
-                    : "text-muted-foreground",
-                )}
-                initial={{ opacity: 0, x: -20 }}
-                animate={{
-                  opacity: isMobileMenuOpen ? 1 : 0,
-                  x: isMobileMenuOpen ? 0 : -20,
-                }}
-                transition={{
-                  delay: isMobileMenuOpen ? index * 0.1 : 0,
-                  duration: 0.2,
-                }}
-              >
-                {item.label}
-              </motion.button>
-            ))}
-          </nav>
+          {/* Backdrop */}
+          <motion.div
+            className="absolute inset-0 bg-black/50 backdrop-blur-sm"
+            onClick={() => setIsMobileMenuOpen(false)}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+          />
+
+          {/* Menu Content */}
+          <motion.div
+            className="absolute top-20 right-4 left-4 bg-background border rounded-lg shadow-lg p-6"
+            initial={{ opacity: 0, scale: 0.95, y: -20 }}
+            animate={{
+              opacity: 1,
+              scale: 1,
+              y: 0,
+            }}
+            transition={{ type: "spring", stiffness: 300, damping: 30 }}
+          >
+            <nav className="space-y-4">
+              {navigationItems.map((item, index) => (
+                <motion.button
+                  key={item.href}
+                  onClick={() => scrollToSection(item.href)}
+                  className={cn(
+                    "block w-full text-left text-lg font-medium transition-colors hover:text-primary",
+                    activeSection === item.href.slice(1)
+                      ? "text-primary"
+                      : "text-muted-foreground",
+                  )}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{
+                    opacity: 1,
+                    x: 0,
+                  }}
+                  transition={{
+                    delay: index * 0.1,
+                    duration: 0.2,
+                  }}
+                >
+                  {item.label}
+                </motion.button>
+              ))}
+            </nav>
+          </motion.div>
         </motion.div>
-      </motion.div>
+      )}
     </>
   );
 }
