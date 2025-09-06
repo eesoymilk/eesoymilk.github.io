@@ -3,6 +3,8 @@
 import { motion, type Variants } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
+import { useIsMounted } from "@/hooks/useIsMounted";
+
 interface StaggerProps {
   children: React.ReactNode;
   className?: string;
@@ -16,6 +18,7 @@ export function Stagger({
   staggerDelay = 0.1,
   threshold = 0.1,
 }: StaggerProps) {
+  const isMounted = useIsMounted();
   const [ref, inView] = useInView({
     threshold,
     triggerOnce: true,
@@ -45,7 +48,7 @@ export function Stagger({
     <motion.div
       ref={ref}
       variants={containerVariants}
-      initial="hidden"
+      initial={isMounted ? "hidden" : "visible"}
       animate={inView ? "visible" : "hidden"}
       className={className}
     >
