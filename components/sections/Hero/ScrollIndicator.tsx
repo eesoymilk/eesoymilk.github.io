@@ -4,14 +4,19 @@ import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import { useEffect, useState } from "react";
 
+import { useIsMounted } from "@/hooks/useIsMounted";
+
 interface ScrollIndicatorProps {
   className?: string;
 }
 
 export function ScrollIndicator({ className = "" }: ScrollIndicatorProps) {
+  const isMounted = useIsMounted();
   const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
+    if (!isMounted) return;
+    
     const handleScroll = () => {
       // Hide the indicator when user scrolls down more than 100px
       const scrolled = window.scrollY;
@@ -20,7 +25,7 @@ export function ScrollIndicator({ className = "" }: ScrollIndicatorProps) {
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [isMounted]);
 
   const handleScrollDown = () => {
     const nextSection = document.querySelector("#about");
@@ -33,7 +38,7 @@ export function ScrollIndicator({ className = "" }: ScrollIndicatorProps) {
     <motion.button
       onClick={handleScrollDown}
       className={`group flex flex-col items-center justify-center cursor-pointer ${className}`}
-      initial={{ opacity: 0, y: 10 }}
+      initial={isMounted ? { opacity: 0, y: 10 } : { opacity: 1, y: 0 }}
       animate={{
         opacity: isVisible ? 1 : 0,
         y: isVisible ? 0 : 20,

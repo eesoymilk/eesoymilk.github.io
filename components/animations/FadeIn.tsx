@@ -3,6 +3,8 @@
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
+import { useIsMounted } from "@/hooks/useIsMounted";
+
 interface FadeInProps {
   children: React.ReactNode;
   delay?: number;
@@ -20,6 +22,7 @@ export function FadeIn({
   className = "",
   threshold = 0.1,
 }: FadeInProps) {
+  const isMounted = useIsMounted();
   const [ref, inView] = useInView({
     threshold,
     triggerOnce: true,
@@ -34,16 +37,15 @@ export function FadeIn({
 
   const { x, y } = directionOffset[direction];
 
+  // For threshold 0, always animate immediately
+  const shouldAnimate = threshold === 0 ? true : inView;
+
   return (
     <motion.div
       ref={ref}
-      initial={{
-        opacity: 0,
-        x,
-        y,
-      }}
+      initial={isMounted ? { opacity: 0, x, y } : { opacity: 1, x: 0, y: 0 }}
       animate={
-        inView
+        shouldAnimate
           ? {
               opacity: 1,
               x: 0,
@@ -58,7 +60,7 @@ export function FadeIn({
       transition={{
         duration,
         delay,
-        ease: [0.6, -0.05, 0.01, 0.99],
+        ease: "easeOut",
       }}
       className={className}
     >

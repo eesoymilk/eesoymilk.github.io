@@ -3,6 +3,8 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
+import { useIsMounted } from "@/hooks/useIsMounted";
+
 interface TypewriterTextProps {
   texts: string[];
   className?: string;
@@ -16,11 +18,14 @@ export function TypewriterText({
   speed = 100,
   pauseDuration = 2000,
 }: TypewriterTextProps) {
+  const isMounted = useIsMounted();
   const [currentTextIndex, setCurrentTextIndex] = useState(0);
   const [displayText, setDisplayText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
 
   useEffect(() => {
+    if (!isMounted) return;
+    
     const currentText = texts[currentTextIndex];
     let timeout: NodeJS.Timeout;
 
@@ -48,11 +53,11 @@ export function TypewriterText({
     }
 
     return () => clearTimeout(timeout);
-  }, [displayText, isDeleting, currentTextIndex, texts, speed, pauseDuration]);
+  }, [displayText, isDeleting, currentTextIndex, texts, speed, pauseDuration, isMounted]);
 
   return (
     <span className={className}>
-      {displayText}
+      {isMounted ? displayText : texts[0]}
       <motion.span
         animate={{ opacity: [1, 0] }}
         transition={{

@@ -5,7 +5,8 @@ const nextConfig: NextConfig = {
   output: "export",
 
   // Set base path for GitHub Pages (using repository name)
-  basePath: process.env.NODE_ENV === "production" ? "/eesoymilk.github.io" : "",
+  // Only apply basePath when building for production deployment
+  basePath: process.env.GITHUB_ACTIONS ? "/eesoymilk.github.io" : "",
 
   // Disable image optimization for static export
   images: {
