@@ -21,7 +21,7 @@ export function ProjectGrid({ projects, variant }: ProjectGridProps) {
               case 0:
                 return "md:col-span-2 min-h-0"; // Large card
               case 1:
-                return "min-h-0"; // Tall card
+                return "md:min-h-0"; // Tall card
               case 2:
                 return "md:col-span-2 min-h-0"; // Wide card
               default:

@@ -19,32 +19,30 @@ export default function Home() {
       </section>
 
       {/* Portfolio sections */}
-      <div className="space-y-32">
-        {/* About section */}
-        <section id="about">
-          <About />
-        </section>
+      {/* About section */}
+      <section id="about">
+        <About />
+      </section>
 
-        {/* Experience section */}
-        <section id="experience">
-          <Experience />
-        </section>
+      {/* Experience section */}
+      <section id="experience">
+        <Experience />
+      </section>
 
-        {/* Education section */}
-        <section id="education">
-          <Education />
-        </section>
+      {/* Education section */}
+      <section id="education">
+        <Education />
+      </section>
 
-        {/* Research section */}
-        <section id="research">
-          <Research />
-        </section>
+      {/* Research section */}
+      <section id="research">
+        <Research />
+      </section>
 
-        {/* Contact section */}
-        <section id="contact">
-          <Contact />
-        </section>
-      </div>
+      {/* Contact section */}
+      <section id="contact">
+        <Contact />
+      </section>
 
       {/* Footer */}
       <Footer />

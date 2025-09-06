@@ -10,6 +10,7 @@ export interface PersonalInfo {
   email: string;
   phone?: string;
   profileImage: string;
+  profileImageDark: string;
   resumeUrl: string;
   philosophy: {
     quote: string;
@@ -35,6 +36,7 @@ export const personalInfo: PersonalInfo = {
   email: "eesoymilk@gmail.com",
   phone: "+1 (310) 280-6463",
   profileImage: "/eesoymilk.webp",
+  profileImageDark: "/eesoymilk-dark.webp",
   resumeUrl: "/documents/resume.pdf",
   philosophy: {
     quote:

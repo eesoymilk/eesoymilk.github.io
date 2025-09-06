@@ -1,174 +1,182 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
+import { useMemo } from "react";
 
 import { Badge } from "@/components/ui/badge";
+import { useClientOnly } from "@/hooks/useClientOnly";
 
 interface FloatingBubblesProps {
   skills: string[];
   className?: string;
 }
 
-// Predefined positions to avoid hydration mismatch
-const predefinedPositions = [
-  {
-    initialX: 20,
-    initialY: 15,
-    animateX: [40, 60, 20],
-    animateY: [25, 35, 15],
-    startX: 10,
-    startY: 20,
-    duration: 18,
-  },
-  {
-    initialX: 80,
-    initialY: 25,
-    animateX: [60, 40, 80],
-    animateY: [35, 45, 25],
-    startX: 70,
-    startY: 10,
-    duration: 22,
-  },
-  {
-    initialX: 15,
-    initialY: 60,
-    animateX: [35, 55, 15],
-    animateY: [70, 80, 60],
-    startX: 5,
-    startY: 50,
-    duration: 20,
-  },
-  {
-    initialX: 75,
-    initialY: 70,
-    animateX: [55, 35, 75],
-    animateY: [80, 90, 70],
-    startX: 65,
-    startY: 60,
-    duration: 16,
-  },
-  {
-    initialX: 40,
-    initialY: 35,
-    animateX: [60, 20, 40],
-    animateY: [45, 55, 35],
-    startX: 30,
-    startY: 30,
-    duration: 24,
-  },
-  {
-    initialX: 90,
-    initialY: 50,
-    animateX: [70, 50, 90],
-    animateY: [60, 70, 50],
-    startX: 80,
-    startY: 40,
-    duration: 19,
-  },
-  {
-    initialX: 10,
-    initialY: 80,
-    animateX: [30, 50, 10],
-    animateY: [90, 100, 80],
-    startX: 0,
-    startY: 70,
-    duration: 21,
-  },
-  {
-    initialX: 60,
-    initialY: 10,
-    animateX: [80, 40, 60],
-    animateY: [20, 30, 10],
-    startX: 50,
-    startY: 5,
-    duration: 17,
-  },
-  {
-    initialX: 30,
-    initialY: 85,
-    animateX: [50, 70, 30],
-    animateY: [95, 100, 85],
-    startX: 20,
-    startY: 75,
-    duration: 23,
-  },
-  {
-    initialX: 85,
-    initialY: 90,
-    animateX: [65, 45, 85],
-    animateY: [100, 100, 90],
-    startX: 75,
-    startY: 80,
-    duration: 15,
-  },
-  {
-    initialX: 50,
-    initialY: 45,
-    animateX: [70, 30, 50],
-    animateY: [55, 65, 45],
-    startX: 40,
-    startY: 35,
-    duration: 25,
-  },
-  {
-    initialX: 25,
-    initialY: 30,
-    animateX: [45, 65, 25],
-    animateY: [40, 50, 30],
-    startX: 15,
-    startY: 25,
-    duration: 18,
-  },
-];
+// Generate random positions and movements for each bubble
+function generateBubbleConfig(index: number, total: number) {
+  // Use index as seed for consistent positioning across renders
+  const seed = index * 123.456;
+
+  // Generate random but bounded positions
+  const startX = 10 + (Math.sin(seed) * 0.5 + 0.5) * 80; // 10-90%
+  const startY = 10 + (Math.cos(seed * 1.3) * 0.5 + 0.5) * 80; // 10-90%
+
+  // Create organic movement patterns
+  const duration = 15 + (Math.sin(seed * 2.1) * 0.5 + 0.5) * 15; // 15-30s
+  const delay = (index / total) * 5; // Staggered start times
+
+  // Generate multiple waypoints for organic movement
+  const waypoints = 4 + Math.floor(Math.sin(seed * 3.7) * 0.5 + 0.5) * 2; // 4-6 waypoints
+  const animateX = [];
+  const animateY = [];
+
+  for (let i = 0; i < waypoints; i++) {
+    const angle = (i / waypoints) * Math.PI * 2 + seed;
+    const radius = 20 + Math.sin(seed * 4.2 + i) * 15; // Varying radius
+
+    animateX.push(startX + Math.cos(angle) * radius);
+    animateY.push(startY + Math.sin(angle) * radius);
+  }
+
+  // Add some randomness to opacity and scale
+  const baseOpacity = 0.4 + Math.sin(seed * 5.1) * 0.2; // 0.2-0.6
+  const baseScale = 0.7 + Math.cos(seed * 6.3) * 0.2; // 0.5-0.9
+
+  return {
+    startX,
+    startY,
+    animateX,
+    animateY,
+    duration,
+    delay,
+    baseOpacity,
+    baseScale,
+    waypoints,
+  };
+}
 
 export function FloatingBubbles({
   skills,
   className = "",
 }: FloatingBubblesProps) {
+  const shouldReduceMotion = useReducedMotion();
+  const isClient = useClientOnly();
+
+  // Generate configurations for each bubble
+  const bubbleConfigs = useMemo(() => {
+    if (!isClient) return [];
+    return skills
+      .slice(0, 12)
+      .map((_, index) =>
+        generateBubbleConfig(index, Math.min(skills.length, 12)),
+      );
+  }, [skills, isClient]);
+
+  // Don't render anything until we're on the client to prevent hydration mismatch
+  if (!isClient) {
+    return (
+      <div
+        className={`absolute inset-0 overflow-hidden pointer-events-none ${className}`}
+      />
+    );
+  }
+
+  if (shouldReduceMotion) {
+    // Simplified version for reduced motion
+    return (
+      <div
+        className={`absolute inset-0 overflow-hidden pointer-events-none ${className}`}
+      >
+        {skills.slice(0, 12).map((skill, index) => {
+          const config = bubbleConfigs[index];
+          return (
+            <div
+              key={skill}
+              className="absolute pointer-events-auto"
+              style={{
+                left: `${config.startX}%`,
+                top: `${config.startY}%`,
+              }}
+            >
+              <Badge
+                variant="secondary"
+                className="bg-primary/10 text-primary border-primary/20 backdrop-blur-sm hover:bg-primary/20 transition-colors cursor-pointer text-xs"
+              >
+                {skill}
+              </Badge>
+            </div>
+          );
+        })}
+      </div>
+    );
+  }
+
   return (
     <div
       className={`absolute inset-0 overflow-hidden pointer-events-none ${className}`}
     >
       {skills.slice(0, 12).map((skill, index) => {
-        const position =
-          predefinedPositions[index % predefinedPositions.length];
+        const config = bubbleConfigs[index];
 
         return (
           <motion.div
             key={skill}
             className="absolute pointer-events-auto"
             initial={{
-              x: `${position.initialX}%`,
-              y: `${position.initialY}%`,
-              opacity: 0.6,
-              scale: 0.8,
+              x: 0,
+              y: 0,
+              opacity: config.baseOpacity,
+              scale: config.baseScale,
             }}
             animate={{
-              x: position.animateX.map((x) => `${x}%`),
-              y: position.animateY.map((y) => `${y}%`),
-              opacity: [0.6, 0.8, 0.6, 0.4],
-              scale: [0.8, 1, 0.8, 0.6],
+              x: config.animateX.map((x) => `${x - config.startX}%`),
+              y: config.animateY.map((y) => `${y - config.startY}%`),
+              opacity: [
+                config.baseOpacity,
+                config.baseOpacity + 0.3,
+                config.baseOpacity + 0.1,
+                config.baseOpacity - 0.1,
+                config.baseOpacity,
+              ],
+              scale: [
+                config.baseScale,
+                config.baseScale + 0.2,
+                config.baseScale + 0.1,
+                config.baseScale - 0.1,
+                config.baseScale,
+              ],
             }}
             transition={{
-              duration: position.duration,
+              duration: config.duration,
               repeat: Infinity,
               repeatType: "loop",
-              delay: index * 0.3,
+              delay: config.delay,
               ease: "easeInOut",
+              times: config.animateX.map(
+                (_, i) => i / (config.animateX.length - 1),
+              ),
             }}
             whileHover={{
-              scale: 1.2,
+              scale: config.baseScale + 0.3,
               opacity: 1,
-              transition: { duration: 0.2 },
+              transition: {
+                duration: 0.3,
+                type: "spring",
+                stiffness: 300,
+                damping: 20,
+              },
+            }}
+            whileTap={{
+              scale: config.baseScale - 0.1,
+              transition: { duration: 0.1 },
             }}
             style={{
-              left: `${position.startX}%`,
-              top: `${position.startY}%`,
+              left: `${config.startX}%`,
+              top: `${config.startY}%`,
             }}
           >
             <Badge
               variant="secondary"
-              className="bg-primary/10 text-primary border-primary/20 backdrop-blur-sm hover:bg-primary/20 transition-colors cursor-pointer text-xs"
+              className="bg-primary/10 text-primary border-primary/20 backdrop-blur-sm hover:bg-primary/20 transition-colors cursor-pointer text-xs shadow-lg hover:shadow-xl"
             >
               {skill}
             </Badge>

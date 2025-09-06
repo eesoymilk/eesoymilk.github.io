@@ -5,12 +5,12 @@ import { Github, Linkedin, Mail } from "lucide-react";
 import { FadeIn } from "@/components/animations/FadeIn";
 import { Stagger } from "@/components/animations/Stagger";
 import { Button } from "@/components/ui/button";
+import { personalInfo } from "@/lib/data/personal";
+import { techs } from "@/lib/data/techs";
+import { HeroDescription } from "./Description";
 import { FloatingBubbles } from "./FloatingBubbles";
 import { ScrollIndicator } from "./ScrollIndicator";
 import { TypewriterText } from "./TypewriterText";
-import { techs } from "@/lib/data/techs";
-import { personalInfo } from "@/lib/data/personal";
-import { HeroDescription } from "./Description";
 
 const socialLinks = [
   { href: "https://github.com/eesoymilk", icon: Github, label: "GitHub" },

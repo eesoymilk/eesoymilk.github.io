@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, useInView } from "framer-motion";
+import { Clock, Rocket, Zap } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
 import { Card, CardContent } from "@/components/ui/card";
@@ -10,7 +11,7 @@ interface StatCard {
   label: string;
   value: number;
   suffix?: string;
-  icon: string;
+  icon: React.ComponentType<{ className?: string }>;
   gradient: string;
 }
 
@@ -19,29 +20,22 @@ const statCards: StatCard[] = [
     label: "Projects Completed",
     value: stats.projectsCompleted,
     suffix: "+",
-    icon: "🚀",
+    icon: Rocket,
     gradient: "from-primary to-primary/60",
   },
   {
     label: "Years Experience",
     value: stats.yearsOfExperience,
     suffix: "+",
-    icon: "⏱️",
+    icon: Clock,
     gradient: "from-secondary to-secondary/60",
   },
   {
     label: "Technologies Used",
     value: stats.technologiesMastered,
     suffix: "+",
-    icon: "⚡",
+    icon: Zap,
     gradient: "from-accent to-accent/60",
-  },
-  {
-    label: "Years Old",
-    value: 25,
-    suffix: "+",
-    icon: "🎂",
-    gradient: "from-green-500 to-green-400",
   },
 ];
 
@@ -95,7 +89,7 @@ function AnimatedNumber({
 
 export function StatsCards() {
   return (
-    <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
       {statCards.map((stat, index) => (
         <motion.div
           key={stat.label}
@@ -112,9 +106,9 @@ export function StatsCards() {
             <CardContent className="p-6 text-center">
               {/* Icon with gradient background */}
               <div
-                className={`w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-r ${stat.gradient} flex items-center justify-center text-2xl shadow-lg`}
+                className={`w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-r ${stat.gradient} flex items-center justify-center shadow-lg`}
               >
-                {stat.icon}
+                <stat.icon className="w-8 h-8 text-white" />
               </div>
 
               {/* Animated number */}

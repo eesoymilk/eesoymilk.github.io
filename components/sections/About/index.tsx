@@ -1,14 +1,18 @@
 "use client";
 
+import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 
 import { FadeIn } from "@/components/animations/FadeIn";
+import { useThemeClient } from "@/hooks/useThemeClient";
 import { personalInfo } from "@/lib/data/personal";
 import { stats } from "@/lib/data/stats";
-import { StatsCards } from "./StatsCards";
 import { Philosophy } from "./Philosophy";
+import { StatsCards } from "./StatsCards";
 
 export function About() {
+  const { isDark, isClient } = useThemeClient();
+
   return (
     <section className="py-24 md:py-32">
       <div className="container mx-auto px-6">
@@ -27,29 +31,57 @@ export function About() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-24">
           {/* Profile Image */}
           <FadeIn delay={0.2}>
-            <div className="relative">
-              <div className="relative w-full max-w-md mx-auto">
-                {/* Gradient border */}
-                <div className="absolute inset-0 bg-gradient-to-r from-primary via-secondary to-accent rounded-2xl p-1">
-                  <div className="w-full h-full bg-background rounded-xl"></div>
-                </div>
-
-                {/* Profile image */}
-                <div className="relative z-10 aspect-square rounded-xl overflow-hidden">
-                  <Image
-                    src={personalInfo.profileImage}
-                    alt={`${personalInfo.name} profile photo`}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    priority
-                  />
-                </div>
+            <div className="relative w-full max-w-md mx-auto">
+              {/* Profile image with flip animation */}
+              <div className="relative z-10 aspect-square rounded-xl overflow-hidden m-3">
+                {isClient ? (
+                  <AnimatePresence mode="wait">
+                    <motion.div
+                      key={isDark ? "dark" : "light"}
+                      initial={{ rotateY: 90, opacity: 0 }}
+                      animate={{ rotateY: 0, opacity: 1 }}
+                      exit={{ rotateY: -90, opacity: 0 }}
+                      transition={{
+                        duration: 0.6,
+                        ease: "easeInOut",
+                        type: "spring",
+                        stiffness: 100,
+                        damping: 15,
+                      }}
+                      style={{ transformStyle: "preserve-3d" }}
+                      className="w-full h-full relative"
+                    >
+                      <Image
+                        src={
+                          isDark
+                            ? personalInfo.profileImageDark
+                            : personalInfo.profileImage
+                        }
+                        alt={`${personalInfo.name} profile photo`}
+                        fill
+                        priority
+                        className="scale-120 object-cover"
+                      />
+                    </motion.div>
+                  </AnimatePresence>
+                ) : (
+                  // Fallback during SSR - show default light theme image
+                  <div className="w-full h-full relative">
+                    <Image
+                      src={personalInfo.profileImage}
+                      alt={`${personalInfo.name} profile photo`}
+                      fill
+                      priority
+                      className="scale-120 object-cover"
+                    />
+                  </div>
+                )}
               </div>
 
-              {/* Floating decoration */}
-              <div className="absolute -top-4 -right-4 w-20 h-20 bg-primary/10 rounded-full blur-xl"></div>
-              <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-secondary/10 rounded-full blur-xl"></div>
+              {/* Floating decorations - much more prominent */}
+              <div className="absolute -top-6 -right-6 w-24 h-24 bg-blue-500/40 rounded-full blur-xl animate-pulse shadow-lg"></div>
+              <div className="absolute -bottom-6 -left-6 w-20 h-20 bg-purple-500/40 rounded-full blur-xl animate-pulse shadow-lg"></div>
+              <div className="absolute top-1/2 -left-8 w-12 h-12 bg-pink-500/30 rounded-full blur-lg animate-bounce"></div>
             </div>
           </FadeIn>
 
