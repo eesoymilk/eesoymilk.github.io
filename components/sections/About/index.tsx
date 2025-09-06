@@ -1,5 +1,7 @@
 "use client";
 
+import Image from "next/image";
+
 import { FadeIn } from "@/components/animations/FadeIn";
 import { personalInfo } from "@/lib/data/personal";
 import { stats } from "@/lib/data/stats";
@@ -16,8 +18,8 @@ export function About() {
               About <span className="text-gradient-primary">Me</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Passionate about creating innovative solutions through cutting-edge
-              technology and research.
+              Passionate about creating innovative solutions through
+              cutting-edge technology and research.
             </p>
           </div>
         </FadeIn>
@@ -31,17 +33,17 @@ export function About() {
                 <div className="absolute inset-0 bg-gradient-to-r from-primary via-secondary to-accent rounded-2xl p-1">
                   <div className="w-full h-full bg-background rounded-xl"></div>
                 </div>
-                
-                {/* Placeholder for profile image */}
-                <div className="relative z-10 aspect-square bg-gradient-to-br from-primary/20 via-secondary/20 to-accent/20 rounded-xl flex items-center justify-center">
-                  <div className="text-center">
-                    <div className="w-32 h-32 mx-auto mb-4 bg-gradient-to-r from-primary to-secondary rounded-full flex items-center justify-center">
-                      <span className="text-4xl font-bold text-white">
-                        {personalInfo.name.split(" ").map(n => n[0]).join("")}
-                      </span>
-                    </div>
-                    <p className="text-muted-foreground">Profile photo coming soon</p>
-                  </div>
+
+                {/* Profile image */}
+                <div className="relative z-10 aspect-square rounded-xl overflow-hidden">
+                  <Image
+                    src={personalInfo.profileImage}
+                    alt={`${personalInfo.name} profile photo`}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    priority
+                  />
                 </div>
               </div>
 
@@ -97,7 +99,7 @@ export function About() {
 
         {/* Philosophy */}
         <div className="mt-24">
-          <Philosophy quote={personalInfo.philosophy} />
+          <Philosophy quote={personalInfo.philosophy.quote} />
         </div>
       </div>
     </section>

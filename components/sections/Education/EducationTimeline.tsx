@@ -1,7 +1,12 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Calendar, GraduationCap, MapPin, Trophy, BookOpen } from "lucide-react";
+import {
+  GraduationCap,
+  MapPin,
+  Trophy,
+  BookOpen,
+} from "lucide-react";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -26,39 +31,41 @@ export function EducationTimeline({ items }: EducationTimelineProps) {
             }`}
             initial={{ opacity: 0, x: index % 2 === 0 ? 50 : -50 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ 
-              duration: 0.8, 
+            transition={{
+              duration: 0.8,
               delay: index * 0.3,
-              ease: "easeOut"
+              ease: "easeOut",
             }}
             viewport={{ once: true, margin: "-100px" }}
           >
             {/* Timeline dot with icon */}
-            <div className="absolute left-8 md:left-1/2 w-16 h-16 bg-background border-4 border-primary rounded-full shadow-lg transform -translate-x-8 md:-translate-x-8 z-20 flex items-center justify-center">
-              <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center">
-                <GraduationCap className="w-4 h-4 text-primary-foreground" />
+            <div className="absolute left-8 md:left-1/2 w-12 h-12 bg-background border-2 border-primary/60 rounded-full transform -translate-x-6 md:-translate-x-6 z-20 flex items-center justify-center">
+              <div className="w-6 h-6 bg-primary/70 rounded-full flex items-center justify-center">
+                <GraduationCap className="w-3 h-3 text-primary-foreground" />
               </div>
-              
+
               {/* Pulsing animation */}
               <motion.div
-                className="absolute inset-0 border-2 border-primary rounded-full"
-                animate={{ scale: [1, 1.2, 1], opacity: [0.5, 0, 0.5] }}
-                transition={{ 
-                  duration: 3, 
+                className="absolute inset-0 border border-primary/50 rounded-full"
+                animate={{ scale: [1, 1.1, 1], opacity: [0.3, 0, 0.3] }}
+                transition={{
+                  duration: 4,
                   repeat: Infinity,
-                  delay: index * 0.5
+                  delay: index * 0.7,
                 }}
               />
             </div>
 
             {/* Education card */}
-            <div className={`flex-1 ml-24 md:ml-0 ${
-              index % 2 === 0 ? "md:mr-16" : "md:ml-16"
-            }`}>
-              <Card className="group hover:shadow-xl transition-all duration-300 border-l-4 border-l-primary bg-gradient-to-br from-background to-muted/20 overflow-hidden">
+            <div
+              className={`flex-1 ml-20 md:ml-0 overflow-hidden ${
+                index % 2 === 0 ? "md:mr-16" : "md:ml-16"
+              }`}
+            >
+                <Card className="group hover:shadow-xl transition-all duration-300 border-l-4 border-l-primary bg-gradient-to-br from-background to-muted/20 relative">
                 {/* Glass effect overlay */}
                 <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent pointer-events-none" />
-                
+
                 <CardHeader className="relative">
                   <div className="flex items-start justify-between flex-wrap gap-2 mb-3">
                     <div className="flex items-center gap-3">
@@ -74,12 +81,12 @@ export function EducationTimeline({ items }: EducationTimelineProps) {
                         </p>
                       </div>
                     </div>
-                    
+
                     <Badge variant="secondary" className="text-sm font-medium">
                       {item.startDate} - {item.endDate}
                     </Badge>
                   </div>
-                  
+
                   <div className="flex items-center gap-2 text-muted-foreground mb-4">
                     <MapPin className="w-4 h-4" />
                     <span className="font-medium">{item.institution}</span>
@@ -99,8 +106,8 @@ export function EducationTimeline({ items }: EducationTimelineProps) {
                         <Trophy className="w-4 h-4 text-yellow-500" />
                         Academic Achievements
                       </h4>
-                      
-                      <motion.div 
+
+                      <motion.div
                         className="grid gap-3"
                         initial="hidden"
                         whileInView="visible"
@@ -116,9 +123,9 @@ export function EducationTimeline({ items }: EducationTimelineProps) {
                         }}
                         viewport={{ once: true }}
                       >
-                        {item.achievements.map((achievement, i) => (
+                        {item.achievements.map((achievement) => (
                           <motion.div
-                            key={i}
+                            key={achievement}
                             className="flex items-start gap-3 p-3 rounded-lg bg-muted/30 hover:bg-muted/50 transition-colors group/achievement"
                             variants={{
                               hidden: { opacity: 0, x: -20 },
@@ -144,20 +151,6 @@ export function EducationTimeline({ items }: EducationTimelineProps) {
               </Card>
             </div>
 
-            {/* Floating year badge */}
-            <motion.div
-              className={`absolute top-8 ${
-                index % 2 === 0 
-                  ? "right-0 md:left-0 md:right-auto" 
-                  : "right-0"
-              } bg-gradient-to-r from-accent to-secondary text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg z-10`}
-              initial={{ opacity: 0, scale: 0.8, rotate: -5 }}
-              whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
-              transition={{ delay: index * 0.3 + 0.4, type: "spring" }}
-              viewport={{ once: true }}
-            >
-              {item.endDate.split('-')[0]}
-            </motion.div>
           </motion.div>
         ))}
       </div>

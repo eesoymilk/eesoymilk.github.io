@@ -17,8 +17,8 @@ export function Education() {
               Educational <span className="text-gradient-milk">Journey</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              My academic foundation and continuous learning path that shaped
-              my expertise in technology and research.
+              My academic foundation and continuous learning path that shaped my
+              expertise in technology and research.
             </p>
           </div>
         </FadeIn>
@@ -52,9 +52,10 @@ export function Education() {
             <div className="max-w-4xl mx-auto p-8 rounded-2xl bg-gradient-to-r from-primary/5 via-secondary/5 to-accent/5">
               <h3 className="text-2xl font-bold mb-4">Learning Philosophy</h3>
               <blockquote className="text-lg text-muted-foreground italic">
-                "Education is not just about acquiring knowledge, but about developing
-                the ability to think critically, solve complex problems, and adapt to
-                an ever-changing technological landscape."
+                "Education is not just about acquiring knowledge, but about
+                developing the ability to think critically, solve complex
+                problems, and adapt to an ever-changing technological
+                landscape."
               </blockquote>
             </div>
           </div>

@@ -34,15 +34,15 @@ export function ScrollIndicator({ className = "" }: ScrollIndicatorProps) {
       onClick={handleScrollDown}
       className={`group flex flex-col items-center justify-center cursor-pointer ${className}`}
       initial={{ opacity: 0, y: 10 }}
-      animate={{ 
-        opacity: isVisible ? 1 : 0, 
-        y: isVisible ? 0 : 20 
+      animate={{
+        opacity: isVisible ? 1 : 0,
+        y: isVisible ? 0 : 20,
       }}
-      transition={{ 
+      transition={{
         delay: 2,
         duration: 0.8,
         opacity: { duration: 0.4 },
-        y: { duration: 0.4 }
+        y: { duration: 0.4 },
       }}
       whileHover={{ scale: isVisible ? 1.1 : 1 }}
       whileTap={{ scale: isVisible ? 0.95 : 1 }}

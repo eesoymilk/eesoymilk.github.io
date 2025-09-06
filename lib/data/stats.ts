@@ -1,10 +1,17 @@
-import type { Stats } from "@/types";
+export interface Stats {
+  yearsOfExperience: number;
+  projectsCompleted: number;
+  researchPapers: number;
+  technologiesMastered: number;
+  happyClients: number;
+  awardsReceived: number;
+}
 
 export const stats: Stats = {
-  projectsCompleted: 8,
-  yearsOfExperience: 3,
-  technologiesUsed: 18,
-  publicationsCount: 2,
-  githubStars: 45,
-  githubContributions: 420,
+  yearsOfExperience: 4,
+  projectsCompleted: 15,
+  researchPapers: 3,
+  technologiesMastered: 25,
+  happyClients: 8,
+  awardsReceived: 2,
 };

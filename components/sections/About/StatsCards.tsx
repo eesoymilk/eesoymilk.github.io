@@ -46,14 +46,14 @@ const statCards: StatCard[] = [
   },
 ];
 
-function AnimatedNumber({ 
-  value, 
-  suffix = "", 
-  duration = 2000 
-}: { 
-  value: number; 
-  suffix?: string; 
-  duration?: number; 
+function AnimatedNumber({
+  value,
+  suffix = "",
+  duration = 2000,
+}: {
+  value: number;
+  suffix?: string;
+  duration?: number;
 }) {
   const [displayValue, setDisplayValue] = useState(0);
   const [ref, inView] = useInView({ threshold: 0.3, triggerOnce: true });
@@ -65,10 +65,10 @@ function AnimatedNumber({
     const animate = () => {
       const elapsed = Date.now() - startTime;
       const progress = Math.min(elapsed / duration, 1);
-      
+
       // Easing function for smooth animation
       const easeOutQuart = 1 - Math.pow(1 - progress, 4);
-      
+
       setDisplayValue(Math.floor(value * easeOutQuart));
 
       if (progress < 1) {
@@ -83,7 +83,8 @@ function AnimatedNumber({
 
   return (
     <span ref={ref}>
-      {displayValue}{suffix}
+      {displayValue}
+      {suffix}
     </span>
   );
 }
@@ -96,17 +97,19 @@ export function StatsCards() {
           key={stat.label}
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ 
-            duration: 0.6, 
+          transition={{
+            duration: 0.6,
             delay: index * 0.1,
-            ease: "easeOut"
+            ease: "easeOut",
           }}
           viewport={{ once: true, margin: "-50px" }}
         >
           <Card className="group hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
             <CardContent className="p-6 text-center">
               {/* Icon with gradient background */}
-              <div className={`w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-r ${stat.gradient} flex items-center justify-center text-2xl shadow-lg`}>
+              <div
+                className={`w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-r ${stat.gradient} flex items-center justify-center text-2xl shadow-lg`}
+              >
                 {stat.icon}
               </div>
 

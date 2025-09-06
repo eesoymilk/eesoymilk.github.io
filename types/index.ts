@@ -49,7 +49,7 @@ export interface Project {
   description: string;
   longDescription: string;
   technologies: string[];
-  category: "research" | "web" | "mobile" | "ai" | "tool";
+  category: "research" | "web" | "ai" | "tool" | "school";
   status: "completed" | "in-progress" | "planned";
   startDate: string;
   endDate?: string;

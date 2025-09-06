@@ -26,10 +26,10 @@ export function Timeline({ items }: TimelineProps) {
             }`}
             initial={{ opacity: 0, x: index % 2 === 0 ? 50 : -50 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ 
-              duration: 0.6, 
+            transition={{
+              duration: 0.6,
               delay: index * 0.2,
-              ease: "easeOut"
+              ease: "easeOut",
             }}
             viewport={{ once: true, margin: "-100px" }}
           >
@@ -39,9 +39,11 @@ export function Timeline({ items }: TimelineProps) {
             </div>
 
             {/* Content card */}
-            <div className={`flex-1 ml-12 md:ml-0 ${
-              index % 2 === 0 ? "md:mr-8" : "md:ml-8"
-            }`}>
+            <div
+              className={`flex-1 ml-12 md:ml-0 ${
+                index % 2 === 0 ? "md:mr-8" : "md:ml-8"
+              }`}
+            >
               <Card className="group hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-l-4 border-l-primary">
                 <CardHeader>
                   <div className="flex items-start justify-between flex-wrap gap-2">
@@ -50,10 +52,12 @@ export function Timeline({ items }: TimelineProps) {
                       <CardTitle className="text-xl">{item.degree}</CardTitle>
                     </div>
                     <Badge variant="secondary" className="text-xs">
-                      {item.endDate === item.startDate ? item.endDate : `${item.startDate} - ${item.endDate}`}
+                      {item.endDate === item.startDate
+                        ? item.endDate
+                        : `${item.startDate} - ${item.endDate}`}
                     </Badge>
                   </div>
-                  
+
                   <div className="space-y-2">
                     <p className="text-lg font-semibold text-secondary">
                       {item.field}

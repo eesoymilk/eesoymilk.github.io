@@ -12,7 +12,7 @@ import { TypewriterText } from "./TypewriterText";
 const roles = [
   "Graduate Student at UCLA",
   "Software Engineer",
-  "AI/ML Researcher", 
+  "AI/ML Researcher",
   "Full-Stack Developer",
   "Human-Centered AI Engineer",
 ];
@@ -20,7 +20,7 @@ const roles = [
 const techStack = [
   "React",
   "Nuxt.js",
-  "TypeScript", 
+  "TypeScript",
   "Python",
   "Go",
   "Unity",
@@ -45,7 +45,7 @@ const socialLinks = [
     icon: Linkedin,
     label: "LinkedIn",
   },
-  { href: "mailto:contact@eesoymilk.dev", icon: Mail, label: "Email" },
+  { href: "mailto:eesoymilk@gmail.com", icon: Mail, label: "Email" },
 ];
 
 export function Hero() {
@@ -64,14 +64,14 @@ export function Hero() {
       <div className="container mx-auto px-6 text-center relative z-10">
         <div className="max-w-4xl mx-auto space-y-8">
           {/* Greeting */}
-          <FadeIn delay={0.2}>
+          <FadeIn delay={0.2} threshold={0}>
             <p className="text-lg text-muted-foreground font-medium tracking-wide">
               Hello, I'm
             </p>
           </FadeIn>
 
           {/* Name with gradient */}
-          <FadeIn delay={0.4}>
+          <FadeIn delay={0.4} threshold={0}>
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight">
               <span className="text-gradient-primary">Yu-Wei</span>{" "}
               <span className="text-gradient-accent">Chang</span>
@@ -79,7 +79,7 @@ export function Hero() {
           </FadeIn>
 
           {/* Subtitle with milk theme */}
-          <FadeIn delay={0.6}>
+          <FadeIn delay={0.6} threshold={0}>
             <p className="text-xl md:text-2xl text-muted-foreground">
               also known as{" "}
               <span className="text-gradient-milk font-semibold">
@@ -89,7 +89,7 @@ export function Hero() {
           </FadeIn>
 
           {/* Dynamic role with typewriter effect */}
-          <FadeIn delay={0.8}>
+          <FadeIn delay={0.8} threshold={0}>
             <div className="h-16 flex items-center justify-center">
               <h2 className="text-2xl md:text-4xl font-semibold text-foreground">
                 <TypewriterText texts={roles} />
@@ -98,7 +98,7 @@ export function Hero() {
           </FadeIn>
 
           {/* Description */}
-          <FadeIn delay={1.0}>
+          <FadeIn delay={1.0} threshold={0}>
             <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
               Designing{" "}
               <span className="text-primary font-medium">
@@ -146,7 +146,7 @@ export function Hero() {
           </Stagger>
 
           {/* Social links */}
-          <FadeIn delay={1.4}>
+          <FadeIn delay={1.4} threshold={0}>
             <div className="flex items-center justify-center gap-6 pt-8">
               {socialLinks.map(({ href, icon: Icon, label }) => (
                 <motion.a

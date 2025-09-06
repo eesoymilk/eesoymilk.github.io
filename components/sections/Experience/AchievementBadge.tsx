@@ -25,8 +25,8 @@ export function AchievementBadge({ text, delay = 0 }: AchievementBadgeProps) {
       >
         <Star className="w-3 h-3 text-primary" />
       </motion.div>
-      
-      <motion.p 
+
+      <motion.p
         className="text-sm text-muted-foreground leading-relaxed group-hover:text-foreground transition-colors"
         initial={{ opacity: 0.8 }}
         whileInView={{ opacity: 1 }}

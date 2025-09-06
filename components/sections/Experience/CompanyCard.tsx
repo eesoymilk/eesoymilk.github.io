@@ -17,49 +17,48 @@ interface CompanyCardProps {
   alignRight?: boolean;
 }
 
-export function CompanyCard({ 
-  experience, 
-  isExpanded, 
-  onToggle, 
-  alignRight = false 
+export function CompanyCard({
+  experience,
+  isExpanded,
+  onToggle,
+  alignRight = false,
 }: CompanyCardProps) {
   const isCurrentRole = !experience.endDate;
 
   return (
     <motion.div
-      className="w-full max-w-2xl"
+      className="w-full max-w-full"
       layout
       transition={{ type: "spring", stiffness: 300, damping: 30 }}
     >
-      <Card className={cn(
-        "group hover:shadow-xl transition-all duration-300 cursor-pointer overflow-hidden",
-        "border-l-4 border-l-primary bg-gradient-to-br from-background to-muted/20",
-        alignRight && "md:ml-auto"
-      )}>
+      <Card
+        className={cn(
+          "relative group hover:shadow-xl transition-all duration-300 cursor-pointer overflow-hidden",
+          "border-l-4 border-l-primary bg-gradient-to-br from-background to-muted/20",
+          alignRight && "md:ml-auto",
+        )}
+      >
         {/* Glass effect overlay */}
         <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent pointer-events-none" />
-        
-        <CardHeader 
-          className="relative pb-4"
-          onClick={onToggle}
-        >
-          <div className="flex items-start justify-between">
-            <div className="flex-1">
+
+        <CardHeader className="relative pb-4" onClick={onToggle}>
+          <div className="flex items-start justify-between gap-4">
+            <div className="flex-1 min-w-0">
               {/* Company info */}
-              <div className="flex items-center gap-3 mb-2">
-                <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
+              <div className="flex items-start gap-3 mb-2">
+                <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
                   <Building2 className="w-5 h-5 text-primary" />
                 </div>
-                <div>
-                  <CardTitle className="text-xl group-hover:text-primary transition-colors">
+                <div className="flex-1 min-w-0">
+                  <CardTitle className="text-xl group-hover:text-primary transition-colors break-words">
                     {experience.position}
                   </CardTitle>
-                  <p className="text-lg font-semibold text-secondary">
+                  <p className="text-lg font-semibold text-secondary break-words">
                     {experience.company}
                   </p>
                 </div>
                 {isCurrentRole && (
-                  <Badge className="bg-green-500/10 text-green-600 border-green-500/20">
+                  <Badge className="bg-green-500/10 text-green-600 border-green-500/20 flex-shrink-0">
                     Current
                   </Badge>
                 )}
@@ -86,11 +85,7 @@ export function CompanyCard({
             </div>
 
             {/* Expand button */}
-            <Button
-              variant="ghost"
-              size="sm"
-              className="ml-4 flex-shrink-0"
-            >
+            <Button variant="ghost" size="sm" className="flex-shrink-0">
               <motion.div
                 animate={{ rotate: isExpanded ? 180 : 0 }}
                 transition={{ duration: 0.2 }}
@@ -116,7 +111,7 @@ export function CompanyCard({
                     <span className="w-2 h-2 bg-primary rounded-full"></span>
                     Key Achievements
                   </h4>
-                  <motion.div 
+                  <motion.div
                     className="space-y-3"
                     initial="hidden"
                     animate="visible"
@@ -131,11 +126,11 @@ export function CompanyCard({
                       },
                     }}
                   >
-                    {experience.achievements.map((achievement, index) => (
+                    {experience.achievements.map((achievement) => (
                       <AchievementBadge
-                        key={index}
+                        key={achievement}
                         text={achievement}
-                        delay={index * 0.1}
+                        delay={experience.achievements.indexOf(achievement) * 0.1}
                       />
                     ))}
                   </motion.div>
@@ -147,7 +142,7 @@ export function CompanyCard({
                     <span className="w-2 h-2 bg-secondary rounded-full"></span>
                     Technologies Used
                   </h4>
-                  <motion.div 
+                  <motion.div
                     className="flex flex-wrap gap-2"
                     initial="hidden"
                     animate="visible"
@@ -162,7 +157,7 @@ export function CompanyCard({
                       },
                     }}
                   >
-                    {experience.technologies.map((tech, index) => (
+                    {experience.technologies.map((tech) => (
                       <motion.div
                         key={tech}
                         variants={{
@@ -170,8 +165,8 @@ export function CompanyCard({
                           visible: { opacity: 1, scale: 1, y: 0 },
                         }}
                       >
-                        <Badge 
-                          variant="outline" 
+                        <Badge
+                          variant="outline"
                           className="text-xs bg-background/50 hover:bg-primary/10 transition-colors"
                         >
                           {tech}

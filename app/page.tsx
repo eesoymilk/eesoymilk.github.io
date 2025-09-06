@@ -1,9 +1,11 @@
 import { Navigation } from "@/components/layout/Navigation";
+import { Footer } from "@/components/layout/Footer";
 import { Hero } from "@/components/sections/Hero";
 import { About } from "@/components/sections/About";
 import { Education } from "@/components/sections/Education";
 import { Research } from "@/components/sections/Research";
 import { Experience } from "@/components/sections/Experience";
+import { Contact } from "@/components/sections/Contact";
 
 export default function Home() {
   return (
@@ -38,22 +40,14 @@ export default function Home() {
           <Experience />
         </section>
 
-        {/* Skills section placeholder */}
-        <section id="skills" className="py-24">
-          <div className="container mx-auto px-6 text-center">
-            <h2 className="text-4xl font-bold mb-8">Skills</h2>
-            <p className="text-muted-foreground">Coming soon...</p>
-          </div>
-        </section>
-
-        {/* Contact section placeholder */}
-        <section id="contact" className="py-24">
-          <div className="container mx-auto px-6 text-center">
-            <h2 className="text-4xl font-bold mb-8">Contact</h2>
-            <p className="text-muted-foreground">Coming soon...</p>
-          </div>
+        {/* Contact section */}
+        <section id="contact">
+          <Contact />
         </section>
       </div>
+
+      {/* Footer */}
+      <Footer />
     </div>
   );
 }

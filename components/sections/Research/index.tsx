@@ -13,12 +13,15 @@ export function Research() {
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
-  const filteredProjects = selectedCategory === "all" 
-    ? projects 
-    : projects.filter(project => project.category === selectedCategory);
+  const filteredProjects =
+    selectedCategory === "all"
+      ? projects
+      : projects.filter((project) => project.category === selectedCategory);
 
-  const featuredProjects = filteredProjects.filter(project => project.featured);
-  const otherProjects = filteredProjects.filter(project => !project.featured);
+  const featuredProjects = filteredProjects.filter(
+    (project) => project.featured,
+  );
+  const otherProjects = filteredProjects.filter((project) => !project.featured);
 
   return (
     <section className="py-24 md:py-32">
@@ -27,7 +30,8 @@ export function Research() {
         <FadeIn>
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              Research & <span className="text-gradient-secondary">Projects</span>
+              Research &{" "}
+              <span className="text-gradient-secondary">Projects</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               Exploring the intersection of research and development through
@@ -53,10 +57,10 @@ export function Research() {
                 Featured Projects
               </h3>
             </FadeIn>
-            
+
             <Stagger staggerDelay={0.1}>
-              <ProjectGrid 
-                projects={featuredProjects} 
+              <ProjectGrid
+                projects={featuredProjects}
                 variant="featured"
                 onProjectSelect={setSelectedProject}
               />
@@ -72,10 +76,10 @@ export function Research() {
                 Other Projects
               </h3>
             </FadeIn>
-            
+
             <Stagger staggerDelay={0.1}>
-              <ProjectGrid 
-                projects={otherProjects} 
+              <ProjectGrid
+                projects={otherProjects}
                 variant="standard"
                 onProjectSelect={setSelectedProject}
               />
@@ -92,7 +96,8 @@ export function Research() {
               </div>
               <h3 className="text-xl font-semibold mb-2">No projects found</h3>
               <p className="text-muted-foreground">
-                No projects match the selected category. Try selecting a different filter.
+                No projects match the selected category. Try selecting a
+                different filter.
               </p>
             </div>
           </FadeIn>

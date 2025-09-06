@@ -13,7 +13,8 @@ export function Experience() {
         <FadeIn>
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              Professional <span className="text-gradient-accent">Experience</span>
+              Professional{" "}
+              <span className="text-gradient-accent">Experience</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               A journey through diverse roles and challenging projects that have
@@ -34,11 +35,9 @@ export function Experience() {
               <div className="text-3xl font-bold text-primary">
                 {experiences.length}+
               </div>
-              <div className="text-sm text-muted-foreground">
-                Companies
-              </div>
+              <div className="text-sm text-muted-foreground">Companies</div>
             </div>
-            
+
             <div className="space-y-2">
               <div className="text-3xl font-bold text-secondary">
                 {new Date().getFullYear() - 2021}+
@@ -47,20 +46,16 @@ export function Experience() {
                 Years Experience
               </div>
             </div>
-            
+
             <div className="space-y-2">
-              <div className="text-3xl font-bold text-accent">
-                50+
-              </div>
+              <div className="text-3xl font-bold text-accent">50+</div>
               <div className="text-sm text-muted-foreground">
                 Projects Delivered
               </div>
             </div>
-            
+
             <div className="space-y-2">
-              <div className="text-3xl font-bold text-green-500">
-                15+
-              </div>
+              <div className="text-3xl font-bold text-green-500">15+</div>
               <div className="text-sm text-muted-foreground">
                 Technologies Mastered
               </div>

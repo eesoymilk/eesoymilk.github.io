@@ -13,7 +13,6 @@ const navigationItems = [
   { href: "#education", label: "Education" },
   { href: "#research", label: "Research" },
   { href: "#experience", label: "Experience" },
-  { href: "#skills", label: "Skills" },
   { href: "#contact", label: "Contact" },
 ];
 
@@ -21,15 +20,31 @@ export function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("hero");
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const [isMounted, setIsMounted] = useState(false);
+
+  // Handle mounting
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   // Handle scroll effects
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
 
+      // Calculate scroll progress
+      const scrollTop = window.scrollY;
+      const docHeight = document.body.scrollHeight - window.innerHeight;
+      const progress = Math.min(scrollTop / docHeight, 1);
+      setScrollProgress(progress);
+
       // Determine active section based on scroll position
-      const sections = ["hero", ...navigationItems.map(item => item.href.slice(1))];
-      const currentSection = sections.find(section => {
+      const sections = [
+        "hero",
+        ...navigationItems.map((item) => item.href.slice(1)),
+      ];
+      const currentSection = sections.find((section) => {
         const element = document.getElementById(section);
         if (element) {
           const rect = element.getBoundingClientRect();
@@ -43,21 +58,30 @@ export function Navigation() {
       }
     };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+    if (isMounted) {
+      window.addEventListener("scroll", handleScroll);
+      // Initialize scroll progress on mount
+      handleScroll();
+    }
+
+    return () => {
+      if (isMounted) {
+        window.removeEventListener("scroll", handleScroll);
+      }
+    };
+  }, [isMounted]);
 
   const scrollToSection = (href: string) => {
     const targetId = href === "#hero" ? "hero" : href.slice(1);
     const element = document.getElementById(targetId);
-    
+
     if (element) {
-      element.scrollIntoView({ 
+      element.scrollIntoView({
         behavior: "smooth",
-        block: "start"
+        block: "start",
       });
     }
-    
+
     setIsMobileMenuOpen(false);
   };
 
@@ -72,9 +96,9 @@ export function Navigation() {
       <motion.header
         className={cn(
           "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-          isScrolled 
-            ? "bg-background/80 backdrop-blur-md border-b border-border shadow-sm" 
-            : "bg-transparent"
+          isScrolled
+            ? "bg-background/80 backdrop-blur-md border-b border-border shadow-sm"
+            : "bg-transparent",
         )}
         initial={{ y: -100 }}
         animate={{ y: 0 }}
@@ -102,7 +126,7 @@ export function Navigation() {
                     "text-sm font-medium transition-colors hover:text-primary",
                     activeSection === item.href.slice(1)
                       ? "text-primary"
-                      : "text-muted-foreground"
+                      : "text-muted-foreground",
                   )}
                   whileHover={{ y: -2 }}
                   whileTap={{ y: 0 }}
@@ -115,7 +139,7 @@ export function Navigation() {
             {/* Right side controls */}
             <div className="flex items-center space-x-4">
               <ThemeToggle />
-              
+
               {/* Mobile menu button */}
               <Button
                 variant="ghost"
@@ -142,9 +166,7 @@ export function Navigation() {
         <motion.div
           className="absolute bottom-0 left-0 h-0.5 bg-primary origin-left"
           style={{
-            scaleX: typeof window !== "undefined" 
-              ? Math.min(window.scrollY / (document.body.scrollHeight - window.innerHeight), 1)
-              : 0
+            scaleX: scrollProgress,
           }}
           transition={{ type: "spring", stiffness: 400, damping: 40 }}
         />
@@ -154,7 +176,7 @@ export function Navigation() {
       <motion.div
         className={cn(
           "fixed inset-0 z-40 md:hidden",
-          isMobileMenuOpen ? "pointer-events-auto" : "pointer-events-none"
+          isMobileMenuOpen ? "pointer-events-auto" : "pointer-events-none",
         )}
         initial={{ opacity: 0 }}
         animate={{ opacity: isMobileMenuOpen ? 1 : 0 }}
@@ -172,10 +194,10 @@ export function Navigation() {
         <motion.div
           className="absolute top-20 right-4 left-4 bg-background border rounded-lg shadow-lg p-6"
           initial={{ opacity: 0, scale: 0.95, y: -20 }}
-          animate={{ 
+          animate={{
             opacity: isMobileMenuOpen ? 1 : 0,
             scale: isMobileMenuOpen ? 1 : 0.95,
-            y: isMobileMenuOpen ? 0 : -20
+            y: isMobileMenuOpen ? 0 : -20,
           }}
           transition={{ type: "spring", stiffness: 300, damping: 30 }}
         >
@@ -188,16 +210,16 @@ export function Navigation() {
                   "block w-full text-left text-lg font-medium transition-colors hover:text-primary",
                   activeSection === item.href.slice(1)
                     ? "text-primary"
-                    : "text-muted-foreground"
+                    : "text-muted-foreground",
                 )}
                 initial={{ opacity: 0, x: -20 }}
-                animate={{ 
+                animate={{
                   opacity: isMobileMenuOpen ? 1 : 0,
-                  x: isMobileMenuOpen ? 0 : -20
+                  x: isMobileMenuOpen ? 0 : -20,
                 }}
-                transition={{ 
+                transition={{
                   delay: isMobileMenuOpen ? index * 0.1 : 0,
-                  duration: 0.2
+                  duration: 0.2,
                 }}
               >
                 {item.label}
