@@ -32,16 +32,16 @@ const statCards: StatCard[] = [
   },
   {
     label: "Technologies Used",
-    value: stats.technologiesUsed,
+    value: stats.technologiesMastered,
     suffix: "+",
     icon: "⚡",
     gradient: "from-accent to-accent/60",
   },
   {
-    label: "GitHub Contributions",
-    value: stats.githubContributions,
+    label: "Years Old",
+    value: 25,
     suffix: "+",
-    icon: "💻",
+    icon: "🎂",
     gradient: "from-green-500 to-green-400",
   },
 ];

@@ -32,7 +32,7 @@ export const personalInfo: PersonalInfo = {
   resumeUrl: "/documents/resume.pdf",
   philosophy: {
     quote:
-      "Technology should amplify human potential, not replace it. The best solutions are those that understand and enhance the human experience.",
-    author: "Yu-Wei Chang",
+      "I know I'm asking a lot, but the price of freedom is high, it always has been, and it's a price I'm willing to pay. And if I'm the only one, then so be it. But I'm willing to bet I'm not.",
+    author: "Steve Rogers",
   },
 };

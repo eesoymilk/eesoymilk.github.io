@@ -122,6 +122,9 @@ export function Hero() {
               <Button
                 size="lg"
                 className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold px-8 py-3"
+                onClick={() => {
+                  window.location.href = "#research";
+                }}
               >
                 View My Work
               </Button>
@@ -130,18 +133,21 @@ export function Hero() {
                 variant="outline"
                 size="lg"
                 className="border-2 hover:bg-primary/5 px-8 py-3"
+                onClick={() => {
+                  window.location.href = "#contact";
+                }}
               >
                 Contact Me
               </Button>
 
-              <Button
+              {/* <Button
                 variant="ghost"
                 size="lg"
                 className="hover:bg-secondary/10 px-8 py-3"
               >
                 <Download className="w-4 h-4 mr-2" />
                 Download CV
-              </Button>
+              </Button> */}
             </div>
           </Stagger>
 

@@ -8,7 +8,7 @@ export interface Stats {
 }
 
 export const stats: Stats = {
-  yearsOfExperience: 4,
+  yearsOfExperience: 5,
   projectsCompleted: 15,
   researchPapers: 3,
   technologiesMastered: 25,
