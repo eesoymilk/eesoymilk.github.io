@@ -8,13 +8,11 @@ import { ProjectCard } from "./ProjectCard";
 interface ProjectGridProps {
   projects: Project[];
   variant: "featured" | "standard";
-  onProjectSelect: (project: Project) => void;
 }
 
 export function ProjectGrid({
   projects,
   variant,
-  onProjectSelect,
 }: ProjectGridProps) {
   if (variant === "featured") {
     return (
@@ -50,7 +48,6 @@ export function ProjectGrid({
               <ProjectCard
                 project={project}
                 variant={index % 6 === 0 ? "large" : "standard"}
-                onSelect={() => onProjectSelect(project)}
               />
             </motion.div>
           );
@@ -78,7 +75,6 @@ export function ProjectGrid({
           <ProjectCard
             project={project}
             variant="standard"
-            onSelect={() => onProjectSelect(project)}
           />
         </motion.div>
       ))}

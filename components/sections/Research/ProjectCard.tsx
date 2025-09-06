@@ -12,7 +12,6 @@ import type { Project } from "@/types";
 interface ProjectCardProps {
   project: Project;
   variant: "standard" | "large";
-  onSelect: () => void;
 }
 
 const statusColors = {
@@ -30,7 +29,7 @@ const categoryColors = {
   school: "bg-indigo-500/10 text-indigo-600",
 };
 
-export function ProjectCard({ project, variant, onSelect }: ProjectCardProps) {
+export function ProjectCard({ project, variant }: ProjectCardProps) {
   const isLarge = variant === "large";
 
   return (
@@ -185,13 +184,6 @@ export function ProjectCard({ project, variant, onSelect }: ProjectCardProps) {
               </Button>
             )}
 
-            <Button
-              size="sm"
-              className="ml-auto bg-primary/10 hover:bg-primary text-primary hover:text-primary-foreground text-xs px-3 py-1.5 h-auto flex-shrink-0"
-              onClick={onSelect}
-            >
-              Learn More
-            </Button>
           </div>
         </CardContent>
 

@@ -5,13 +5,11 @@ import { useState } from "react";
 import { FadeIn } from "@/components/animations/FadeIn";
 import { Stagger } from "@/components/animations/Stagger";
 import { projects, projectCategories } from "@/lib/data/projects";
-import type { Project } from "@/types";
 import { FilterBar } from "./FilterBar";
 import { ProjectGrid } from "./ProjectGrid";
 
 export function Research() {
   const [selectedCategory, setSelectedCategory] = useState("all");
-  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
   const filteredProjects =
     selectedCategory === "all"
@@ -62,7 +60,6 @@ export function Research() {
               <ProjectGrid
                 projects={featuredProjects}
                 variant="featured"
-                onProjectSelect={setSelectedProject}
               />
             </Stagger>
           </div>
@@ -81,7 +78,6 @@ export function Research() {
               <ProjectGrid
                 projects={otherProjects}
                 variant="standard"
-                onProjectSelect={setSelectedProject}
               />
             </Stagger>
           </div>
@@ -103,8 +99,6 @@ export function Research() {
           </FadeIn>
         )}
 
-        {/* Project Modal would go here */}
-        {/* TODO: Implement ProjectModal component */}
       </div>
     </section>
   );
