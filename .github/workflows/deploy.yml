@@ -63,9 +63,6 @@ jobs:
         env:
           GITHUB_ACTIONS: true
 
-      - name: Check output
-        run: ls -la .next
-
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
