@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
 interface StaggerProps {
@@ -21,7 +21,7 @@ export function Stagger({
     triggerOnce: true,
   });
 
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: {},
     visible: {
       transition: {
@@ -30,7 +30,7 @@ export function Stagger({
     },
   };
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: {
       opacity: 0,
       y: 20,
@@ -38,10 +38,6 @@ export function Stagger({
     visible: {
       opacity: 1,
       y: 0,
-      transition: {
-        duration: 0.6,
-        ease: [0.6, -0.05, 0.01, 0.99],
-      },
     },
   };
 
@@ -55,7 +51,14 @@ export function Stagger({
     >
       {Array.isArray(children)
         ? children.map((child, index) => (
-            <motion.div key={`stagger-item-${index}`} variants={itemVariants}>
+            <motion.div 
+              key={`stagger-item-${index}`} 
+              variants={itemVariants}
+              transition={{
+                duration: 0.6,
+                ease: "easeOut",
+              }}
+            >
               {child}
             </motion.div>
           ))
