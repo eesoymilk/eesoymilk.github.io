@@ -8,35 +8,9 @@ import { Button } from "@/components/ui/button";
 import { FloatingBubbles } from "./FloatingBubbles";
 import { ScrollIndicator } from "./ScrollIndicator";
 import { TypewriterText } from "./TypewriterText";
-
-const roles = [
-  "Graduate Student at UCLA",
-  "Software Engineer",
-  "AI/ML Researcher",
-  "Full-Stack Developer",
-  "Human-Centered AI Engineer",
-];
-
-const techStack = [
-  "React",
-  "Nuxt.js",
-  "TypeScript",
-  "Python",
-  "Go",
-  "Unity",
-  "C/C++",
-  "PostgreSQL",
-  "Node.js",
-  "TailwindCSS",
-  "ChatGPT API",
-  "DALL-E 3",
-  "Machine Learning",
-  "Computer Vision",
-  "VR Development",
-  "Motion Tracking",
-  "Vector Databases",
-  "Blockchain Analytics",
-];
+import { techs } from "@/lib/data/techs";
+import { personalInfo } from "@/lib/data/personal";
+import { HeroDescription } from "./Description";
 
 const socialLinks = [
   { href: "https://github.com/eesoymilk", icon: Github, label: "GitHub" },
@@ -59,7 +33,7 @@ export function Hero() {
       </div>
 
       {/* Floating tech stack bubbles */}
-      <FloatingBubbles skills={techStack} />
+      <FloatingBubbles skills={techs} />
 
       <div className="container mx-auto px-6 text-center relative z-10">
         <div className="max-w-4xl mx-auto space-y-8">
@@ -73,8 +47,12 @@ export function Hero() {
           {/* Name with gradient */}
           <FadeIn delay={0.4} threshold={0}>
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight">
-              <span className="text-gradient-primary">Yu-Wei</span>{" "}
-              <span className="text-gradient-accent">Chang</span>
+              <span className="text-gradient-primary">
+                {personalInfo.firstName}
+              </span>{" "}
+              <span className="text-gradient-accent">
+                {personalInfo.lastName}
+              </span>
             </h1>
           </FadeIn>
 
@@ -83,7 +61,7 @@ export function Hero() {
             <p className="text-xl md:text-2xl text-muted-foreground">
               also known as{" "}
               <span className="text-gradient-milk font-semibold">
-                eesoymilk
+                {personalInfo.nickname}
               </span>
             </p>
           </FadeIn>
@@ -92,28 +70,14 @@ export function Hero() {
           <FadeIn delay={0.8} threshold={0}>
             <div className="h-16 flex items-center justify-center">
               <h2 className="text-2xl md:text-4xl font-semibold text-foreground">
-                <TypewriterText texts={roles} />
+                <TypewriterText texts={personalInfo.roles} />
               </h2>
             </div>
           </FadeIn>
 
           {/* Description */}
           <FadeIn delay={1.0} threshold={0}>
-            <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-              Designing{" "}
-              <span className="text-primary font-medium">
-                human-centered AI systems
-              </span>{" "}
-              at UCLA while building{" "}
-              <span className="text-secondary font-medium">
-                full-stack applications
-              </span>{" "}
-              that solve real-world problems. From{" "}
-              <span className="text-accent font-medium">
-                robotic assistance for wheelchair users
-              </span>{" "}
-              to business process optimization.
-            </p>
+            <HeroDescription />
           </FadeIn>
 
           {/* Action buttons */}

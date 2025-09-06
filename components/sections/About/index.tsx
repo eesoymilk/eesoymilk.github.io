@@ -5,8 +5,8 @@ import Image from "next/image";
 import { FadeIn } from "@/components/animations/FadeIn";
 import { personalInfo } from "@/lib/data/personal";
 import { stats } from "@/lib/data/stats";
-import { Philosophy } from "./Philosophy";
 import { StatsCards } from "./StatsCards";
+import { Philosophy } from "./Philosophy";
 
 export function About() {
   return (

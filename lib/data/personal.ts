@@ -1,7 +1,10 @@
 export interface PersonalInfo {
+  firstName: string;
+  lastName: string;
   name: string;
+  nickname: string;
   title: string;
-  roles: string[]; // For typewriter effect
+  roles: string[];
   bio: string;
   location: string;
   email: string;
@@ -15,7 +18,10 @@ export interface PersonalInfo {
 }
 
 export const personalInfo: PersonalInfo = {
+  firstName: "Yu-Wei",
+  lastName: "Chang",
   name: "Yu-Wei Chang",
+  nickname: "eesoymilk",
   title: "Researcher & Developer",
   roles: [
     "Graduate Student at UCLA",
