@@ -124,50 +124,28 @@ export function FloatingBubbles({
             initial={{
               x: 0,
               y: 0,
-              opacity: config.baseOpacity,
-              scale: config.baseScale,
+              opacity: 0,
+              scale: 0,
             }}
             animate={{
-              x: config.animateX.map((x) => `${x - config.startX}%`),
-              y: config.animateY.map((y) => `${y - config.startY}%`),
-              opacity: [
-                config.baseOpacity,
-                config.baseOpacity + 0.3,
-                config.baseOpacity + 0.1,
-                config.baseOpacity - 0.1,
-                config.baseOpacity,
-              ],
-              scale: [
-                config.baseScale,
-                config.baseScale + 0.2,
-                config.baseScale + 0.1,
-                config.baseScale - 0.1,
-                config.baseScale,
-              ],
+              x: [0, (config.animateX[0] - config.startX) * 2, 0],
+              y: [0, (config.animateY[0] - config.startY) * 2, 0],
+              opacity: [config.baseOpacity, config.baseOpacity + 0.2, config.baseOpacity],
+              scale: [config.baseScale, config.baseScale + 0.1, config.baseScale],
             }}
             transition={{
               duration: config.duration,
               repeat: Infinity,
-              repeatType: "loop",
+              repeatType: "reverse",
               delay: config.delay,
               ease: "easeInOut",
-              times: config.animateX.map(
-                (_, i) => i / (config.animateX.length - 1),
-              ),
             }}
             whileHover={{
-              scale: config.baseScale + 0.3,
+              scale: config.baseScale + 0.2,
               opacity: 1,
               transition: {
                 duration: 0.3,
-                type: "spring",
-                stiffness: 300,
-                damping: 20,
               },
-            }}
-            whileTap={{
-              scale: config.baseScale - 0.1,
-              transition: { duration: 0.1 },
             }}
             style={{
               left: `${config.startX}%`,

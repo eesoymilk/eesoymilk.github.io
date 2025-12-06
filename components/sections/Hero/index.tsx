@@ -27,9 +27,9 @@ export function Hero() {
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Subtle background gradient */}
       <div className="absolute inset-0 opacity-20">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-secondary/5 rounded-full blur-3xl"></div>
-        <div className="absolute top-1/2 right-1/3 w-64 h-64 bg-accent/5 rounded-full blur-3xl"></div>
+        <div className="top-1/4 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl"></div>
+        <div className="bottom-1/4 right-1/4 w-80 h-80 bg-secondary/5 rounded-full blur-3xl"></div>
+        <div className="top-1/2 right-1/3 w-64 h-64 bg-accent/5 rounded-full blur-3xl"></div>
       </div>
 
       {/* Floating tech stack bubbles */}
@@ -37,13 +37,12 @@ export function Hero() {
 
       <div className="container mx-auto px-6 text-center relative z-10">
         <div className="max-w-4xl mx-auto space-y-8">
-          {/* Greeting */}
+          Greeting
           <FadeIn delay={0.2} threshold={0}>
             <p className="text-lg text-muted-foreground font-medium tracking-wide">
               Hello, I'm
             </p>
           </FadeIn>
-
           {/* Name with gradient */}
           <FadeIn delay={0.4} threshold={0}>
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight">
@@ -55,7 +54,6 @@ export function Hero() {
               </span>
             </h1>
           </FadeIn>
-
           {/* Subtitle with milk theme */}
           <FadeIn delay={0.6} threshold={0}>
             <p className="text-xl md:text-2xl text-muted-foreground">
@@ -65,7 +63,6 @@ export function Hero() {
               </span>
             </p>
           </FadeIn>
-
           {/* Dynamic role with typewriter effect */}
           <FadeIn delay={0.8} threshold={0}>
             <div className="h-16 flex items-center justify-center">
@@ -74,12 +71,10 @@ export function Hero() {
               </h2>
             </div>
           </FadeIn>
-
           {/* Description */}
           <FadeIn delay={1.0} threshold={0}>
             <HeroDescription />
           </FadeIn>
-
           {/* Action buttons */}
           <Stagger staggerDelay={0.1}>
             <div className="flex flex-wrap items-center justify-center gap-4 pt-4">
@@ -114,7 +109,6 @@ export function Hero() {
               </Button> */}
             </div>
           </Stagger>
-
           {/* Social links */}
           <FadeIn delay={1.4} threshold={0}>
             <div className="flex items-center justify-center gap-6 pt-8">

@@ -54,7 +54,7 @@ export function Stagger({
       {Array.isArray(children)
         ? children.map((child, index) => (
             <motion.div
-              key={`stagger-motion-${index}-${Math.random()}`}
+              key={`stagger-motion-${index}`}
               variants={itemVariants}
               transition={{
                 duration: 0.6,

@@ -9,12 +9,12 @@ export const education: Education[] = [
     startDate: "2024-09",
     endDate: "2026-06",
     description:
-      "Design data‑driven approaches for scalable and personalized mobility technologies through human‑centered AI. Advised by Professor Yang Zhang.",
+      "Cumulative GPA: 3.86/4.0. Coursework: Neural Networks and Deep Learning, Neural Signal Processing, Linear Optimal Control.",
     achievements: [
-      "GPA: 3.86/4.00",
-      "Advised by Professor Yang Zhang",
-      "Focus on human‑centered AI for mobility technologies",
-      "Research in data‑driven personalized systems",
+      "GPA: 3.86/4.0",
+      "Coursework: Neural Networks and Deep Learning",
+      "Coursework: Neural Signal Processing",
+      "Coursework: Linear Optimal Control",
     ],
   },
   {
@@ -25,12 +25,12 @@ export const education: Education[] = [
     startDate: "2020-09",
     endDate: "2024-06",
     description:
-      "Strong foundation in electrical engineering with focus on digital systems and programming. Advised by Professor Ren‑Shuo Liu.",
+      "Cumulative GPA: 4.04/4.3. Coursework: Computer Vision, Machine Learning, Deep Reinforcement Learning, Algorithms, Control Systems, Computer Architecture.",
     achievements: [
-      "GPA: 4.04/4.30",
-      "Advised by Professor Ren‑Shuo Liu",
-      "Excellence in electrical engineering fundamentals",
-      "Strong programming and system design skills",
+      "GPA: 4.04/4.3",
+      "Coursework: Computer Vision, Machine Learning",
+      "Coursework: Deep Reinforcement Learning",
+      "Coursework: Algorithms, Control Systems",
     ],
   },
 ];

@@ -24,6 +24,11 @@ export default function Home() {
         <About />
       </section>
 
+      {/* Research section */}
+      <section id="research">
+        <Research />
+      </section>
+
       {/* Experience section */}
       <section id="experience">
         <Experience />
@@ -32,11 +37,6 @@ export default function Home() {
       {/* Education section */}
       <section id="education">
         <Education />
-      </section>
-
-      {/* Research section */}
-      <section id="research">
-        <Research />
       </section>
 
       {/* Contact section */}
