@@ -37,7 +37,6 @@ export function Hero() {
 
       <div className="container mx-auto px-6 text-center relative z-10">
         <div className="max-w-4xl mx-auto space-y-8">
-          Greeting
           <FadeIn delay={0.2} threshold={0}>
             <p className="text-lg text-muted-foreground font-medium tracking-wide">
               Hello, I'm
