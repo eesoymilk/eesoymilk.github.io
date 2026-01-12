@@ -8,10 +8,9 @@ export const education: Education[] = [
     field: "Electrical and Computer Engineering",
     startDate: "2024-09",
     endDate: "2026-06",
-    description:
-      "Cumulative GPA: 3.86/4.0. Graduate Teaching Assistant for Neural Networks & Deep Learning (ECE C147/C247), managing a 500-student course.",
+    description: "Cumulative GPA: 3.88/4.0. Graduate Teaching Assistant.",
     achievements: [
-      "GPA: 3.86/4.0",
+      "GPA: 3.88/4.0",
       "Graduate Teaching Assistant, Neural Networks & Deep Learning (ECE C147/C247)",
       "Managing a 500-student course, delivering weekly technical mentorship",
       "Developing discussion modules, designing exams, and evaluating projects",
