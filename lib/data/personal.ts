@@ -9,6 +9,7 @@ export interface PersonalInfo {
   location: string;
   email: string;
   phone?: string;
+  website: string;
   profileImage: string;
   profileImageDark: string;
   resumeUrl: string;
@@ -23,19 +24,21 @@ export const personalInfo: PersonalInfo = {
   lastName: "Chang",
   name: "Yu-Wei Chang",
   nickname: "eesoymilk",
-  title: "Multimodal AI & Systems Engineer",
+  title: "Multimodal AI & VLA Researcher",
   roles: [
-    "Multimodal AI Researcher",
-    "Systems Engineer",
     "Software Engineer",
-    "AI Engineer",
-    "Robotics Engineer",
+    "Multimodal AI Researcher",
+    "VLA Researcher",
+    "Embodied AI Researcher",
+    "Foundation Model Researcher",
+    "Robotics Researcher",
     "Graduate Student at UCLA",
   ],
   bio: "Pioneering embodied AI and VLA research at UCLA to bridge the gap between foundation models and physical world deployment. Architecting scalable systems that enable next-generation robotic autonomy and human-robot collaboration.",
   location: "Los Angeles, CA",
-  email: "ywchang@ucla.edu",
+  email: "eesoymilk@gmail.com",
   phone: "+1 (310) 280-6463",
+  website: "https://eesoymilk.github.io",
   profileImage: "/eesoymilk.webp",
   profileImageDark: "/eesoymilk-dark.webp",
   resumeUrl: "/documents/resume.pdf",

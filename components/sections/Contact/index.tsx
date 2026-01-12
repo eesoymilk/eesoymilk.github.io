@@ -1,14 +1,25 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { CheckCircle, Copy, Mail, MapPin, Phone } from "lucide-react";
+import {
+  CheckCircle,
+  Copy,
+  ExternalLink,
+  Github,
+  Mail,
+  MapPin,
+  Phone,
+} from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
 import { FadeIn } from "@/components/animations/FadeIn";
 import { Button } from "@/components/ui/button";
 import { personalInfo } from "@/lib/data/personal";
+import { getContactSocials } from "@/lib/data/socials";
 
 export function Contact() {
+  const socialLinks = getContactSocials();
+  const githubLink = socialLinks.find((s) => s.id === "github");
   const [copiedEmail, setCopiedEmail] = useState(false);
 
   const copyEmail = async () => {
@@ -23,7 +34,7 @@ export function Contact() {
   };
 
   return (
-    <section className="py-24 md:py-32">
+    <section className="py-12 md:py-16">
       <div className="container mx-auto px-6">
         <FadeIn>
           <div className="text-center mb-16">
@@ -79,19 +90,19 @@ export function Contact() {
                 {/* Social Links */}
                 {/* <div>
                   <h4 className="text-lg font-semibold mb-4">Follow Me</h4>
-                  <div className="flex gap-4">
-                    {socialLinks.map((social) => (
+                  <div className="flex flex-wrap gap-4">
+                    {socialLinks.map(({ id, href, icon: Icon, label }) => (
                       <motion.a
-                        key={social.name}
-                        href={social.href}
+                        key={id}
+                        href={href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className={`p-3 rounded-lg bg-muted/50 ${social.bgColor} ${social.color} transition-all duration-200`}
+                        className="p-3 rounded-lg bg-muted/50 hover:bg-primary/10 text-muted-foreground hover:text-primary transition-all duration-200"
                         whileHover={{ scale: 1.05, y: -2 }}
                         whileTap={{ scale: 0.95 }}
                       >
-                        <social.icon className="w-5 h-5" />
-                        <span className="sr-only">{social.name}</span>
+                        <Icon className="w-5 h-5" />
+                        <span className="sr-only">{label}</span>
                       </motion.a>
                     ))}
                   </div>
@@ -112,17 +123,19 @@ export function Contact() {
                       <ExternalLink className="w-4 h-4" />
                       View Resume
                     </Button>
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      onClick={() =>
-                        window.open("https://github.com/eesoymilk", "_blank")
-                      }
-                      className="flex items-center gap-2"
-                    >
-                      <Github className="w-4 h-4" />
-                      GitHub Profile
-                    </Button>
+                    {githubLink && (
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={() =>
+                          window.open(githubLink.href, "_blank")
+                        }
+                        className="flex items-center gap-2"
+                      >
+                        <Github className="w-4 h-4" />
+                        GitHub Profile
+                      </Button>
+                    )}
                   </div>
                 </div> */}
               </div>

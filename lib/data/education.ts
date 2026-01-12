@@ -9,12 +9,12 @@ export const education: Education[] = [
     startDate: "2024-09",
     endDate: "2026-06",
     description:
-      "Cumulative GPA: 3.86/4.0. Coursework: Neural Networks and Deep Learning, Neural Signal Processing, Linear Optimal Control.",
+      "Cumulative GPA: 3.86/4.0. Graduate Teaching Assistant for Neural Networks & Deep Learning (ECE C147/C247), managing a 500-student course.",
     achievements: [
       "GPA: 3.86/4.0",
-      "Coursework: Neural Networks and Deep Learning",
-      "Coursework: Neural Signal Processing",
-      "Coursework: Linear Optimal Control",
+      "Graduate Teaching Assistant, Neural Networks & Deep Learning (ECE C147/C247)",
+      "Managing a 500-student course, delivering weekly technical mentorship",
+      "Developing discussion modules, designing exams, and evaluating projects",
     ],
   },
   {

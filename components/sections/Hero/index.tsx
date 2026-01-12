@@ -1,28 +1,19 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Github, Linkedin, Mail } from "lucide-react";
 import { FadeIn } from "@/components/animations/FadeIn";
 import { Stagger } from "@/components/animations/Stagger";
 import { Button } from "@/components/ui/button";
 import { personalInfo } from "@/lib/data/personal";
 import { techs } from "@/lib/data/techs";
+import { getHeroSocials } from "@/lib/data/socials";
 import { HeroDescription } from "./Description";
 import { FloatingBubbles } from "./FloatingBubbles";
 import { ScrollIndicator } from "./ScrollIndicator";
 import { TypewriterText } from "./TypewriterText";
 
-const socialLinks = [
-  { href: "https://github.com/eesoymilk", icon: Github, label: "GitHub" },
-  {
-    href: "https://linkedin.com/in/eesoymilk",
-    icon: Linkedin,
-    label: "LinkedIn",
-  },
-  { href: "mailto:eesoymilk@gmail.com", icon: Mail, label: "Email" },
-];
-
 export function Hero() {
+  const socialLinks = getHeroSocials();
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Subtle background gradient */}
@@ -110,7 +101,7 @@ export function Hero() {
           </Stagger>
           {/* Social links */}
           <FadeIn delay={1.4} threshold={0}>
-            <div className="flex items-center justify-center gap-6 pt-8">
+            <div className="flex flex-wrap items-center justify-center gap-6 pt-8">
               {socialLinks.map(({ href, icon: Icon, label }) => (
                 <motion.a
                   key={label}

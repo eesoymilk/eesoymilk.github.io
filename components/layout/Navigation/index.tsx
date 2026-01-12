@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { personalInfo } from "@/lib/data/personal";
 import { ThemeToggle } from "../ThemeToggle";
 
 const navigationItems = [
@@ -136,7 +137,7 @@ export function Navigation() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              eesoymilk
+              {personalInfo.nickname}
             </motion.button>
 
             {/* Desktop Navigation */}

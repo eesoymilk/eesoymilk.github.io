@@ -4,6 +4,7 @@ import "./globals.css";
 
 import { ThemeProvider } from "@/components/layout/ThemeToggle/ThemeProvider";
 import { Toaster } from "@/components/ui/sonner";
+import { personalInfo } from "@/lib/data/personal";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -16,26 +17,26 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "eesoymilk | Researcher & Developer",
+  title: `${personalInfo.nickname} | ${personalInfo.title}`,
   description:
-    "Portfolio of eesoymilk - researcher, developer, and engineer passionate about innovation and technology",
-  keywords: ["portfolio", "developer", "researcher", "engineer", "eesoymilk"],
-  authors: [{ name: "Yu-Wei Chang", url: "https://eesoymilk.github.io" }],
-  creator: "eesoymilk",
+    `Portfolio of ${personalInfo.nickname} - ${personalInfo.bio}`,
+  keywords: ["portfolio", "developer", "researcher", "engineer", personalInfo.nickname],
+  authors: [{ name: personalInfo.name, url: personalInfo.website }],
+  creator: personalInfo.nickname,
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://eesoymilk.github.io",
-    title: "eesoymilk | Researcher & Developer",
+    url: personalInfo.website,
+    title: `${personalInfo.nickname} | ${personalInfo.title}`,
     description:
-      "Portfolio of eesoymilk - researcher, developer, and engineer passionate about innovation and technology",
-    siteName: "eesoymilk Portfolio",
+      `Portfolio of ${personalInfo.nickname} - ${personalInfo.bio}`,
+    siteName: `${personalInfo.nickname} Portfolio`,
   },
   twitter: {
     card: "summary_large_image",
-    title: "eesoymilk | Researcher & Developer",
+    title: `${personalInfo.nickname} | ${personalInfo.title}`,
     description:
-      "Portfolio of eesoymilk - researcher, developer, and engineer passionate about innovation and technology",
+      `Portfolio of ${personalInfo.nickname} - ${personalInfo.bio}`,
   },
 };
 

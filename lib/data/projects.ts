@@ -17,8 +17,33 @@ export const projects: Project[] = [
       "LLM Reasoning",
     ],
     category: "research",
+    status: "completed",
+    startDate: "2025-09",
+    endDate: "2025-11",
+    links: {},
+    images: [],
+    featured: true,
+    team: ["Yu-Wei Chang"],
+  },
+  {
+    id: "ucvla",
+    title: "UCVLA: User-Conditioned Vision-Language-Action Models",
+    description:
+      "Componentized architecture for personalized robot control using adapter conditioning on user embeddings for O(1) personalization.",
+    longDescription:
+      "Proposed a componentized architecture validated in Isaac Sim and UR5e robot for Sim-to-Real training, addressing generalization limitations. Designing adapter conditioning frozen VLA on user embeddings (z_u) for O(1) personalization (handedness, speed), outperforming O(N) ICL. Retargeting 2,500+ human-human handover sequences into robot joint space and deploying handheld UMI hardware for in-the-wild data collection.",
+    technologies: [
+      "Vision-Language-Action",
+      "Isaac Sim",
+      "UR5e",
+      "Sim-to-Real",
+      "Adapter Conditioning",
+      "UMI Hardware",
+      "Human-Robot Interaction",
+    ],
+    category: "research",
     status: "in-progress",
-    startDate: "2025-09", // Assuming start date based on current status
+    startDate: "2025-11",
     links: {},
     images: [],
     featured: true,
@@ -26,19 +51,19 @@ export const projects: Project[] = [
   },
   {
     id: "easyreach",
-    title: "EasyReach: Adaptive Robotic Arm Assistance",
+    title: "EasyReach: Adaptive Robotic Arm Assistance for Wheelchair Users",
     description:
-      "Personalized VLA learning user-specific preferences for adaptive assistance, utilizing Isaac Sim for Sim-to-Real training.",
+      "Prompt engineering framework that analyzes user interaction videos to extract preferences, adapting robot behavior without retraining.",
     longDescription:
-      "Developing a personalized VLA that learns user-specific preferences to enable adaptive assistance, utilizing Isaac Sim for Sim-to-Real training. Deployed a Vicon motion-capture pipeline with <5 mm tracking precision, achieving real-world object retrieval on the physical robotic arm. Prototyped kinematic feasibility in VR (Unity, Meta Quest 2), running 500+ reachability scenarios and reducing physical testing time by ~80%.",
+      "Developing a prompt engineering framework that analyzes user interaction videos to extract preferences, adapting robot behavior without retraining. Deployed a Vicon motion-capture pipeline with <5 mm tracking precision, achieving real-world object retrieval on the physical robotic arm. Prototyped kinematic feasibility in VR (Unity, Meta Quest 2), running 500+ reachability scenarios and reducing physical testing time by ~80%.",
     technologies: [
-      "VLA",
-      "Isaac Sim",
-      "Sim-to-Real",
+      "Prompt Engineering",
+      "Video Analysis",
       "Vicon",
       "Unity",
       "Meta Quest 2",
       "Robotics",
+      "Motion Capture",
     ],
     category: "research",
     status: "in-progress",
@@ -73,27 +98,3 @@ export const projects: Project[] = [
     team: ["Yu-Wei Chang"],
   },
 ];
-
-export const projectCategories = [
-  { id: "all", label: "All Projects", count: projects.length },
-  {
-    id: "research",
-    label: "Research",
-    count: projects.filter((p) => p.category === "research").length,
-  },
-  {
-    id: "web",
-    label: "Web",
-    count: projects.filter((p) => p.category === "web").length,
-  },
-  {
-    id: "ai",
-    label: "AI/ML",
-    count: projects.filter((p) => p.category === "ai").length,
-  },
-  {
-    id: "school",
-    label: "School",
-    count: projects.filter((p) => p.category === "school").length,
-  },
-] as const;

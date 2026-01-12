@@ -5,8 +5,12 @@ import { ArrowUp, Heart } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { personalInfo } from "@/lib/data/personal";
+import { getAllSocials } from "@/lib/data/socials";
 
 export function Footer() {
+  const lastUpdated = "2026-01-11";
+  const socialLinks = getAllSocials();
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
@@ -24,11 +28,36 @@ export function Footer() {
         >
           <div className="space-y-4">
             <h3 className="text-xl font-bold text-gradient-primary">
-              eesoymilk
+              {personalInfo.nickname}
             </h3>
             <p className="text-muted-foreground text-sm leading-relaxed">
               Take the risk of optimism.
             </p>
+          </div>
+        </motion.div>
+
+        {/* Social Links */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          viewport={{ once: true }}
+        >
+          <div className="flex flex-wrap items-center justify-center md:justify-start gap-4">
+            {socialLinks.map(({ id, href, icon: Icon, label }) => (
+              <motion.a
+                key={id}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-3 rounded-lg bg-muted/50 hover:bg-primary/10 text-muted-foreground hover:text-primary transition-colors"
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Icon className="w-5 h-5" />
+                <span className="sr-only">{label}</span>
+              </motion.a>
+            ))}
           </div>
         </motion.div>
 
@@ -40,24 +69,26 @@ export function Footer() {
           viewport={{ once: true }}
           className="pt-8 border-t border-border flex flex-col md:flex-row items-center justify-between gap-4"
         >
-          <div className="flex items-center gap-2 text-sm text-muted-foreground">
+          <div className="flex flex-wrap items-center gap-2 text-sm text-muted-foreground">
             <span>
-              © {new Date().getFullYear()} {personalInfo.name}
+              © {new Date(lastUpdated).getFullYear()} {personalInfo.name}
             </span>
             <span>•</span>
-            <span>Made with</span>
-            <motion.span
-              animate={{ scale: [1, 1.2, 1] }}
-              transition={{ duration: 1, repeat: Infinity }}
-            >
-              <Heart className="w-4 h-4 text-red-500" />
-            </motion.span>
-            <span>and lots of coffee</span>
+            <div className="flex items-center gap-2">
+              <span>Made with</span>
+              <motion.span
+                animate={{ scale: [1, 1.2, 1] }}
+                transition={{ duration: 1, repeat: Infinity }}
+              >
+                <Heart className="w-4 h-4 text-red-500" />
+              </motion.span>
+              <span>and lots of coffee</span>
+            </div>
           </div>
 
           <div className="flex items-center gap-4">
             <p className="text-sm text-muted-foreground">
-              Last updated: {new Date().toLocaleDateString()}
+              Last updated: {new Date(lastUpdated).toLocaleDateString()}
             </p>
             <Button
               variant="ghost"

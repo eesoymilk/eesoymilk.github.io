@@ -6,8 +6,8 @@ export interface PersonalInfo {
   location: string;
   email: string;
   website: string;
-  github: string;
-  linkedin: string;
+  github?: string;
+  linkedin?: string;
   philosophy: string;
 }
 
@@ -90,4 +90,17 @@ export interface Stats {
   publicationsCount: number;
   githubStars: number;
   githubContributions: number;
+}
+
+export interface SocialLink {
+  id: string;
+  label: string;
+  href: string;
+  icon: any; // LucideIcon from lucide-react
+  username?: string;
+  description?: string;
+  color: string;
+  hoverColor: string;
+  featured: boolean;
+  category: "code" | "professional" | "social" | "content" | "contact";
 }
