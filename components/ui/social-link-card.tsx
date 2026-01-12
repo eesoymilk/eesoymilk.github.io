@@ -65,7 +65,7 @@ export function SocialLinkCard({
           </div>
 
           {/* Content */}
-          <div className="space-y-1">
+          <div className="space-y-1 min-w-0">
             <h3
               className={cn(
                 "font-bold text-white",
@@ -76,7 +76,7 @@ export function SocialLinkCard({
             </h3>
 
             {social.username && (
-              <p className="text-white/80 text-sm font-medium">
+              <p className="text-white/80 text-sm font-medium break-words whitespace-normal">
                 {social.username}
               </p>
             )}
