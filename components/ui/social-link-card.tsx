@@ -15,7 +15,7 @@ interface SocialLinkCardProps {
 export function SocialLinkCard({
   social,
   variant = "standard",
-  index = 0
+  index = 0,
 }: SocialLinkCardProps) {
   const Icon = social.icon;
   const isFeatured = variant === "featured";
@@ -31,17 +31,17 @@ export function SocialLinkCard({
       transition={{
         duration: 0.5,
         delay: index * 0.1,
-        ease: "easeOut"
+        ease: "easeOut",
       }}
       whileHover={{ y: -4 }}
     >
       <Card
         className={cn(
-          "group relative overflow-hidden border-0 transition-all duration-300 h-full",
+          "group relative overflow-hidden border-0 transition-all duration-300 h-full py-0",
           "hover:shadow-xl cursor-pointer",
           social.color,
           social.hoverColor,
-          "text-white"
+          "text-white",
         )}
       >
         {/* Glass effect overlay */}
@@ -50,24 +50,28 @@ export function SocialLinkCard({
         <CardContent
           className={cn(
             "relative flex flex-col justify-between p-6",
-            isFeatured ? "min-h-[200px]" : "min-h-[140px]"
+            isFeatured ? "min-h-[150px]" : "min-h-[100px]",
           )}
         >
           {/* Top: Icon & External Link */}
           <div className="flex items-start justify-between mb-3">
-            <Icon className={cn(
-              "text-white/90 group-hover:text-white transition-all group-hover:scale-110",
-              isFeatured ? "w-10 h-10" : "w-8 h-8"
-            )} />
+            <Icon
+              className={cn(
+                "text-white/90 group-hover:text-white transition-all group-hover:scale-110",
+                isFeatured ? "w-8 h-8" : "w-6 h-6",
+              )}
+            />
             <ExternalLink className="w-4 h-4 text-white/60 opacity-0 group-hover:opacity-100 transition-opacity" />
           </div>
 
           {/* Content */}
           <div className="space-y-1">
-            <h3 className={cn(
-              "font-bold text-white",
-              isFeatured ? "text-2xl" : "text-xl"
-            )}>
+            <h3
+              className={cn(
+                "font-bold text-white",
+                isFeatured ? "text-xl" : "text-lg",
+              )}
+            >
               {social.label}
             </h3>
 
@@ -78,9 +82,7 @@ export function SocialLinkCard({
             )}
 
             {social.description && isFeatured && (
-              <p className="text-white/70 text-sm mt-2">
-                {social.description}
-              </p>
+              <p className="text-white/70 text-sm mt-2">{social.description}</p>
             )}
           </div>
 

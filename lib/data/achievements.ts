@@ -26,8 +26,8 @@ export const achievements: Achievement[] = [
   {
     icon: Users,
     title: "Teaching Experience",
-    description: "Academic Reader",
-    details: "Student Mentoring",
+    description: "Graduate Teaching Assistant",
+    details: "Neural Networks & Deep Learning (ECE C147/C247)",
     gradient: "from-accent to-accent/60",
   },
 ];
