@@ -15,7 +15,7 @@ export const socialLinks: SocialLink[] = [
   {
     id: "youtube",
     label: "YouTube",
-    href: "https://youtube.com/@eesoyamilk", // PLACEHOLDER - update later
+    href: "https://youtube.com/@eesoyamilk",
     icon: Youtube,
     username: "@eesoyamilk",
     description: "Tech tutorials & demos",
@@ -27,7 +27,7 @@ export const socialLinks: SocialLink[] = [
   {
     id: "instagram",
     label: "Instagram",
-    href: "https://instagram.com/eesoymilk.dev", // PLACEHOLDER - update later
+    href: "https://instagram.com/eesoymilk.dev",
     icon: Instagram,
     username: "@eesoymilk.dev",
     description: "Life & work snapshots",
@@ -39,7 +39,7 @@ export const socialLinks: SocialLink[] = [
   {
     id: "x",
     label: "X",
-    href: "https://x.com/eesoymilk", // PLACEHOLDER - update later
+    href: "https://x.com/eesoymilk",
     icon: Twitter,
     username: "@eesoymilk",
     description: "Tech insights & updates",
@@ -89,9 +89,9 @@ export const socialLinks: SocialLink[] = [
   {
     id: "tiktok",
     label: "TikTok",
-    href: "https://tiktok.com/@soymilk385", // PLACEHOLDER - update later
+    href: "https://tiktok.com/@eesoymilk",
     icon: Music,
-    username: "@soymilk385",
+    username: "@eesoymilk",
     description: "Quick tech tips",
     color: "bg-black dark:bg-slate-900",
     hoverColor: "hover:bg-slate-900 dark:hover:bg-slate-800",
@@ -101,7 +101,7 @@ export const socialLinks: SocialLink[] = [
   {
     id: "threads",
     label: "Threads",
-    href: "https://threads.net/@eesoymilk.dev", // PLACEHOLDER - update later
+    href: "https://threads.net/@eesoymilk.dev",
     icon: AtSign,
     username: "@eesoymilk.dev",
     description: "Conversations",
