@@ -7,6 +7,7 @@ import {
   Twitter, // X.com
   AtSign, // Threads placeholder
   Instagram,
+  MessageCircle, // Discord
 } from "lucide-react";
 import type { SocialLink } from "@/types";
 
@@ -107,6 +108,18 @@ export const socialLinks: SocialLink[] = [
     description: "Conversations",
     color: "bg-gradient-to-br from-purple-600 to-pink-600",
     hoverColor: "hover:opacity-90",
+    featured: false,
+    category: "social",
+  },
+  {
+    id: "discord",
+    label: "Discord",
+    href: "https://discord.gg/5rR9ZssMwM",
+    icon: MessageCircle,
+    username: "Join my Discord",
+    description: "Community & discussions",
+    color: "bg-indigo-600",
+    hoverColor: "hover:bg-indigo-700",
     featured: false,
     category: "social",
   },
