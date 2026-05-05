@@ -1,22 +1,21 @@
+import type { ComponentType, SVGProps } from "react";
+
+export type IconComponent = ComponentType<SVGProps<SVGSVGElement>>;
+
 export interface PersonalInfo {
+  firstName: string;
+  lastName: string;
   name: string;
   nickname: string;
   title: string;
   bio: string;
   location: string;
   email: string;
+  phone?: string;
   website: string;
-  github?: string;
-  linkedin?: string;
-  philosophy: string;
-}
-
-export interface Skill {
-  name: string;
-  category: "language" | "framework" | "tool" | "database";
-  proficiency: number; // 1-5 scale
-  yearsOfExperience: number;
-  projects?: string[];
+  resumeUrl: string;
+  profileImage: string;
+  profileImageDark: string;
 }
 
 export interface Education {
@@ -26,8 +25,8 @@ export interface Education {
   field: string;
   startDate: string;
   endDate: string;
-  description?: string;
-  achievements?: string[];
+  gpa?: string;
+  bullets?: string[];
 }
 
 export interface Experience {
@@ -37,70 +36,42 @@ export interface Experience {
   location: string;
   startDate: string;
   endDate: string | null;
-  description: string;
-  achievements: string[];
+  bullets: string[];
   technologies: string[];
-  companyLogo?: string;
 }
 
 export interface Project {
   id: string;
   title: string;
-  description: string;
-  longDescription: string;
+  shortTitle?: string;
+  tagline: string;
+  bullets: string[];
   technologies: string[];
-  category: "research" | "web" | "ai" | "tool" | "school";
-  status: "completed" | "in-progress" | "planned";
+  status: "completed" | "in-progress";
   startDate: string;
   endDate?: string;
-  links: {
+  advisor?: string;
+  lab?: string;
+  institution?: string;
+  links?: {
     github?: string;
-    demo?: string;
-    paper?: string;
     website?: string;
   };
-  images: string[];
-  featured: boolean;
-  team?: string[];
-  awards?: string[];
 }
 
-export interface Publication {
-  id: string;
-  title: string;
-  authors: string[];
-  venue: string;
-  year: number;
-  type: "conference" | "journal" | "workshop" | "preprint";
-  abstract: string;
-  links: {
-    pdf?: string;
-    doi?: string;
-    arxiv?: string;
-    code?: string;
-  };
-  citations?: number;
-  tags: string[];
-}
-
-export interface Stats {
-  projectsCompleted: number;
-  yearsOfExperience: number;
-  technologiesUsed: number;
-  publicationsCount: number;
-  githubStars: number;
-  githubContributions: number;
+export interface SkillGroup {
+  name: string;
+  label: string;
+  skills: string[];
 }
 
 export interface SocialLink {
   id: string;
   label: string;
   href: string;
-  icon: any; // LucideIcon from lucide-react
+  icon: IconComponent;
   username?: string;
   description?: string;
-  color: string;
-  hoverColor: string;
   featured: boolean;
   category: "code" | "professional" | "social" | "content" | "contact";
 }

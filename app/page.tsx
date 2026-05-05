@@ -1,51 +1,25 @@
 import { Footer } from "@/components/layout/Footer";
 import { Navigation } from "@/components/layout/Navigation";
-import { About } from "@/components/sections/About";
 import { Contact } from "@/components/sections/Contact";
 import { Education } from "@/components/sections/Education";
 import { Experience } from "@/components/sections/Experience";
 import { Hero } from "@/components/sections/Hero";
+import { Now } from "@/components/sections/Now";
 import { Research } from "@/components/sections/Research";
+import { Skills } from "@/components/sections/Skills";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-background text-foreground">
-      {/* Navigation */}
+    <main className="relative">
       <Navigation />
-
-      {/* Hero section */}
-      <section id="hero">
-        <Hero />
-      </section>
-
-      {/* Portfolio sections */}
-      {/* About section */}
-      <section id="about">
-        <About />
-      </section>
-
-      {/* Research section */}
-      <section id="research">
-        <Research />
-      </section>
-
-      {/* Experience section */}
-      <section id="experience">
-        <Experience />
-      </section>
-
-      {/* Education section */}
-      <section id="education">
-        <Education />
-      </section>
-
-      {/* Contact section */}
-      <section id="contact">
-        <Contact />
-      </section>
-
-      {/* Footer */}
+      <Hero />
+      <Now />
+      <Research />
+      <Experience />
+      <Education />
+      <Skills />
+      <Contact />
       <Footer />
-    </div>
+    </main>
   );
 }

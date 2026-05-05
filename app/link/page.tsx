@@ -1,138 +1,105 @@
-"use client";
-
-import { FadeIn } from "@/components/animations/FadeIn";
-import { SocialLinkCard } from "@/components/ui/social-link-card";
+import { Avatar } from "@/components/Avatar";
 import { ThemeToggle } from "@/components/layout/ThemeToggle";
 import { personalInfo } from "@/lib/data/personal";
-import { getFeaturedSocials, getAllSocials } from "@/lib/data/socials";
-import Image from "next/image";
-import { AnimatePresence, motion } from "framer-motion";
-import { useThemeClient } from "@/hooks/useThemeClient";
+import { getAllSocials } from "@/lib/data/socials";
 
 export default function LinkPage() {
-  const { isDark, isClient } = useThemeClient();
-  const featuredLinks = getFeaturedSocials();
-  const allLinks = getAllSocials();
-  const regularLinks = allLinks.filter((link) => !link.featured);
+  const links = getAllSocials();
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
-      {/* Theme Toggle */}
-      <div className="fixed top-4 right-4 z-50">
-        <ThemeToggle />
-      </div>
-
-      <div className="container mx-auto px-4 py-12 md:py-20 max-w-4xl">
-        {/* Profile Header */}
-        <FadeIn delay={0.1} threshold={0}>
-          <div className="text-center mb-12 space-y-6">
-            {/* Profile Image */}
-            <motion.div
-              className="relative w-24 h-24 md:w-32 md:h-32 mx-auto rounded-full overflow-hidden border-4 border-primary/20"
-              whileHover={{ scale: 1.05, rotate: 5 }}
-              transition={{ type: "spring", stiffness: 300 }}
-            >
-              {isClient ? (
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={isDark ? "dark" : "light"}
-                    initial={{ rotateY: 90, opacity: 0 }}
-                    animate={{ rotateY: 0, opacity: 1 }}
-                    exit={{ rotateY: -90, opacity: 0 }}
-                    transition={{
-                      duration: 0.6,
-                      ease: "easeInOut",
-                      type: "spring",
-                      stiffness: 100,
-                      damping: 15,
-                    }}
-                    style={{ transformStyle: "preserve-3d" }}
-                    className="w-full h-full relative"
-                  >
-                    <Image
-                      src={
-                        isDark
-                          ? personalInfo.profileImageDark
-                          : personalInfo.profileImage
-                      }
-                      alt={personalInfo.name}
-                      fill
-                      className="object-cover"
-                      unoptimized
-                    />
-                  </motion.div>
-                </AnimatePresence>
-              ) : (
-                <Image
-                  src={personalInfo.profileImage}
-                  alt={personalInfo.name}
-                  fill
-                  className="object-cover"
-                  unoptimized
-                />
-              )}
-            </motion.div>
-
-            {/* Name & Title */}
-            <div className="space-y-2">
-              <h1 className="text-3xl md:text-4xl font-bold">
-                <span className="text-gradient-primary">
-                  {personalInfo.nickname}
-                </span>{" "}
-              </h1>
-              <p className="text-base text-muted-foreground max-w-md mx-auto">
-                {personalInfo.title}
-              </p>
-            </div>
-          </div>
-        </FadeIn>
-
-        {/* Bento Grid Layout */}
-        <div className="space-y-6">
-          {/* Featured Links (3 columns on desktop) */}
-          <FadeIn delay={0.3} threshold={0}>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              {featuredLinks.map((social, index) => (
-                <SocialLinkCard
-                  key={social.id}
-                  social={social}
-                  variant="featured"
-                  index={index}
-                />
-              ))}
-            </div>
-          </FadeIn>
-
-          {/* Regular Links (4 columns on desktop) */}
-          <FadeIn delay={0.5} threshold={0}>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              {regularLinks.map((social, index) => (
-                <SocialLinkCard
-                  key={social.id}
-                  social={social}
-                  variant="standard"
-                  index={index + featuredLinks.length}
-                />
-              ))}
-            </div>
-          </FadeIn>
+    <main className="min-h-[100svh] bg-background text-foreground">
+      <header className="flex items-center justify-between px-5 py-4 sm:px-8">
+        <a
+          href="/"
+          className="group inline-flex items-center gap-2 text-sm font-semibold tracking-tight"
+        >
+          <span className="text-accent">~$</span>
+          <span>eesoymilk</span>
+        </a>
+        <div className="flex items-center gap-2">
+          <a
+            href="/"
+            className="text-[0.7rem] uppercase tracking-[0.2em] text-muted-foreground hover:text-foreground"
+          >
+            ← portfolio
+          </a>
+          <ThemeToggle />
         </div>
+      </header>
 
-        {/* Footer CTA */}
-        <FadeIn delay={0.8} threshold={0}>
-          <div className="mt-12 text-center">
-            <p className="text-sm text-muted-foreground">
-              Want to learn more?{" "}
-              <a
-                href="/"
-                className="text-primary hover:text-primary/80 font-medium transition-colors"
-              >
-                Visit my portfolio →
-              </a>
+      <div className="mx-auto w-full max-w-2xl px-5 pb-20 pt-12 sm:px-8 sm:pt-20">
+        <div className="mb-3 flex items-center gap-3 text-[0.7rem] uppercase tracking-[0.25em] text-muted-foreground">
+          <span className="text-accent">▸</span>
+          <span>links</span>
+          <span className="h-px flex-1 bg-border" aria-hidden="true" />
+        </div>
+        <div className="flex items-start gap-5 sm:gap-6">
+          <Avatar size={88} priority className="sm:hidden" />
+          <Avatar size={120} priority className="hidden sm:block" />
+          <div className="min-w-0 flex-1">
+            <h1 className="text-balance text-2xl font-bold leading-tight tracking-tight sm:text-3xl">
+              {personalInfo.name}
+            </h1>
+            <p className="mt-1 text-sm text-muted-foreground sm:text-base">
+              {personalInfo.title}
+            </p>
+            <p className="mt-1 text-xs text-muted-foreground/70 sm:text-sm">
+              {personalInfo.location}
             </p>
           </div>
-        </FadeIn>
+        </div>
+        <p className="mt-6 text-sm leading-relaxed text-muted-foreground sm:text-base">
+          {personalInfo.bio}
+        </p>
+
+        <ul className="mt-12 space-y-2">
+          {links.map(
+            ({
+              id,
+              label,
+              href,
+              username,
+              description,
+              icon: Icon,
+              featured,
+            }) => (
+              <li key={id}>
+                <a
+                  href={href}
+                  target={href.startsWith("http") ? "_blank" : undefined}
+                  rel={
+                    href.startsWith("http") ? "noopener noreferrer" : undefined
+                  }
+                  className={`group flex min-h-[64px] items-center gap-4 border border-border px-4 py-3 transition-colors hover:border-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent ${
+                    featured ? "bg-muted/40" : ""
+                  }`}
+                >
+                  <Icon
+                    className="h-5 w-5 flex-shrink-0 text-muted-foreground transition-colors group-hover:text-accent"
+                    aria-hidden="true"
+                  />
+                  <span className="min-w-0 flex-1">
+                    <span className="block text-[0.7rem] uppercase tracking-[0.2em] text-muted-foreground">
+                      {label}
+                    </span>
+                    <span className="block truncate text-sm text-foreground/90 sm:text-base">
+                      {username}
+                    </span>
+                    {description ? (
+                      <span className="mt-0.5 block truncate text-xs text-muted-foreground/70">
+                        {description}
+                      </span>
+                    ) : null}
+                  </span>
+                  <span className="text-muted-foreground transition-colors group-hover:text-accent">
+                    ↗
+                  </span>
+                </a>
+              </li>
+            ),
+          )}
+        </ul>
       </div>
-    </div>
+    </main>
   );
 }

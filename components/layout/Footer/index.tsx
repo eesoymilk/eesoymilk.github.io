@@ -1,106 +1,63 @@
-"use client";
-
-import { motion } from "framer-motion";
-import { ArrowUp, Heart } from "lucide-react";
-
-import { Button } from "@/components/ui/button";
+import { Mail } from "lucide-react";
+import { GithubIcon, LinkedinIcon, XIcon } from "@/components/icons/brand";
 import { personalInfo } from "@/lib/data/personal";
-import { getAllSocials } from "@/lib/data/socials";
+
+const links = [
+  {
+    label: "github",
+    href: "https://github.com/eesoymilk",
+    icon: GithubIcon,
+  },
+  {
+    label: "linkedin",
+    href: "https://linkedin.com/in/eesoymilk",
+    icon: LinkedinIcon,
+  },
+  {
+    label: "x",
+    href: "https://x.com/eesoymilk",
+    icon: XIcon,
+  },
+  {
+    label: "email",
+    href: `mailto:${personalInfo.email}`,
+    icon: Mail,
+  },
+];
 
 export function Footer() {
-  const lastUpdated = "2026-01-11";
-  const socialLinks = getAllSocials();
-
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-
   return (
-    <footer className="bg-muted/30 border-t border-border">
-      <div className="container mx-auto px-6 py-8 space-y-4 md:space-y-8">
-        {/* Brand Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
-          className="lg:col-span-1"
-        >
-          <div className="space-y-4">
-            <h3 className="text-xl font-bold text-gradient-primary">
-              {personalInfo.nickname}
-            </h3>
-            <p className="text-muted-foreground text-sm leading-relaxed">
-              Take the risk of optimism.
-            </p>
-          </div>
-        </motion.div>
+    <footer className="border-t border-border px-5 py-10 sm:px-8 md:px-12 lg:px-16">
+      <div className="mx-auto flex w-full max-w-5xl flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
+        <div className="flex flex-col gap-1 text-[0.7rem] uppercase tracking-[0.2em] text-muted-foreground">
+          <span>
+            <span className="text-accent">&lt;/</span>
+            {personalInfo.nickname}
+            <span className="text-accent">&gt;</span>
+          </span>
+          <span className="text-muted-foreground/60 normal-case tracking-normal">
+            built with next, tailwind, jetbrains mono. ©{" "}
+            {new Date().getFullYear()}.
+          </span>
+        </div>
 
-        {/* Social Links */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          viewport={{ once: true }}
-        >
-          <div className="flex flex-wrap items-center justify-center md:justify-start gap-4">
-            {socialLinks.map(({ id, href, icon: Icon, label }) => (
-              <motion.a
-                key={id}
+        <ul className="flex items-center gap-4">
+          {links.map(({ label, href, icon: Icon }) => (
+            <li key={label}>
+              <a
                 href={href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-3 rounded-lg bg-muted/50 hover:bg-primary/10 text-muted-foreground hover:text-primary transition-colors"
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.95 }}
+                target={href.startsWith("http") ? "_blank" : undefined}
+                rel={
+                  href.startsWith("http") ? "noopener noreferrer" : undefined
+                }
+                aria-label={label}
+                className="inline-flex h-11 w-11 items-center justify-center text-muted-foreground transition-colors hover:text-accent"
               >
-                <Icon className="w-5 h-5" />
-                <span className="sr-only">{label}</span>
-              </motion.a>
-            ))}
-          </div>
-        </motion.div>
-
-        {/* Bottom Section */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          viewport={{ once: true }}
-          className="pt-8 border-t border-border flex flex-col md:flex-row items-center justify-between gap-4"
-        >
-          <div className="flex flex-wrap items-center gap-2 text-sm text-muted-foreground">
-            <span>
-              © {new Date(lastUpdated).getFullYear()} {personalInfo.name}
-            </span>
-            <span>•</span>
-            <div className="flex items-center gap-2">
-              <span>Made with</span>
-              <motion.span
-                animate={{ scale: [1, 1.2, 1] }}
-                transition={{ duration: 1, repeat: Infinity }}
-              >
-                <Heart className="w-4 h-4 text-red-500" />
-              </motion.span>
-              <span>and lots of coffee</span>
-            </div>
-          </div>
-
-          <div className="flex items-center gap-4">
-            <p className="text-sm text-muted-foreground">
-              Last updated: {new Date(lastUpdated).toLocaleDateString()}
-            </p>
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={scrollToTop}
-              className="flex items-center gap-2"
-            >
-              <ArrowUp className="w-4 h-4" />
-              Back to top
-            </Button>
-          </div>
-        </motion.div>
+                <Icon className="h-4 w-4" aria-hidden="true" />
+              </a>
+            </li>
+          ))}
+        </ul>
       </div>
     </footer>
   );

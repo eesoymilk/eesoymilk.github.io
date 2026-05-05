@@ -2,34 +2,25 @@ import type { Education } from "@/types";
 
 export const education: Education[] = [
   {
-    id: "masters-ece-ucla",
+    id: "ucla-ms-ece",
     institution: "University of California, Los Angeles",
-    degree: "Master of Science",
+    degree: "M.S.",
     field: "Electrical and Computer Engineering",
     startDate: "2024-09",
-    endDate: "2026-06",
-    description: "Cumulative GPA: 3.88/4.0. Graduate Teaching Assistant.",
-    achievements: [
-      "GPA: 3.88/4.0",
-      "Graduate Teaching Assistant, Neural Networks & Deep Learning (ECE C147/C247)",
-      "Managing a 500-student course, delivering weekly technical mentorship",
-      "Developing discussion modules, designing exams, and evaluating projects",
+    endDate: "Expected Jun 2026",
+    gpa: "3.88 / 4.0",
+    bullets: [
+      "Graduate Teaching Assistant — Neural Networks & Deep Learning (ECE C147/C247).",
+      "Manage a 500-student course: weekly technical mentorship, discussion modules, exam design, project evaluation.",
     ],
   },
   {
-    id: "bachelors-ee-nthu",
+    id: "nthu-bs-ee",
     institution: "National Tsing Hua University",
-    degree: "Bachelor of Science",
+    degree: "B.S.",
     field: "Electrical Engineering",
     startDate: "2020-09",
     endDate: "2024-06",
-    description:
-      "Cumulative GPA: 4.04/4.3. Coursework: Computer Vision, Machine Learning, Deep Reinforcement Learning, Algorithms, Control Systems, Computer Architecture.",
-    achievements: [
-      "GPA: 4.04/4.3",
-      "Coursework: Computer Vision, Machine Learning",
-      "Coursework: Deep Reinforcement Learning",
-      "Coursework: Algorithms, Control Systems",
-    ],
+    gpa: "4.04 / 4.3",
   },
 ];

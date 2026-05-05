@@ -1,48 +1,55 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
 import { ThemeProvider } from "@/components/layout/ThemeToggle/ThemeProvider";
-import { Toaster } from "@/components/ui/sonner";
 import { personalInfo } from "@/lib/data/personal";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const jetbrainsMono = JetBrains_Mono({
+  variable: "--font-jetbrains-mono",
   subsets: ["latin"],
+  display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+const description = `${personalInfo.name} — ${personalInfo.title}. ${personalInfo.bio}`;
 
 export const metadata: Metadata = {
-  title: `${personalInfo.nickname} | ${personalInfo.title}`,
-  description:
-    `Portfolio of ${personalInfo.nickname} - ${personalInfo.bio}`,
-  keywords: ["portfolio", "developer", "researcher", "engineer", personalInfo.nickname],
+  title: `${personalInfo.name} — ${personalInfo.title}`,
+  description,
+  keywords: [
+    "robotics",
+    "machine learning",
+    "VLA",
+    "vision language action",
+    "embodied AI",
+    "UCLA",
+    personalInfo.name,
+    personalInfo.nickname,
+  ],
   authors: [{ name: personalInfo.name, url: personalInfo.website }],
-  creator: personalInfo.nickname,
+  creator: personalInfo.name,
   openGraph: {
     type: "website",
     locale: "en_US",
     url: personalInfo.website,
-    title: `${personalInfo.nickname} | ${personalInfo.title}`,
-    description:
-      `Portfolio of ${personalInfo.nickname} - ${personalInfo.bio}`,
-    siteName: `${personalInfo.nickname} Portfolio`,
+    title: `${personalInfo.name} — ${personalInfo.title}`,
+    description,
+    siteName: personalInfo.name,
   },
   twitter: {
     card: "summary_large_image",
-    title: `${personalInfo.nickname} | ${personalInfo.title}`,
-    description:
-      `Portfolio of ${personalInfo.nickname} - ${personalInfo.bio}`,
+    title: `${personalInfo.name} — ${personalInfo.title}`,
+    description,
   },
 };
 
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#fafaf7" },
+    { media: "(prefers-color-scheme: dark)", color: "#0d0d11" },
+  ],
 };
 
 export default function RootLayout({
@@ -52,17 +59,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className={`${jetbrainsMono.variable} antialiased`}>
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
+          defaultTheme="dark"
           enableSystem
           disableTransitionOnChange
         >
           {children}
-          <Toaster />
         </ThemeProvider>
       </body>
     </html>
