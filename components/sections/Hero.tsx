@@ -112,13 +112,7 @@ export function Hero() {
         </ul>
       </div>
 
-      <div className="mx-auto mt-16 flex w-full max-w-5xl flex-col gap-2 text-[0.7rem] uppercase tracking-[0.2em] text-muted-foreground sm:flex-row sm:items-end sm:justify-between sm:text-xs">
-        <span>
-          <span className="text-accent">●</span> open to{" "}
-          <span className="text-foreground">robotics swe</span> ·{" "}
-          <span className="text-foreground">mle</span> ·{" "}
-          <span className="text-foreground">swe</span> roles
-        </span>
+      <div className="mx-auto mt-16 flex w-full max-w-5xl justify-end text-[0.7rem] uppercase tracking-[0.2em] text-muted-foreground sm:text-xs">
         <a
           href="#now"
           className="group inline-flex items-center gap-2 hover:text-foreground"

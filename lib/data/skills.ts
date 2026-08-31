@@ -51,6 +51,7 @@ export const skillGroups: SkillGroup[] = [
       "Git",
       "AWS (Lambda · EC2 · API Gateway)",
       "Kubernetes",
+      "Airflow",
       "PostgreSQL",
       "Redis",
       "Vector Databases",

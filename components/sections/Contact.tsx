@@ -28,11 +28,10 @@ export function Contact() {
         <SectionLabel index="06" label="contact" title="Say hi." />
 
         <p className="max-w-2xl text-sm leading-relaxed text-muted-foreground md:text-base">
-          I'm wrapping up my MS in mid-2026 and looking for{" "}
-          <span className="text-foreground">robotics SWE</span> /{" "}
-          <span className="text-foreground">MLE</span> /{" "}
-          <span className="text-foreground">SWE</span> roles. Best way to reach
-          me is email.
+          I work on ML infrastructure for robots at{" "}
+          <span className="text-foreground">FieldAI</span>. Always happy to talk
+          robotics, ML infra, or interesting problems. Best way to reach me is
+          email.
         </p>
 
         <div className="mt-10 grid gap-3 sm:grid-cols-2 md:max-w-2xl md:grid-cols-3">

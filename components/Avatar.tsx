@@ -11,7 +11,11 @@ interface AvatarProps {
   priority?: boolean;
 }
 
-export function Avatar({ size = 72, className, priority = false }: AvatarProps) {
+export function Avatar({
+  size = 72,
+  className,
+  priority = false,
+}: AvatarProps) {
   const { resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 

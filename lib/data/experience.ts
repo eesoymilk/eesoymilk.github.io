@@ -2,6 +2,18 @@ import type { Experience } from "@/types";
 
 export const experiences: Experience[] = [
   {
+    id: "fieldai",
+    company: "FieldAI",
+    position: "Software Engineer, MLOps",
+    location: "Irvine, CA",
+    startDate: "2026-08",
+    endDate: null,
+    bullets: [
+      "Building ML infrastructure for robot foundation models: Kubernetes-based training and eval workloads and Airflow data pipelines.",
+    ],
+    technologies: ["Kubernetes", "Airflow", "Python", "Docker"],
+  },
+  {
     id: "shin-da",
     company: "Shin-Da Information Co., Ltd.",
     position: "Software Engineer (Contract)",

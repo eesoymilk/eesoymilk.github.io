@@ -2,7 +2,6 @@ import { SectionLabel } from "@/components/SectionLabel";
 import { education } from "@/lib/data/education";
 
 function fmt(date: string) {
-  if (date.toLowerCase().startsWith("expected")) return date.toLowerCase();
   const [y, m] = date.split("-");
   if (!m) return date;
   const months = [

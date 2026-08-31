@@ -19,6 +19,9 @@ export const metadata: Metadata = {
   keywords: [
     "robotics",
     "machine learning",
+    "MLOps",
+    "ML infrastructure",
+    "FieldAI",
     "VLA",
     "vision language action",
     "embodied AI",

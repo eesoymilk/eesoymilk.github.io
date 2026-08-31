@@ -1,0 +1,14 @@
+<svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+  <title>eesoymilk</title>
+  <rect width="64" height="64" fill="#0d0d11"/>
+  <text
+    x="6"
+    y="46"
+    font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'JetBrains Mono', monospace"
+    font-size="38"
+    font-weight="800"
+    fill="#fafafa"
+    letter-spacing="-1"
+  >em</text>
+  <rect x="48" y="16" width="10" height="32" fill="#f59e0b"/>
+</svg>

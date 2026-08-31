@@ -7,11 +7,11 @@ export const education: Education[] = [
     degree: "M.S.",
     field: "Electrical and Computer Engineering",
     startDate: "2024-09",
-    endDate: "Expected Jun 2026",
+    endDate: "2026-06",
     gpa: "3.88 / 4.0",
     bullets: [
       "Graduate Teaching Assistant — Neural Networks & Deep Learning (ECE C147/C247).",
-      "Manage a 500-student course: weekly technical mentorship, discussion modules, exam design, project evaluation.",
+      "Managed a 500-student course: weekly technical mentorship, discussion modules, exam design, project evaluation.",
     ],
   },
   {

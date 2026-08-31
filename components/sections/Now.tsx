@@ -2,25 +2,11 @@ import { SectionLabel } from "@/components/SectionLabel";
 
 const focusItems = [
   {
-    tag: "research",
-    title: "UCVLA @ NECL",
+    tag: "work",
+    title: "SWE, MLOps @ FieldAI",
     detail:
-      "$\\mathcal{O}(1)$ personalization for VLA foundation models — RDT-2, π₀, Diffusion Policy.",
-    advisor: "Prof. Jonathan Kao",
-  },
-  {
-    tag: "research",
-    title: "EasyReach @ HiLab",
-    detail:
-      "Adaptive robotic-arm assistance for wheelchair users. Vicon + UR5e + VLM-driven preference inference.",
-    advisor: "Prof. Yang Zhang",
-  },
-  {
-    tag: "teaching",
-    title: "TA — ECE C147 / C247",
-    detail:
-      "Neural Networks & Deep Learning. 500-student course: discussions, exams, projects.",
-    advisor: "UCLA",
+      "Kubernetes training and eval workloads, Airflow data pipelines - the plumbing that turns robot data into deployed foundation-model policies.",
+    advisor: "Irvine, CA",
   },
 ];
 
@@ -36,24 +22,24 @@ export function Now() {
         <div className="grid gap-12 md:grid-cols-[1fr_1.4fr] md:gap-16">
           <div>
             <h2 className="text-balance text-2xl font-bold leading-tight tracking-tight md:text-3xl">
-              I build robots that learn{" "}
-              <span className="text-accent">from people</span>, not just
-              demonstrations.
+              I make robot learning{" "}
+              <span className="text-accent">reproducible</span> - from data
+              pipelines to deployed policies.
             </h2>
             <p className="mt-6 text-sm leading-relaxed text-muted-foreground md:text-base">
-              MS ECE at UCLA, working at the intersection of foundation models
-              and physical hardware. The thread across my projects: making robot
-              policies{" "}
+              At FieldAI I work on the MLOps side of robot foundation models:
+              the infrastructure that{" "}
               <em className="not-italic text-foreground">
-                adapt to a specific user
+                trains, evaluates, and ships
               </em>{" "}
-              — their handedness, their pace, their accessibility needs —
-              without retraining the whole model.
+              policies to real hardware, so research ideas turn into robots that
+              behave the same way every time.
             </p>
             <p className="mt-4 text-sm leading-relaxed text-muted-foreground md:text-base">
-              Before grad school I shipped backends for biomedical labs, gov't
-              healthcare exchange, and elder-care robotics. I like systems that
-              survive contact with the real world.
+              Before that: an MS at UCLA on VLA personalization and
+              user-adaptive robot policies, and backends for biomedical labs,
+              gov't healthcare exchange, and elder-care robotics. I like systems
+              that survive contact with the real world.
             </p>
           </div>
 
